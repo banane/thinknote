@@ -27,7 +27,6 @@
 		26D8B7E014212544002022BD /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 26D8B7DF14212544002022BD /* Icon.png */; };
 		2892E4100DC94CBA00A64D0F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2892E40F0DC94CBA00A64D0F /* CoreGraphics.framework */; };
 		28AD73600D9D9599002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD735F0D9D9599002E5188 /* MainWindow.xib */; };
-		28C286E10D94DF7D0034E888 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C286E00D94DF7D0034E888 /* RootViewController.m */; };
 		5810616E118F82BB00730595 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5810616D118F82BB00730595 /* Settings.bundle */; };
 		5874B55910C7454100857C66 /* no_accessory.png in Resources */ = {isa = PBXBuildFile; fileRef = 5874B55810C7454100857C66 /* no_accessory.png */; };
 		AAE08AB110E2021E008BB459 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = AAE08AB010E2021E008BB459 /* Entitlements.plist */; };
@@ -40,6 +39,8 @@
 		ED1CBF5618A6DD0C00DF600A /* att_string_med_e.wav in Resources */ = {isa = PBXBuildFile; fileRef = ED1CBF5318A6DD0C00DF600A /* att_string_med_e.wav */; };
 		ED1CBF5818A6DD1200DF600A /* blink_bigsound.wav in Resources */ = {isa = PBXBuildFile; fileRef = ED1CBF5718A6DD1200DF600A /* blink_bigsound.wav */; };
 		ED1CBF5C18A6E5FA00DF600A /* blink_smalsound.wav in Resources */ = {isa = PBXBuildFile; fileRef = ED1CBF5B18A6E5FA00DF600A /* blink_smalsound.wav */; };
+		ED1CBF6018A6E85600DF600A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED1CBF5E18A6E85600DF600A /* ViewController.m */; };
+		ED1CBF6118A6E85600DF600A /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED1CBF5F18A6E85600DF600A /* ViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,8 +68,6 @@
 		2892E40F0DC94CBA00A64D0F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		28A0AAE50D9B0CCF005BE974 /* ThinkGearTouch_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThinkGearTouch_Prefix.pch; sourceTree = "<group>"; };
 		28AD735F0D9D9599002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
-		28C286DF0D94DF7D0034E888 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
-		28C286E00D94DF7D0034E888 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		5810616D118F82BB00730595 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		5874B55810C7454100857C66 /* no_accessory.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = no_accessory.png; path = Resources/no_accessory.png; sourceTree = "<group>"; };
@@ -83,6 +82,9 @@
 		ED1CBF5318A6DD0C00DF600A /* att_string_med_e.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = att_string_med_e.wav; sourceTree = "<group>"; };
 		ED1CBF5718A6DD1200DF600A /* blink_bigsound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = blink_bigsound.wav; sourceTree = "<group>"; };
 		ED1CBF5B18A6E5FA00DF600A /* blink_smalsound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = blink_smalsound.wav; path = ../blink_smalsound.wav; sourceTree = "<group>"; };
+		ED1CBF5D18A6E85600DF600A /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ViewController.h; path = ../ViewController.h; sourceTree = "<group>"; };
+		ED1CBF5E18A6E85600DF600A /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ViewController.m; path = ../ViewController.m; sourceTree = "<group>"; };
+		ED1CBF5F18A6E85600DF600A /* ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ViewController.xib; path = ../ViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +109,9 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				ED1CBF5D18A6E85600DF600A /* ViewController.h */,
+				ED1CBF5E18A6E85600DF600A /* ViewController.m */,
+				ED1CBF5F18A6E85600DF600A /* ViewController.xib */,
 				ED1CBF5718A6DD1200DF600A /* blink_bigsound.wav */,
 				ED1CBF5B18A6E5FA00DF600A /* blink_smalsound.wav */,
 				ED1CBF5118A6DD0C00DF600A /* att_string_high_g.wav */,
@@ -115,8 +120,6 @@
 				ED1CBF4B18A6DD0400DF600A /* med_high_g.wav */,
 				ED1CBF4C18A6DD0400DF600A /* med_low_c.wav */,
 				ED1CBF4D18A6DD0400DF600A /* med_med_e.wav */,
-				28C286DF0D94DF7D0034E888 /* RootViewController.h */,
-				28C286E00D94DF7D0034E888 /* RootViewController.m */,
 				1D3623240D0F684500981E51 /* ThinkGearTouchAppDelegate.h */,
 				1D3623250D0F684500981E51 /* ThinkGearTouchAppDelegate.m */,
 			);
@@ -274,6 +277,7 @@
 				ED1CBF5818A6DD1200DF600A /* blink_bigsound.wav in Resources */,
 				26D679B516160D29006B213F /* Default-568h@2x.png in Resources */,
 				ED1CBF5518A6DD0C00DF600A /* att_string_low_c.wav in Resources */,
+				ED1CBF6118A6E85600DF600A /* ViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -286,7 +290,7 @@
 			files = (
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				1D3623260D0F684500981E51 /* ThinkGearTouchAppDelegate.m in Sources */,
-				28C286E10D94DF7D0034E888 /* RootViewController.m in Sources */,
+				ED1CBF6018A6E85600DF600A /* ViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

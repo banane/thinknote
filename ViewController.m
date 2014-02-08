@@ -1,24 +1,38 @@
 //
-//  RootViewController.m
+//  ViewController.m
 //  ThinkGearTouch
 //
-//  Copyright NeuroSky, Inc. 2012. All rights reserved.
+//  Created by Anna Billstrom on 2/8/14.
+//
 //
 
-#import "RootViewController.h"
 
+#import "ViewController.h"
 
-@interface RootViewController ()
+@interface ViewController ()
 - (void)setLoadingScreenView;
+
 @end
 
-@implementation RootViewController;
+@implementation ViewController
 
+@synthesize meditationSwitch, attentionSwitch, blinkSwitch;
 @synthesize loadingScreen, soundFileObject, lastBlinkValue;
 
-- (void)viewDidLoad {
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        // Custom initialization
+    }
+    return self;
+}
+
+- (void)viewDidLoad
+{
     [super viewDidLoad];
-    [self setTitle:@"ThinkGear Data"];
+    // Do any additional setup after loading the view from its nib.
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -35,7 +49,7 @@
         [[TGAccessoryManager sharedTGAccessoryManager] startStream];
     
     if(updateThread == nil) {
-        updateThread = [[NSThread alloc] initWithTarget:self selector:@selector(updateTable) object:nil];
+        updateThread = [[NSThread alloc] initWithTarget:self selector:@selector(updateView) object:nil];
         [updateThread start];
     }
     
@@ -59,178 +73,6 @@
     [super dealloc];
 }
 
-#pragma mark -
-#pragma mark Table view methods
-
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    switch(section){
-        case 0:
-            return @"Raw";
-        case 1:
-            return @"Status";
-        case 2:
-            return @"eSense";
-        case 3:
-            return @"EEG bands";
-        default:
-            return nil;
-    }
-       
-}
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 4;
-}
-
-// Customize the number of rows in the table view.
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    switch(section){
-        case 0:
-            return 2;
-        case 1:
-            return 1;
-        case 2:
-            return 7;
-        case 3:
-            return 8;
-        default:
-            return 0;
-    }
-}
-
-// Customize the appearance of table view cells.
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString * CellIdentifier = @"Cell";
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    
-    if(cell == nil){
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 
-                                       reuseIdentifier:CellIdentifier] autorelease];
-
-        [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-    }
-    
-    NSInteger section = [indexPath indexAtPosition:0];
-    NSInteger field = [indexPath indexAtPosition:1];
-    
-    cell.imageView.image = nil;
-	// Configure the cell.
-    switch(section){
-        case 0:
-            switch(field){
-                case 0:
-                    [[cell textLabel] setText:@"Sensor value"];
-                    [[cell detailTextLabel] setText:[NSString stringWithFormat:@"%d", rawValue]];
-                    break;
-                case 1:
-                    [[cell textLabel] setText:@"Raw count"];
-                    [[cell detailTextLabel] setText:[NSString stringWithFormat:@"%d", rawCount]];
-                default:
-                    break;
-            }
-            
-            break;
-        case 1:
-            switch(field){
-                case 0:
-                    [[cell textLabel] setText:@"Poor signal"];
-                    [[cell detailTextLabel] setText:[NSString stringWithFormat:@"%d", poorSignalValue]];
-                    [[cell imageView] setImage:[self updateSignalStatus]];
-                    break;
-                default:
-                    break;
-            }
-            
-            break;
-        case 2: 
-            switch(field){
-                case 0:
-                    [[cell textLabel] setText:@"Attention"];
-                    [[cell detailTextLabel] setText:[NSString stringWithFormat:@"%d", eSenseValues.attention]];
-                    
-                    [self playSound:@"attention" theSenseOfValue:eSenseValues.attention];
-                    break;
-                case 1:
-                    [[cell textLabel] setText:@"Meditation"];
-                    [[cell detailTextLabel] setText:[NSString stringWithFormat:@"%d", eSenseValues.meditation]];
-                    [self playSound:@"meditation" theSenseOfValue:eSenseValues.meditation];
-                    break;
-                case 2:
-                    [[cell textLabel] setText:@"Blink strength"];
-                    [[cell detailTextLabel] setText:[NSString stringWithFormat:@"%d", blinkStrength]];
-                    if(blinkStrength > 100 && blinkStrength != lastBlinkValue){
-                        [self playSound:@"blink" theSenseOfValue:blinkStrength];
-                    }
-                    lastBlinkValue = blinkStrength;
-                    break;
-                case 3:
-                    [[cell textLabel] setText:@"Heart rate"];
-                    [[cell detailTextLabel] setText:[NSString stringWithFormat:@"%d", heartRate]];
-                    break;
-                case 4:
-                    [[cell textLabel] setText:@"Respiration"];
-                    [[cell detailTextLabel] setText:[NSString stringWithFormat:@"%f", respiration]];
-                    break;
-                case 5:
-                    [[cell textLabel] setText:@"Heart Rate Average"];
-                    [[cell detailTextLabel] setText:[NSString stringWithFormat:@"%d", heartRateAverage]];
-                    break;
-                case 6:
-                    [[cell textLabel] setText:@"Heart Rate Acceleration"];
-                    [[cell detailTextLabel] setText:[NSString stringWithFormat:@"%d", heartRateAcceleration]];
-                    break;
-                default:
-                    break;
-            }
-            
-            break;
-        case 3:
-            switch(field){
-                case 0:
-                    [[cell textLabel] setText:@"Delta"];
-                    [[cell detailTextLabel] setText:[NSString stringWithFormat:@"%d", eegValues.delta]];
-                    break;
-                case 1:
-                    [[cell textLabel] setText:@"Theta"];
-                    [[cell detailTextLabel] setText:[NSString stringWithFormat:@"%d", eegValues.theta]];
-                    break;
-                case 2:
-                    [[cell textLabel] setText:@"Low alpha"];
-                    [[cell detailTextLabel] setText:[NSString stringWithFormat:@"%d", eegValues.lowAlpha]];
-                    break;
-                case 3:
-                    [[cell textLabel] setText:@"High alpha"];
-                    [[cell detailTextLabel] setText:[NSString stringWithFormat:@"%d", eegValues.highAlpha]];
-                    break;
-                case 4:
-                    [[cell textLabel] setText:@"Low beta"];
-                    [[cell detailTextLabel] setText:[NSString stringWithFormat:@"%d", eegValues.lowBeta]];
-                    break;
-                case 5:
-                    [[cell textLabel] setText:@"High beta"];
-                    [[cell detailTextLabel] setText:[NSString stringWithFormat:@"%d", eegValues.highBeta]];
-                    break;
-                case 6:
-                    [[cell textLabel] setText:@"Low gamma"];
-                    [[cell detailTextLabel] setText:[NSString stringWithFormat:@"%d", eegValues.lowGamma]];
-                    break;
-                case 7:
-                    [[cell textLabel] setText:@"High gamma"];
-                    [[cell detailTextLabel] setText:[NSString stringWithFormat:@"%d", eegValues.highGamma]];
-                    break;
-                default:
-                    break;
-            }
-            
-            break;
-        default:
-            break;
-    }
-
-  
-    return cell;
-}
 - (UIImage *)updateSignalStatus {
     
     if(poorSignalValue == 0) {
@@ -252,12 +94,12 @@
 
 - (void)playSound:(NSString *) typeOfSound theSenseOfValue:(int)senseValue{
     NSString *sndpath= @"";
-  //  NSLog(@"play sound values: %@, %d", typeOfSound, senseValue);
-
+    //  NSLog(@"play sound values: %@, %d", typeOfSound, senseValue);
+    
     int third = floor(senseValue / 30);
     NSLog(@"third: %d", third);
     if([typeOfSound isEqualToString:@"attention"]){
-     //   NSLog(@"in attention");
+        //   NSLog(@"in attention");
         switch (third) {
             case 1:
                 sndpath = [[NSBundle mainBundle] pathForResource:@"att_string_low_c" ofType:@"wav"];
@@ -287,7 +129,7 @@
             default:
                 NSLog(@"no decile value");
                 break;
-    
+                
                 
         }
     } else if ([typeOfSound isEqualToString:@"blink"]) {
@@ -296,9 +138,9 @@
     } else {
         NSLog(@" no type of sound that matches");
     }
-
+    
     [self playSystemSound:sndpath];
-   
+    
 }
 
 #pragma mark -
@@ -327,14 +169,14 @@
 //  accessory is disconnected.
 - (void)accessoryDidDisconnect {
     // toss up a UIAlertView when an accessory disconnects
-    /*UIAlertView * a = [[UIAlertView alloc] initWithTitle:@"Accessory Disconnected" 
-                                                  message:@"The ThinkGear accessory was disconnected from this device." 
-                                                 delegate:nil 
-                                        cancelButtonTitle:@"Okay" 
-                                        otherButtonTitles:nil];
-    [a show];
-    [a release];
-    */
+    UIAlertView * a = [[UIAlertView alloc] initWithTitle:@"Accessory Disconnected"
+     message:@"The ThinkGear accessory was disconnected from this device."
+     delegate:nil
+     cancelButtonTitle:@"Okay"
+     otherButtonTitles:nil];
+     [a show];
+     [a release];
+     
     // set up the appropriate view
     
     [self setLoadingScreenView];
@@ -346,7 +188,7 @@
     [data retain];
     
     NSString * temp = [[NSString alloc] init];
-    NSDate * date = [NSDate date];    
+    NSDate * date = [NSDate date];
     
     if([data valueForKey:@"blinkStrength"])
         blinkStrength = [[data valueForKey:@"blinkStrength"] intValue];
@@ -386,11 +228,11 @@
     // a safe assumption.
     if([data valueForKey:@"eSenseAttention"]){
         
-        eSenseValues.attention =    [[data valueForKey:@"eSenseAttention"] intValue];        
+        eSenseValues.attention =    [[data valueForKey:@"eSenseAttention"] intValue];
         eSenseValues.meditation =   [[data valueForKey:@"eSenseMeditation"] intValue];
         temp = [temp stringByAppendingFormat:@"%f: Attention: %d\n", [date timeIntervalSince1970], eSenseValues.attention];
         temp = [temp stringByAppendingFormat:@"%f: Meditation: %d\n", [date timeIntervalSince1970], eSenseValues.meditation];
-
+        
         eegValues.delta =       [[data valueForKey:@"eegDelta"] intValue];
         eegValues.theta =       [[data valueForKey:@"eegTheta"] intValue];
         eegValues.lowAlpha =    [[data valueForKey:@"eegLowAlpha"] intValue];
@@ -401,18 +243,18 @@
         eegValues.highGamma =   [[data valueForKey:@"eegHighGamma"] intValue];
         
     }
-
+    
     if(logEnabled) {
         [output release];
         output = [[NSString stringWithString:temp] retain];
-        [self performSelectorOnMainThread:@selector(writeLog) withObject:nil waitUntilDone:NO];        
+        [self performSelectorOnMainThread:@selector(writeLog) withObject:nil waitUntilDone:NO];
     }
-        
+    
     //[temp release];
     
     // release the parameter
     [data release];
-}   
+}
 
 #pragma mark -
 #pragma mark Internal helper methods
@@ -427,7 +269,7 @@
     
     //check if the file exists if not create it
     if(![[NSFileManager defaultManager] fileExistsAtPath:fileName])
-        [[NSFileManager defaultManager] createFileAtPath:fileName contents:nil attributes:nil];    
+        [[NSFileManager defaultManager] createFileAtPath:fileName contents:nil attributes:nil];
     
     logFile = [[NSFileHandle fileHandleForWritingAtPath:fileName] retain];
     [logFile seekToEndOfFile];
@@ -438,26 +280,28 @@
 - (void)writeLog {
     if (logEnabled && logFile) {
         [logFile writeData:[output dataUsingEncoding:NSUTF8StringEncoding]];
-    }     
+    }
 }
 
 //  Determine whether to display the blank "Please connect an accessory" screen or the TableView.
 - (void)setLoadingScreenView {
     if([[TGAccessoryManager sharedTGAccessoryManager] accessory] == nil){
         [self.view addSubview: loadingScreen];
-		[self.tableView setScrollEnabled:NO];
+//		[self.tableView setScrollEnabled:NO];
     }
     else {
         [loadingScreen removeFromSuperview];
-		[self.tableView setScrollEnabled:YES];
-        [self.tableView reloadData];
+        //	[self.tableView setScrollEnabled:YES];
+        //    [self.tableView reloadData];
     }
 }
 
-- (void)updateTable {
+- (void)updateView {
     while(1) {
+        NSLog(@"in updateview");
         NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
-        [[self tableView] performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
+        //    [[self tableView] performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
+        [self performSelectorOnMainThread:@selector(updateSounds) withObject:nil waitUntilDone:NO];
         [NSThread sleepForTimeInterval:0.15];
         [pool drain];
         
@@ -465,9 +309,9 @@
 }
 
 - (void)playSystemSound:(NSString *)sndpath{
-//    NSLog(@"in play system sound");
+    //    NSLog(@"in play system sound");
     
-//    NSString *sndpath = [[NSBundle mainBundle] pathForResource:@"sound" ofType:@"wav"];
+    //    NSString *sndpath = [[NSBundle mainBundle] pathForResource:@"sound" ofType:@"wav"];
     if(sndpath != nil){
         CFURLRef baseURL = (__bridge CFURLRef)[NSURL fileURLWithPath:sndpath];
         
@@ -480,8 +324,26 @@
     } else {
         NSLog(@"snd path not found");
     }
+}
+
+
+- (void)updateSounds{
+    NSLog(@"in sounds");
+    
+    [self playSound:@"attention" theSenseOfValue:eSenseValues.attention];
+    [self playSound:@"meditation" theSenseOfValue:eSenseValues.meditation];
+    if(blinkStrength > 100 && blinkStrength != lastBlinkValue){
+        [self playSound:@"blink" theSenseOfValue:blinkStrength];
+    }
+    lastBlinkValue = blinkStrength;
 
 }
 
-@end
 
+
+
+
+
+
+
+@end

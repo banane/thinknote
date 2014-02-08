@@ -1,11 +1,12 @@
 //
-//  RootViewController.h
+//  ViewController.h
 //  ThinkGearTouch
 //
-//  Created by Horace Ko on 12/2/09.
-//  Copyright NeuroSky, Inc. 2009. All rights reserved.
+//  Created by Anna Billstrom on 2/8/14.
+//
 //
 
+#import <UIKit/UIKit.h>
 #import "TGAccessoryManager.h"
 #import "TGAccessoryDelegate.h"
 #import <ExternalAccessory/ExternalAccessory.h>
@@ -30,7 +31,12 @@ typedef struct {
     int highGamma;
 } EEGValues;
 
-@interface RootViewController : UITableViewController <TGAccessoryDelegate> {
+
+@interface ViewController : UIViewController <TGAccessoryDelegate> {
+    IBOutlet UISwitch *meditationSwitch;
+    IBOutlet UISwitch *attentionSwitch;
+    IBOutlet UISwitch *blinkSwitch;
+    
     short rawValue;
     int rawCount;
     int buffRawCount;
@@ -55,23 +61,22 @@ typedef struct {
     NSThread * updateThread;
     SystemSoundID   soundFileObject;
 
+   
 }
 
-// TGAccessoryDelegate protocol methods
-- (void)accessoryDidConnect:(EAAccessory *)accessory;
-- (void)accessoryDidDisconnect;
-- (void)dataReceived:(NSDictionary *)data;
-
-- (UIImage *)updateSignalStatus;
-
-- (void)initLog;
-- (void)writeLog;
-
+// sound play methods
 - (void)playSound:(NSString *) typeOfSound theSenseOfValue:(int)senseValue;
 - (void)playSystemSound:(NSString *)sndpath;
 
 @property (nonatomic, retain) IBOutlet UIView * loadingScreen;
 @property (readonly)    SystemSoundID   soundFileObject;
 @property int lastBlinkValue;
+
+
+@property (nonatomic, strong) IBOutlet UISwitch *meditationSwitch;
+@property (nonatomic, strong) IBOutlet UISwitch *attentionSwitch;
+@property (nonatomic, strong) IBOutlet UISwitch *blinkSwitch;
+
+
 
 @end

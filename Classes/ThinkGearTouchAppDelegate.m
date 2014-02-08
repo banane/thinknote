@@ -9,7 +9,8 @@
 #import "TGAccessoryManager.h"
 
 #import "ThinkGearTouchAppDelegate.h"
-#import "RootViewController.h"
+//#import "RootViewController.h"
+#import "ViewController.h"
 
 @implementation ThinkGearTouchAppDelegate
 
@@ -39,9 +40,10 @@
         [[TGAccessoryManager sharedTGAccessoryManager] setupManagerWithInterval:0.2 forAccessoryType:accessoryType];
     }
     // set the root UIViewController as the delegate object.
-    [[TGAccessoryManager sharedTGAccessoryManager] setDelegate:(RootViewController *)[[navigationController viewControllers] objectAtIndex:0]];
+    ViewController *vc = [[ViewController alloc] initWithNibName:@"ViewController" bundle:nil];
+    [[TGAccessoryManager sharedTGAccessoryManager] setDelegate:vc];
     [[TGAccessoryManager sharedTGAccessoryManager] setRawEnabled:rawEnabled];
-    
+    window.rootViewController = vc;
     [window addSubview:[navigationController view]];
     [window makeKeyAndVisible];
 }
