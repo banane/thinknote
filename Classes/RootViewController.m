@@ -14,11 +14,14 @@
 
 @implementation RootViewController;
 
-@synthesize loadingScreen, soundFileObject, lastBlinkValue;
+@synthesize loadingScreen, soundFileObject, lastBlinkValue, lastAttentionValue, lastMeditationValue;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setTitle:@"ThinkGear Data"];
+    lastBlinkValue = 0;
+    lastAttentionValue = 0;
+    lastMeditationValue = 0;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -148,13 +151,18 @@
                 case 0:
                     [[cell textLabel] setText:@"Attention"];
                     [[cell detailTextLabel] setText:[NSString stringWithFormat:@"%d", eSenseValues.attention]];
-                    
-                    [self playSound:@"attention" theSenseOfValue:eSenseValues.attention];
+                    if (eSenseValues.attention != lastAttentionValue){
+                        [self playSound:@"attention" theSenseOfValue:eSenseValues.attention];
+                    }
+                    lastAttentionValue = eSenseValues.attention;
                     break;
                 case 1:
                     [[cell textLabel] setText:@"Meditation"];
                     [[cell detailTextLabel] setText:[NSString stringWithFormat:@"%d", eSenseValues.meditation]];
-                    [self playSound:@"meditation" theSenseOfValue:eSenseValues.meditation];
+                    if (eSenseValues.meditation != lastMeditationValue){
+                        [self playSound:@"meditation" theSenseOfValue:eSenseValues.meditation];
+                    }
+                    lastMeditationValue = eSenseValues.meditation;
                     break;
                 case 2:
                     [[cell textLabel] setText:@"Blink strength"];

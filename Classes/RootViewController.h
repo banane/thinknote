@@ -42,6 +42,8 @@ typedef struct {
     int heartRateAcceleration;
     
     int lastBlinkValue;
+    int lastAttentionValue;
+    int lastMeditationValue;
     
     ESenseValues eSenseValues;
     EEGValues eegValues;
@@ -73,5 +75,7 @@ typedef struct {
 @property (nonatomic, retain) IBOutlet UIView * loadingScreen;
 @property (readonly)    SystemSoundID   soundFileObject;
 @property int lastBlinkValue;
+@property int lastAttentionValue;
+@property int lastMeditationValue;
 
 @end
