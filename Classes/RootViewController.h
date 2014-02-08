@@ -9,6 +9,8 @@
 #import "TGAccessoryManager.h"
 #import "TGAccessoryDelegate.h"
 #import <ExternalAccessory/ExternalAccessory.h>
+#include <AudioToolbox/AudioToolbox.h>
+
 
 // the eSense values
 typedef struct {
@@ -49,6 +51,8 @@ typedef struct {
     UIView * loadingScreen;
     
     NSThread * updateThread;
+    SystemSoundID   soundFileObject;
+
 }
 
 // TGAccessoryDelegate protocol methods
@@ -62,7 +66,10 @@ typedef struct {
 - (void)writeLog;
 
 - (void)playSound:(NSString *) typeOfSound theSenseOfValue:(int)senseValue;
+- (void)playSystemSound;
 
 @property (nonatomic, retain) IBOutlet UIView * loadingScreen;
+@property (readonly)    SystemSoundID   soundFileObject;
+
 
 @end

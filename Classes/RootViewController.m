@@ -7,13 +7,14 @@
 
 #import "RootViewController.h"
 
+
 @interface RootViewController ()
 - (void)setLoadingScreenView;
 @end
 
-@implementation RootViewController
+@implementation RootViewController;
 
-@synthesize loadingScreen;
+@synthesize loadingScreen, soundFileObject;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -246,8 +247,9 @@
 - (void)playSound:(NSString *) typeOfSound theSenseOfValue:(int)senseValue{
     if(senseValue > 50){
         NSLog(@" in playsound: %@, %d", typeOfSound, senseValue);
+        [self playSystemSound];
     } else {
-        NSLog(@" in playsound, value low %@, %d", typeOfSound, senseValue);
+       // NSLog(@" in playsound, value low %@, %d", typeOfSound, senseValue);
     }
 }
 
@@ -412,6 +414,24 @@
         [pool drain];
         
     }
+}
+
+- (void)playSystemSound{
+    NSLog(@"in play system sound");
+    NSString *sndpath = [[NSBundle mainBundle] pathForResource:@"sound" ofType:@"wav"];
+    if(sndpath != nil){
+        CFURLRef baseURL = (__bridge CFURLRef)[NSURL fileURLWithPath:sndpath];
+        
+        // Identify it as not a UI Sound
+        AudioServicesCreateSystemSoundID(baseURL, &soundFileObject);
+        AudioServicesPropertyID flag = 0;  // 0 means always play
+        AudioServicesSetProperty(kAudioServicesPropertyIsUISound, sizeof(SystemSoundID), &soundFileObject, sizeof(AudioServicesPropertyID), &flag);
+        AudioServicesPlaySystemSound(soundFileObject);
+        
+    } else {
+        NSLog(@"snd path not found");
+    }
+
 }
 
 @end

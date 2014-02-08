@@ -12,7 +12,6 @@
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
-		2605D867161BD8DF00AA0B3A /* libTGAccessory.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2605D85B161BA14A00AA0B3A /* libTGAccessory.a */; };
 		26582ECF1469C58F001EF3B4 /* Signal_Connected.png in Resources */ = {isa = PBXBuildFile; fileRef = 26582ECA1469C58F001EF3B4 /* Signal_Connected.png */; };
 		26582ED01469C58F001EF3B4 /* Signal_Connecting1.png in Resources */ = {isa = PBXBuildFile; fileRef = 26582ECB1469C58F001EF3B4 /* Signal_Connecting1.png */; };
 		26582ED11469C58F001EF3B4 /* Signal_Connecting2.png in Resources */ = {isa = PBXBuildFile; fileRef = 26582ECC1469C58F001EF3B4 /* Signal_Connecting2.png */; };
@@ -32,6 +31,8 @@
 		5810616E118F82BB00730595 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5810616D118F82BB00730595 /* Settings.bundle */; };
 		5874B55910C7454100857C66 /* no_accessory.png in Resources */ = {isa = PBXBuildFile; fileRef = 5874B55810C7454100857C66 /* no_accessory.png */; };
 		AAE08AB110E2021E008BB459 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = AAE08AB010E2021E008BB459 /* Entitlements.plist */; };
+		ED1CBF3A18A6C79600DF600A /* sound.wav in Resources */ = {isa = PBXBuildFile; fileRef = ED1CBF3918A6C79600DF600A /* sound.wav */; };
+		ED1CBF3C18A6C7F000DF600A /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED1CBF3B18A6C7F000DF600A /* AudioToolbox.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +67,8 @@
 		5874B55810C7454100857C66 /* no_accessory.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = no_accessory.png; path = Resources/no_accessory.png; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* ThinkGearTouch-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "ThinkGearTouch-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		AAE08AB010E2021E008BB459 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
+		ED1CBF3918A6C79600DF600A /* sound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sound.wav; sourceTree = "<group>"; };
+		ED1CBF3B18A6C7F000DF600A /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED1CBF3C18A6C7F000DF600A /* AudioToolbox.framework in Frameworks */,
 				07EB058916260AA900D376E2 /* QuartzCore.framework in Frameworks */,
 				268327361593C23200D004F6 /* Accelerate.framework in Frameworks */,
 				26A718B813CBD0BC00962E54 /* ExternalAccessory.framework in Frameworks */,
@@ -89,6 +93,7 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				ED1CBF3918A6C79600DF600A /* sound.wav */,
 				28C286DF0D94DF7D0034E888 /* RootViewController.h */,
 				28C286E00D94DF7D0034E888 /* RootViewController.m */,
 				1D3623240D0F684500981E51 /* ThinkGearTouchAppDelegate.h */,
@@ -153,6 +158,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				ED1CBF3B18A6C7F000DF600A /* AudioToolbox.framework */,
 				268327351593C23200D004F6 /* Accelerate.framework */,
 				26A718B713CBD0BC00962E54 /* ExternalAccessory.framework */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
@@ -235,6 +241,7 @@
 				26D8B7E014212544002022BD /* Icon.png in Resources */,
 				26582ECF1469C58F001EF3B4 /* Signal_Connected.png in Resources */,
 				26582ED01469C58F001EF3B4 /* Signal_Connecting1.png in Resources */,
+				ED1CBF3A18A6C79600DF600A /* sound.wav in Resources */,
 				26582ED11469C58F001EF3B4 /* Signal_Connecting2.png in Resources */,
 				26582ED21469C58F001EF3B4 /* Signal_Connecting3.png in Resources */,
 				26582ED31469C58F001EF3B4 /* Signal_Disconnected.png in Resources */,
