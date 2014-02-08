@@ -66,7 +66,7 @@ typedef struct {
 - (void)writeLog;
 
 - (void)playSound:(NSString *) typeOfSound theSenseOfValue:(int)senseValue;
-- (void)playSystemSound;
+- (void)playSystemSound:(NSString *)sndpath;
 
 @property (nonatomic, retain) IBOutlet UIView * loadingScreen;
 @property (readonly)    SystemSoundID   soundFileObject;

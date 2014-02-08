@@ -33,6 +33,12 @@
 		AAE08AB110E2021E008BB459 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = AAE08AB010E2021E008BB459 /* Entitlements.plist */; };
 		ED1CBF3A18A6C79600DF600A /* sound.wav in Resources */ = {isa = PBXBuildFile; fileRef = ED1CBF3918A6C79600DF600A /* sound.wav */; };
 		ED1CBF3C18A6C7F000DF600A /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED1CBF3B18A6C7F000DF600A /* AudioToolbox.framework */; };
+		ED1CBF4018A6CA5400DF600A /* high_g.wav in Resources */ = {isa = PBXBuildFile; fileRef = ED1CBF3D18A6CA5400DF600A /* high_g.wav */; };
+		ED1CBF4118A6CA5400DF600A /* low_c.wav in Resources */ = {isa = PBXBuildFile; fileRef = ED1CBF3E18A6CA5400DF600A /* low_c.wav */; };
+		ED1CBF4218A6CA5400DF600A /* med_e.wav in Resources */ = {isa = PBXBuildFile; fileRef = ED1CBF3F18A6CA5400DF600A /* med_e.wav */; };
+		ED1CBF4618A6D2EE00DF600A /* med_high_g.wav in Resources */ = {isa = PBXBuildFile; fileRef = ED1CBF4318A6D2EE00DF600A /* med_high_g.wav */; };
+		ED1CBF4718A6D2EE00DF600A /* med_low_c.wav in Resources */ = {isa = PBXBuildFile; fileRef = ED1CBF4418A6D2EE00DF600A /* med_low_c.wav */; };
+		ED1CBF4818A6D2EE00DF600A /* med_med_e.wav in Resources */ = {isa = PBXBuildFile; fileRef = ED1CBF4518A6D2EE00DF600A /* med_med_e.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,6 +75,12 @@
 		AAE08AB010E2021E008BB459 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		ED1CBF3918A6C79600DF600A /* sound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sound.wav; sourceTree = "<group>"; };
 		ED1CBF3B18A6C7F000DF600A /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		ED1CBF3D18A6CA5400DF600A /* high_g.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = high_g.wav; sourceTree = "<group>"; };
+		ED1CBF3E18A6CA5400DF600A /* low_c.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = low_c.wav; sourceTree = "<group>"; };
+		ED1CBF3F18A6CA5400DF600A /* med_e.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = med_e.wav; sourceTree = "<group>"; };
+		ED1CBF4318A6D2EE00DF600A /* med_high_g.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = med_high_g.wav; sourceTree = "<group>"; };
+		ED1CBF4418A6D2EE00DF600A /* med_low_c.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = med_low_c.wav; sourceTree = "<group>"; };
+		ED1CBF4518A6D2EE00DF600A /* med_med_e.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = med_med_e.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +105,12 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				ED1CBF4318A6D2EE00DF600A /* med_high_g.wav */,
+				ED1CBF4418A6D2EE00DF600A /* med_low_c.wav */,
+				ED1CBF4518A6D2EE00DF600A /* med_med_e.wav */,
+				ED1CBF3D18A6CA5400DF600A /* high_g.wav */,
+				ED1CBF3E18A6CA5400DF600A /* low_c.wav */,
+				ED1CBF3F18A6CA5400DF600A /* med_e.wav */,
 				ED1CBF3918A6C79600DF600A /* sound.wav */,
 				28C286DF0D94DF7D0034E888 /* RootViewController.h */,
 				28C286E00D94DF7D0034E888 /* RootViewController.m */,
@@ -237,12 +255,18 @@
 				5810616E118F82BB00730595 /* Settings.bundle in Resources */,
 				26D8B7DC1421252C002022BD /* Icon-72.png in Resources */,
 				26D8B7DD1421252C002022BD /* Icon@2x.png in Resources */,
+				ED1CBF4718A6D2EE00DF600A /* med_low_c.wav in Resources */,
 				26D8B7DE1421252C002022BD /* iTunesArtwork in Resources */,
+				ED1CBF4118A6CA5400DF600A /* low_c.wav in Resources */,
 				26D8B7E014212544002022BD /* Icon.png in Resources */,
+				ED1CBF4218A6CA5400DF600A /* med_e.wav in Resources */,
 				26582ECF1469C58F001EF3B4 /* Signal_Connected.png in Resources */,
 				26582ED01469C58F001EF3B4 /* Signal_Connecting1.png in Resources */,
 				ED1CBF3A18A6C79600DF600A /* sound.wav in Resources */,
+				ED1CBF4618A6D2EE00DF600A /* med_high_g.wav in Resources */,
 				26582ED11469C58F001EF3B4 /* Signal_Connecting2.png in Resources */,
+				ED1CBF4018A6CA5400DF600A /* high_g.wav in Resources */,
+				ED1CBF4818A6D2EE00DF600A /* med_med_e.wav in Resources */,
 				26582ED21469C58F001EF3B4 /* Signal_Connecting3.png in Resources */,
 				26582ED31469C58F001EF3B4 /* Signal_Disconnected.png in Resources */,
 				26D679B516160D29006B213F /* Default-568h@2x.png in Resources */,
