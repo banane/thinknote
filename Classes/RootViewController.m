@@ -14,7 +14,7 @@
 
 @implementation RootViewController;
 
-@synthesize loadingScreen, soundFileObject;
+@synthesize loadingScreen, soundFileObject, lastBlinkValue;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -159,6 +159,10 @@
                 case 2:
                     [[cell textLabel] setText:@"Blink strength"];
                     [[cell detailTextLabel] setText:[NSString stringWithFormat:@"%d", blinkStrength]];
+                    if(blinkStrength > 100 && blinkStrength != lastBlinkValue){
+                        [self playSound:@"blink" theSenseOfValue:blinkStrength];
+                    }
+                    lastBlinkValue = blinkStrength;
                     break;
                 case 3:
                     [[cell textLabel] setText:@"Heart rate"];
@@ -248,44 +252,47 @@
 
 - (void)playSound:(NSString *) typeOfSound theSenseOfValue:(int)senseValue{
     NSString *sndpath= @"";
-    NSLog(@"play sound values: %@, %d", typeOfSound, senseValue);
+  //  NSLog(@"play sound values: %@, %d", typeOfSound, senseValue);
 
     int third = floor(senseValue / 30);
     NSLog(@"third: %d", third);
     if([typeOfSound isEqualToString:@"attention"]){
-          /*  switch (third) {
-                case 1:
-                    sndpath = [[NSBundle mainBundle] pathForResource:@"low_c" ofType:@"wav"];
-                    break;
-                case 2:
-                    sndpath = [[NSBundle mainBundle] pathForResource:@"med_e" ofType:@"wav"];
-                    break;
-                case 3:
-                    sndpath = [[NSBundle mainBundle] pathForResource:@"high_g" ofType:@"wav"];
-                    break;
-                default:
-                    NSLog(@"no decile value");
-                    // sndpath = [[NSBundle mainBundle] pathForResource:@"high_g" ofType:@"wav"];
-                    break;
-            }*/
+     //   NSLog(@"in attention");
+        switch (third) {
+            case 1:
+                sndpath = [[NSBundle mainBundle] pathForResource:@"att_string_low_c" ofType:@"wav"];
+                break;
+            case 2:
+                sndpath = [[NSBundle mainBundle] pathForResource:@"att_string_med_e" ofType:@"wav"];
+                break;
+            case 3:
+                sndpath = [[NSBundle mainBundle] pathForResource:@"att_string_high_g" ofType:@"wav"];
+                break;
+            default:
+                NSLog(@"no decile value");
+                break;
+        }
     } else if ([typeOfSound isEqualToString:@"meditation"]) {
-        NSLog(@"in meditation");
-            switch (third) {
-                case 1:
-                    sndpath = [[NSBundle mainBundle] pathForResource:@"med_low_c" ofType:@"wav"];
-                    break;
-                case 2:
-                    sndpath = [[NSBundle mainBundle] pathForResource:@"med_med_e" ofType:@"wav"];
-                    break;
-                case 3:
-                    sndpath = [[NSBundle mainBundle] pathForResource:@"med_high_g" ofType:@"wav"];
-                    break;
-                default:
-                    NSLog(@"no decile value");
-                    // sndpath = [[NSBundle mainBundle] pathForResource:@"high_g" ofType:@"wav"];
-                    break;
-                    
-            }
+        //NSLog(@"in meditation");
+        switch (third) {
+            case 1:
+                sndpath = [[NSBundle mainBundle] pathForResource:@"med_low_c" ofType:@"wav"];
+                break;
+            case 2:
+                sndpath = [[NSBundle mainBundle] pathForResource:@"med_med_e" ofType:@"wav"];
+                break;
+            case 3:
+                sndpath = [[NSBundle mainBundle] pathForResource:@"med_high_g" ofType:@"wav"];
+                break;
+            default:
+                NSLog(@"no decile value");
+                break;
+    
+                
+        }
+    } else if ([typeOfSound isEqualToString:@"blink"]) {
+        NSLog(@"in blink play sound");
+        sndpath = [[NSBundle mainBundle] pathForResource:@"blink_smalsound" ofType:@"wav"];
     } else {
         NSLog(@" no type of sound that matches");
     }
@@ -458,7 +465,7 @@
 }
 
 - (void)playSystemSound:(NSString *)sndpath{
-    NSLog(@"in play system sound");
+//    NSLog(@"in play system sound");
     
 //    NSString *sndpath = [[NSBundle mainBundle] pathForResource:@"sound" ofType:@"wav"];
     if(sndpath != nil){

@@ -31,14 +31,15 @@
 		5810616E118F82BB00730595 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5810616D118F82BB00730595 /* Settings.bundle */; };
 		5874B55910C7454100857C66 /* no_accessory.png in Resources */ = {isa = PBXBuildFile; fileRef = 5874B55810C7454100857C66 /* no_accessory.png */; };
 		AAE08AB110E2021E008BB459 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = AAE08AB010E2021E008BB459 /* Entitlements.plist */; };
-		ED1CBF3A18A6C79600DF600A /* sound.wav in Resources */ = {isa = PBXBuildFile; fileRef = ED1CBF3918A6C79600DF600A /* sound.wav */; };
 		ED1CBF3C18A6C7F000DF600A /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED1CBF3B18A6C7F000DF600A /* AudioToolbox.framework */; };
-		ED1CBF4018A6CA5400DF600A /* high_g.wav in Resources */ = {isa = PBXBuildFile; fileRef = ED1CBF3D18A6CA5400DF600A /* high_g.wav */; };
-		ED1CBF4118A6CA5400DF600A /* low_c.wav in Resources */ = {isa = PBXBuildFile; fileRef = ED1CBF3E18A6CA5400DF600A /* low_c.wav */; };
-		ED1CBF4218A6CA5400DF600A /* med_e.wav in Resources */ = {isa = PBXBuildFile; fileRef = ED1CBF3F18A6CA5400DF600A /* med_e.wav */; };
-		ED1CBF4618A6D2EE00DF600A /* med_high_g.wav in Resources */ = {isa = PBXBuildFile; fileRef = ED1CBF4318A6D2EE00DF600A /* med_high_g.wav */; };
-		ED1CBF4718A6D2EE00DF600A /* med_low_c.wav in Resources */ = {isa = PBXBuildFile; fileRef = ED1CBF4418A6D2EE00DF600A /* med_low_c.wav */; };
-		ED1CBF4818A6D2EE00DF600A /* med_med_e.wav in Resources */ = {isa = PBXBuildFile; fileRef = ED1CBF4518A6D2EE00DF600A /* med_med_e.wav */; };
+		ED1CBF4E18A6DD0400DF600A /* med_high_g.wav in Resources */ = {isa = PBXBuildFile; fileRef = ED1CBF4B18A6DD0400DF600A /* med_high_g.wav */; };
+		ED1CBF4F18A6DD0400DF600A /* med_low_c.wav in Resources */ = {isa = PBXBuildFile; fileRef = ED1CBF4C18A6DD0400DF600A /* med_low_c.wav */; };
+		ED1CBF5018A6DD0400DF600A /* med_med_e.wav in Resources */ = {isa = PBXBuildFile; fileRef = ED1CBF4D18A6DD0400DF600A /* med_med_e.wav */; };
+		ED1CBF5418A6DD0C00DF600A /* att_string_high_g.wav in Resources */ = {isa = PBXBuildFile; fileRef = ED1CBF5118A6DD0C00DF600A /* att_string_high_g.wav */; };
+		ED1CBF5518A6DD0C00DF600A /* att_string_low_c.wav in Resources */ = {isa = PBXBuildFile; fileRef = ED1CBF5218A6DD0C00DF600A /* att_string_low_c.wav */; };
+		ED1CBF5618A6DD0C00DF600A /* att_string_med_e.wav in Resources */ = {isa = PBXBuildFile; fileRef = ED1CBF5318A6DD0C00DF600A /* att_string_med_e.wav */; };
+		ED1CBF5818A6DD1200DF600A /* blink_bigsound.wav in Resources */ = {isa = PBXBuildFile; fileRef = ED1CBF5718A6DD1200DF600A /* blink_bigsound.wav */; };
+		ED1CBF5C18A6E5FA00DF600A /* blink_smalsound.wav in Resources */ = {isa = PBXBuildFile; fileRef = ED1CBF5B18A6E5FA00DF600A /* blink_smalsound.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -73,14 +74,15 @@
 		5874B55810C7454100857C66 /* no_accessory.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = no_accessory.png; path = Resources/no_accessory.png; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* ThinkGearTouch-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "ThinkGearTouch-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		AAE08AB010E2021E008BB459 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
-		ED1CBF3918A6C79600DF600A /* sound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sound.wav; sourceTree = "<group>"; };
 		ED1CBF3B18A6C7F000DF600A /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
-		ED1CBF3D18A6CA5400DF600A /* high_g.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = high_g.wav; sourceTree = "<group>"; };
-		ED1CBF3E18A6CA5400DF600A /* low_c.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = low_c.wav; sourceTree = "<group>"; };
-		ED1CBF3F18A6CA5400DF600A /* med_e.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = med_e.wav; sourceTree = "<group>"; };
-		ED1CBF4318A6D2EE00DF600A /* med_high_g.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = med_high_g.wav; sourceTree = "<group>"; };
-		ED1CBF4418A6D2EE00DF600A /* med_low_c.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = med_low_c.wav; sourceTree = "<group>"; };
-		ED1CBF4518A6D2EE00DF600A /* med_med_e.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = med_med_e.wav; sourceTree = "<group>"; };
+		ED1CBF4B18A6DD0400DF600A /* med_high_g.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = med_high_g.wav; sourceTree = "<group>"; };
+		ED1CBF4C18A6DD0400DF600A /* med_low_c.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = med_low_c.wav; sourceTree = "<group>"; };
+		ED1CBF4D18A6DD0400DF600A /* med_med_e.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = med_med_e.wav; sourceTree = "<group>"; };
+		ED1CBF5118A6DD0C00DF600A /* att_string_high_g.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = att_string_high_g.wav; sourceTree = "<group>"; };
+		ED1CBF5218A6DD0C00DF600A /* att_string_low_c.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = att_string_low_c.wav; sourceTree = "<group>"; };
+		ED1CBF5318A6DD0C00DF600A /* att_string_med_e.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = att_string_med_e.wav; sourceTree = "<group>"; };
+		ED1CBF5718A6DD1200DF600A /* blink_bigsound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = blink_bigsound.wav; sourceTree = "<group>"; };
+		ED1CBF5B18A6E5FA00DF600A /* blink_smalsound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = blink_smalsound.wav; path = ../blink_smalsound.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,13 +107,14 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				ED1CBF4318A6D2EE00DF600A /* med_high_g.wav */,
-				ED1CBF4418A6D2EE00DF600A /* med_low_c.wav */,
-				ED1CBF4518A6D2EE00DF600A /* med_med_e.wav */,
-				ED1CBF3D18A6CA5400DF600A /* high_g.wav */,
-				ED1CBF3E18A6CA5400DF600A /* low_c.wav */,
-				ED1CBF3F18A6CA5400DF600A /* med_e.wav */,
-				ED1CBF3918A6C79600DF600A /* sound.wav */,
+				ED1CBF5718A6DD1200DF600A /* blink_bigsound.wav */,
+				ED1CBF5B18A6E5FA00DF600A /* blink_smalsound.wav */,
+				ED1CBF5118A6DD0C00DF600A /* att_string_high_g.wav */,
+				ED1CBF5218A6DD0C00DF600A /* att_string_low_c.wav */,
+				ED1CBF5318A6DD0C00DF600A /* att_string_med_e.wav */,
+				ED1CBF4B18A6DD0400DF600A /* med_high_g.wav */,
+				ED1CBF4C18A6DD0400DF600A /* med_low_c.wav */,
+				ED1CBF4D18A6DD0400DF600A /* med_med_e.wav */,
 				28C286DF0D94DF7D0034E888 /* RootViewController.h */,
 				28C286E00D94DF7D0034E888 /* RootViewController.m */,
 				1D3623240D0F684500981E51 /* ThinkGearTouchAppDelegate.h */,
@@ -251,25 +254,26 @@
 			files = (
 				28AD73600D9D9599002E5188 /* MainWindow.xib in Resources */,
 				5874B55910C7454100857C66 /* no_accessory.png in Resources */,
+				ED1CBF5C18A6E5FA00DF600A /* blink_smalsound.wav in Resources */,
+				ED1CBF4F18A6DD0400DF600A /* med_low_c.wav in Resources */,
 				AAE08AB110E2021E008BB459 /* Entitlements.plist in Resources */,
+				ED1CBF5618A6DD0C00DF600A /* att_string_med_e.wav in Resources */,
 				5810616E118F82BB00730595 /* Settings.bundle in Resources */,
 				26D8B7DC1421252C002022BD /* Icon-72.png in Resources */,
+				ED1CBF5018A6DD0400DF600A /* med_med_e.wav in Resources */,
+				ED1CBF5418A6DD0C00DF600A /* att_string_high_g.wav in Resources */,
 				26D8B7DD1421252C002022BD /* Icon@2x.png in Resources */,
-				ED1CBF4718A6D2EE00DF600A /* med_low_c.wav in Resources */,
 				26D8B7DE1421252C002022BD /* iTunesArtwork in Resources */,
-				ED1CBF4118A6CA5400DF600A /* low_c.wav in Resources */,
 				26D8B7E014212544002022BD /* Icon.png in Resources */,
-				ED1CBF4218A6CA5400DF600A /* med_e.wav in Resources */,
 				26582ECF1469C58F001EF3B4 /* Signal_Connected.png in Resources */,
 				26582ED01469C58F001EF3B4 /* Signal_Connecting1.png in Resources */,
-				ED1CBF3A18A6C79600DF600A /* sound.wav in Resources */,
-				ED1CBF4618A6D2EE00DF600A /* med_high_g.wav in Resources */,
 				26582ED11469C58F001EF3B4 /* Signal_Connecting2.png in Resources */,
-				ED1CBF4018A6CA5400DF600A /* high_g.wav in Resources */,
-				ED1CBF4818A6D2EE00DF600A /* med_med_e.wav in Resources */,
+				ED1CBF4E18A6DD0400DF600A /* med_high_g.wav in Resources */,
 				26582ED21469C58F001EF3B4 /* Signal_Connecting3.png in Resources */,
 				26582ED31469C58F001EF3B4 /* Signal_Disconnected.png in Resources */,
+				ED1CBF5818A6DD1200DF600A /* blink_bigsound.wav in Resources */,
 				26D679B516160D29006B213F /* Default-568h@2x.png in Resources */,
+				ED1CBF5518A6DD0C00DF600A /* att_string_low_c.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
