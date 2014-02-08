@@ -16,8 +16,10 @@
 
 @implementation ViewController
 
+
 @synthesize meditationSwitch, attentionSwitch, blinkSwitch;
-@synthesize loadingScreen, soundFileObject, lastBlinkValue;
+@synthesize loadingScreen, soundFileObject, lastBlinkValue, lastAttentionValue, lastMeditationValue;
+
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -32,7 +34,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+
+    lastBlinkValue = 0;
+    lastAttentionValue = 0;
+    lastMeditationValue = 0;
+
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -72,6 +78,7 @@
     
     [super dealloc];
 }
+
 
 - (UIImage *)updateSignalStatus {
     
