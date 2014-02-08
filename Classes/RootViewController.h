@@ -61,6 +61,8 @@ typedef struct {
 - (void)initLog;
 - (void)writeLog;
 
+- (void)playSound:(NSString *) typeOfSound theSenseOfValue:(int)senseValue;
+
 @property (nonatomic, retain) IBOutlet UIView * loadingScreen;
 
 @end

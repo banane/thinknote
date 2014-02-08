@@ -147,6 +147,7 @@
                 case 0:
                     [[cell textLabel] setText:@"Attention"];
                     [[cell detailTextLabel] setText:[NSString stringWithFormat:@"%d", eSenseValues.attention]];
+                    [self playSound:@"attention" theSenseOfValue:eSenseValues.attention];
                     break;
                 case 1:
                     [[cell textLabel] setText:@"Meditation"];
@@ -239,6 +240,14 @@
     }
     else {
         return [UIImage imageNamed:@"Signal_Disconnected"];
+    }
+}
+
+- (void)playSound:(NSString *) typeOfSound theSenseOfValue:(int)senseValue{
+    if(senseValue > 50){
+        NSLog(@" in playsound: %@, %d", typeOfSound, senseValue);
+    } else {
+        NSLog(@" in playsound, value low %@, %d", typeOfSound, senseValue);
     }
 }
 
