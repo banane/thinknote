@@ -7,8 +7,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ViewController">
             <connections>
+                <outlet property="attentionLabel" destination="uNX-AV-stw" id="Eay-fe-1r4"/>
                 <outlet property="attentionSwitch" destination="ZRI-dc-ZVv" id="phk-F3-Wzj"/>
+                <outlet property="blinkLabel" destination="iFM-dZ-nMF" id="zlz-Tf-vfa"/>
                 <outlet property="blinkSwitch" destination="tQa-6E-gFr" id="8aC-Hr-LK7"/>
+                <outlet property="meditationLabel" destination="dxl-af-Uwt" id="dOJ-nC-a5U"/>
                 <outlet property="meditationSwitch" destination="Kqy-yE-qVj" id="s4R-87-IPt"/>
                 <outlet property="view" destination="1" id="3"/>
             </connections>
@@ -51,6 +54,24 @@
                     <rect key="frame" x="214" y="200" width="51" height="31"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </switch>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dxl-af-Uwt">
+                    <rect key="frame" x="36" y="117" width="116" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="uNX-AV-stw">
+                    <rect key="frame" x="36" y="176" width="105" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="iFM-dZ-nMF">
+                    <rect key="frame" x="36" y="225" width="133" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>

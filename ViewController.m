@@ -19,6 +19,7 @@
 
 @synthesize meditationSwitch, attentionSwitch, blinkSwitch;
 @synthesize loadingScreen, soundFileObject, lastBlinkValue, lastAttentionValue, lastMeditationValue;
+@synthesize blinkLabel, meditationLabel, attentionLabel;
 
 
 
@@ -101,10 +102,10 @@
 
 - (void)playSound:(NSString *) typeOfSound theSenseOfValue:(int)senseValue{
     NSString *sndpath= @"";
-    //  NSLog(@"play sound values: %@, %d", typeOfSound, senseValue);
+ //   NSLog(@"play sound values: %@, %d", typeOfSound, senseValue);
     
     int third = floor(senseValue / 30);
-    NSLog(@"third: %d", third);
+//    NSLog(@"third: %d", third);
     if([typeOfSound isEqualToString:@"attention"]){
         //   NSLog(@"in attention");
         switch (third) {
@@ -118,7 +119,7 @@
                 sndpath = [[NSBundle mainBundle] pathForResource:@"att_string_high_g" ofType:@"wav"];
                 break;
             default:
-                NSLog(@"no decile value");
+             //   NSLog(@"no decile value");
                 break;
         }
     } else if ([typeOfSound isEqualToString:@"meditation"]) {
@@ -134,16 +135,16 @@
                 sndpath = [[NSBundle mainBundle] pathForResource:@"med_high_g" ofType:@"wav"];
                 break;
             default:
-                NSLog(@"no decile value");
+            //    NSLog(@"no decile value");
                 break;
                 
                 
         }
     } else if ([typeOfSound isEqualToString:@"blink"]) {
-        NSLog(@"in blink play sound");
+     //   NSLog(@"in blink play sound");
         sndpath = [[NSBundle mainBundle] pathForResource:@"blink_smalsound" ofType:@"wav"];
     } else {
-        NSLog(@" no type of sound that matches");
+   //     NSLog(@" no type of sound that matches");
     }
     
     [self playSystemSound:sndpath];
@@ -156,6 +157,8 @@
 //  This method gets called by the TGAccessoryManager when a ThinkGear-enabled
 //  accessory is connected.
 - (void)accessoryDidConnect:(EAAccessory *)accessory {
+    NSLog(@"accessory did connect");
+    
     // toss up a UIAlertView when an accessory connects
     UIAlertView * a = [[UIAlertView alloc] initWithTitle:@"Accessory Connected"
                                                  message:[NSString stringWithFormat:@"A ThinkGear accessory called %@ was connected to this device.", [accessory name]]
@@ -175,6 +178,8 @@
 //  This method gets called by the TGAccessoryManager when a ThinkGear-enabled
 //  accessory is disconnected.
 - (void)accessoryDidDisconnect {
+    NSLog(@"accessory did connect");
+
     // toss up a UIAlertView when an accessory disconnects
     UIAlertView * a = [[UIAlertView alloc] initWithTitle:@"Accessory Disconnected"
      message:@"The ThinkGear accessory was disconnected from this device."
@@ -197,15 +202,11 @@
     NSString * temp = [[NSString alloc] init];
     NSDate * date = [NSDate date];
     
-    if([data valueForKey:@"blinkStrength"])
+    if([data valueForKey:@"blinkStrength"]){
         blinkStrength = [[data valueForKey:@"blinkStrength"] intValue];
-    
-    if([data valueForKey:@"raw"]) {
-        rawValue = [[data valueForKey:@"raw"] shortValue];
+        NSLog(@"blink strength: %d", blinkStrength);
     }
-    
-    if([data valueForKey:@"heartRate"])
-        heartRate = [[data valueForKey:@"heartRate"] intValue];
+
     
     if([data valueForKey:@"poorSignal"]) {
         poorSignalValue = [[data valueForKey:@"poorSignal"] intValue];
@@ -214,21 +215,7 @@
         buffRawCount = 0;
     }
     
-    if([data valueForKey:@"respiration"]) {
-        respiration = [[data valueForKey:@"respiration"] floatValue];
-    }
-    
-    if([data valueForKey:@"heartRateAverage"]) {
-        heartRateAverage = [[data valueForKey:@"heartRateAverage"] intValue];
-    }
-    if([data valueForKey:@"heartRateAcceleration"]) {
-        heartRateAcceleration = [[data valueForKey:@"heartRateAcceleration"] intValue];
-    }
-    
-    if([data valueForKey:@"rawCount"]) {
-        rawCount = [[data valueForKey:@"rawCount"] intValue];
-    }
-    
+
     
     // check to see whether the eSense values are there. if so, we assume that
     // all of the other data (aside from raw) is there. this is not necessarily
@@ -237,18 +224,8 @@
         
         eSenseValues.attention =    [[data valueForKey:@"eSenseAttention"] intValue];
         eSenseValues.meditation =   [[data valueForKey:@"eSenseMeditation"] intValue];
-        temp = [temp stringByAppendingFormat:@"%f: Attention: %d\n", [date timeIntervalSince1970], eSenseValues.attention];
-        temp = [temp stringByAppendingFormat:@"%f: Meditation: %d\n", [date timeIntervalSince1970], eSenseValues.meditation];
-        
-        eegValues.delta =       [[data valueForKey:@"eegDelta"] intValue];
-        eegValues.theta =       [[data valueForKey:@"eegTheta"] intValue];
-        eegValues.lowAlpha =    [[data valueForKey:@"eegLowAlpha"] intValue];
-        eegValues.highAlpha =   [[data valueForKey:@"eegHighAlpha"] intValue];
-        eegValues.lowBeta =     [[data valueForKey:@"eegLowBeta"] intValue];
-        eegValues.highBeta =    [[data valueForKey:@"eegHighBeta"] intValue];
-        eegValues.lowGamma =    [[data valueForKey:@"eegLowGamma"] intValue];
-        eegValues.highGamma =   [[data valueForKey:@"eegHighGamma"] intValue];
-        
+       
+         NSLog(@"med & att: %d, %d", eSenseValues.meditation, eSenseValues.attention);
     }
     
     if(logEnabled) {
@@ -294,18 +271,16 @@
 - (void)setLoadingScreenView {
     if([[TGAccessoryManager sharedTGAccessoryManager] accessory] == nil){
         [self.view addSubview: loadingScreen];
-//		[self.tableView setScrollEnabled:NO];
     }
     else {
         [loadingScreen removeFromSuperview];
-        //	[self.tableView setScrollEnabled:YES];
-        //    [self.tableView reloadData];
+
     }
 }
 
 - (void)updateView {
     while(1) {
-        NSLog(@"in updateview");
+     //   NSLog(@"in updateview");
         NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
         //    [[self tableView] performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
         [self performSelectorOnMainThread:@selector(updateSounds) withObject:nil waitUntilDone:NO];
@@ -335,14 +310,27 @@
 
 
 - (void)updateSounds{
-    NSLog(@"in sounds");
+   // NSLog(@"in sounds");
+   // NSLog(@"attention switch value: %d", attentionSwitch.on);
+    meditationLabel.text = [NSString stringWithFormat:@"%d",eSenseValues.meditation];
+    attentionLabel.text = [NSString stringWithFormat:@"%d",eSenseValues.attention];
+    blinkLabel.text = [NSString stringWithFormat:@"%d",blinkStrength];
     
-    [self playSound:@"attention" theSenseOfValue:eSenseValues.attention];
-    [self playSound:@"meditation" theSenseOfValue:eSenseValues.meditation];
-    if(blinkStrength > 100 && blinkStrength != lastBlinkValue){
-        [self playSound:@"blink" theSenseOfValue:blinkStrength];
+    if(self.attentionSwitch.on == 1){
+     //   NSLog(@"in attentionswitch");
+        [self playSound:@"attention" theSenseOfValue:eSenseValues.attention];
+    }
+    if(self.meditationSwitch.on == 1){
+        [self playSound:@"meditation" theSenseOfValue:eSenseValues.meditation];
+    }
+    if(self.blinkSwitch.on == 1){
+        if(blinkStrength > 100 && blinkStrength != lastBlinkValue){
+            [self playSound:@"blink" theSenseOfValue:blinkStrength];
+        }
     }
     lastBlinkValue = blinkStrength;
+    lastAttentionValue = eSenseValues.attention;
+    lastMeditationValue = eSenseValues.meditation;
 
 }
 

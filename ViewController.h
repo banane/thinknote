@@ -36,6 +36,9 @@ typedef struct {
     IBOutlet UISwitch *meditationSwitch;
     IBOutlet UISwitch *attentionSwitch;
     IBOutlet UISwitch *blinkSwitch;
+    IBOutlet UILabel *meditationLabel;
+    IBOutlet UILabel *attentionLabel;
+    IBOutlet UILabel *blinkLabel;
     
     short rawValue;
     int rawCount;
@@ -75,6 +78,10 @@ typedef struct {
 @property int lastBlinkValue;
 @property int lastAttentionValue;
 @property int lastMeditationValue;
+@property (nonatomic, strong)IBOutlet UILabel * meditationLabel;
+@property (nonatomic, strong)IBOutlet UILabel * attentionLabel;
+@property (nonatomic, strong)IBOutlet UILabel * blinkLabel;
+
 
 
 @property (nonatomic, strong) IBOutlet UISwitch *meditationSwitch;
