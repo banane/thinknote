@@ -20,6 +20,7 @@
 @synthesize meditationSwitch, attentionSwitch, blinkSwitch;
 @synthesize loadingScreen, soundFileObject, lastBlinkValue, lastAttentionValue, lastMeditationValue;
 @synthesize blinkLabel, meditationLabel, attentionLabel;
+@synthesize meditationView, attentionView, blinkView, attentionColors, lastAttentionColor;
 
 
 
@@ -39,6 +40,8 @@
     lastBlinkValue = 0;
     lastAttentionValue = 0;
     lastMeditationValue = 0;
+    
+    attentionColors = [[NSArray alloc] initWithObjects:[UIColor clearColor], [UIColor redColor], [UIColor blackColor], [UIColor grayColor], nil];
 
 }
 
@@ -108,6 +111,15 @@
 //    NSLog(@"third: %d", third);
     if([typeOfSound isEqualToString:@"attention"]){
         //   NSLog(@"in attention");
+        if(lastAttentionValue != eSenseValues.attention){
+            UIColor *thisColor = [attentionColors objectAtIndex:third];
+            [UIView animateWithDuration:1.0 animations:^{
+                attentionView.backgroundColor = lastAttentionColor;
+                attentionView.backgroundColor = thisColor;
+            }];
+            lastAttentionColor = thisColor;
+            
+        }
         switch (third) {
             case 1:
                 sndpath = [[NSBundle mainBundle] pathForResource:@"att_string_low_c" ofType:@"wav"];
@@ -319,6 +331,7 @@
     if(self.attentionSwitch.on == 1){
      //   NSLog(@"in attentionswitch");
         [self playSound:@"attention" theSenseOfValue:eSenseValues.attention];
+        
     }
     if(self.meditationSwitch.on == 1){
         [self playSound:@"meditation" theSenseOfValue:eSenseValues.meditation];

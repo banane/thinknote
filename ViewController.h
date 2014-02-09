@@ -40,6 +40,11 @@ typedef struct {
     IBOutlet UILabel *attentionLabel;
     IBOutlet UILabel *blinkLabel;
     
+    IBOutlet UIView *meditationView;
+    IBOutlet UIView *attentionView;
+    IBOutlet UIView *blinkView;
+    
+    
     short rawValue;
     int rawCount;
     int buffRawCount;
@@ -65,6 +70,10 @@ typedef struct {
     
     NSThread * updateThread;
     SystemSoundID   soundFileObject;
+    
+    UIColor *lastAttentionColor;
+    
+    NSArray *attentionColors;
 
    
 }
@@ -82,11 +91,17 @@ typedef struct {
 @property (nonatomic, strong)IBOutlet UILabel * attentionLabel;
 @property (nonatomic, strong)IBOutlet UILabel * blinkLabel;
 
-
+@property (nonatomic, strong)IBOutlet UIView * meditationView;
+@property (nonatomic, strong)IBOutlet UIView * attentionView;
+@property (nonatomic, strong)IBOutlet UIView * blinkView;
 
 @property (nonatomic, strong) IBOutlet UISwitch *meditationSwitch;
 @property (nonatomic, strong) IBOutlet UISwitch *attentionSwitch;
 @property (nonatomic, strong) IBOutlet UISwitch *blinkSwitch;
+
+@property (nonatomic, strong) UIColor *lastAttentionColor;
+
+@property (nonatomic, strong) NSArray *attentionColors;
 
 
 
