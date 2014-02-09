@@ -72,8 +72,13 @@ typedef struct {
     SystemSoundID   soundFileObject;
     
     UIColor *lastAttentionColor;
-    
     NSArray *attentionColors;
+
+    UIColor *lastMeditationColor;
+    NSArray *meditationColors;
+
+    UIColor *lastBlinkColor;
+    NSArray *blinkColors;
 
    
 }
@@ -100,8 +105,13 @@ typedef struct {
 @property (nonatomic, strong) IBOutlet UISwitch *blinkSwitch;
 
 @property (nonatomic, strong) UIColor *lastAttentionColor;
-
 @property (nonatomic, strong) NSArray *attentionColors;
+
+@property (nonatomic, strong) UIColor *lastMeditationColor;
+@property (nonatomic, strong) NSArray *meditationColors;
+
+@property (nonatomic, strong) UIColor *lastBlinkColor;
+@property (nonatomic, strong) NSArray *blinkColors;
 
 
 

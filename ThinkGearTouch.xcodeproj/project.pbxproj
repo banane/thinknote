@@ -24,8 +24,6 @@
 		28AD73600D9D9599002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD735F0D9D9599002E5188 /* MainWindow.xib */; };
 		5810616E118F82BB00730595 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5810616D118F82BB00730595 /* Settings.bundle */; };
 		5874B55910C7454100857C66 /* no_accessory.png in Resources */ = {isa = PBXBuildFile; fileRef = 5874B55810C7454100857C66 /* no_accessory.png */; };
-		8B026E3918A712B5006AAA1F /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = 8B026E2918A712B5006AAA1F /* iTunesArtwork */; };
-		8B026E3A18A712B5006AAA1F /* iTunesArtwork@2x in Resources */ = {isa = PBXBuildFile; fileRef = 8B026E2A18A712B5006AAA1F /* iTunesArtwork@2x */; };
 		8B026E4B18A7140C006AAA1F /* Icon-60.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B026E3B18A7140C006AAA1F /* Icon-60.png */; };
 		8B026E4C18A7140C006AAA1F /* Icon-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B026E3C18A7140C006AAA1F /* Icon-60@2x.png */; };
 		8B026E4D18A7140C006AAA1F /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B026E3D18A7140C006AAA1F /* Icon-72.png */; };
@@ -82,8 +80,6 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		5810616D118F82BB00730595 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		5874B55810C7454100857C66 /* no_accessory.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = no_accessory.png; path = Resources/no_accessory.png; sourceTree = "<group>"; };
-		8B026E2918A712B5006AAA1F /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; name = iTunesArtwork; path = ../../../Desktop/Thinknote/Icons/iTunesArtwork; sourceTree = "<group>"; };
-		8B026E2A18A712B5006AAA1F /* iTunesArtwork@2x */ = {isa = PBXFileReference; lastKnownFileType = file; name = "iTunesArtwork@2x"; path = "../../../Desktop/Thinknote/Icons/iTunesArtwork@2x"; sourceTree = "<group>"; };
 		8B026E3B18A7140C006AAA1F /* Icon-60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-60.png"; sourceTree = "<group>"; };
 		8B026E3C18A7140C006AAA1F /* Icon-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-60@2x.png"; sourceTree = "<group>"; };
 		8B026E3D18A7140C006AAA1F /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
@@ -216,8 +212,6 @@
 				26582ECC1469C58F001EF3B4 /* Signal_Connecting2.png */,
 				26582ECD1469C58F001EF3B4 /* Signal_Connecting3.png */,
 				26582ECE1469C58F001EF3B4 /* Signal_Disconnected.png */,
-				8B026E2918A712B5006AAA1F /* iTunesArtwork */,
-				8B026E2A18A712B5006AAA1F /* iTunesArtwork@2x */,
 				AAE08AB010E2021E008BB459 /* Entitlements.plist */,
 				5874B55810C7454100857C66 /* no_accessory.png */,
 				28AD735F0D9D9599002E5188 /* MainWindow.xib */,
@@ -331,10 +325,8 @@
 				ED1CBF4E18A6DD0400DF600A /* med_high_g.wav in Resources */,
 				8B026E5418A7140C006AAA1F /* Icon-Small@2x.png in Resources */,
 				26582ED21469C58F001EF3B4 /* Signal_Connecting3.png in Resources */,
-				8B026E3A18A712B5006AAA1F /* iTunesArtwork@2x in Resources */,
 				8B026E5918A7140C006AAA1F /* iTunesArtwork in Resources */,
 				8B026E6018A71424006AAA1F /* Default@2x.png in Resources */,
-				8B026E3918A712B5006AAA1F /* iTunesArtwork in Resources */,
 				26582ED31469C58F001EF3B4 /* Signal_Disconnected.png in Resources */,
 				ED1CBF5818A6DD1200DF600A /* blink_bigsound.wav in Resources */,
 				8B026E5218A7140C006AAA1F /* Icon-Small-50@2x.png in Resources */,

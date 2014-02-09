@@ -20,7 +20,7 @@
 @synthesize meditationSwitch, attentionSwitch, blinkSwitch;
 @synthesize loadingScreen, soundFileObject, lastBlinkValue, lastAttentionValue, lastMeditationValue;
 @synthesize blinkLabel, meditationLabel, attentionLabel;
-@synthesize meditationView, attentionView, blinkView, attentionColors, lastAttentionColor;
+@synthesize meditationView, attentionView, blinkView, attentionColors, lastAttentionColor, meditationColors, lastMeditationColor, blinkColors, lastBlinkColor;
 
 
 
@@ -41,8 +41,11 @@
     lastAttentionValue = 0;
     lastMeditationValue = 0;
     
-    attentionColors = [[NSArray alloc] initWithObjects:[UIColor clearColor], [UIColor redColor], [UIColor blackColor], [UIColor grayColor], nil];
-
+    attentionColors = [[NSArray alloc] initWithObjects:[UIColor clearColor], [UIColor orangeColor], [UIColor yellowColor], [UIColor greenColor], nil];
+    meditationColors = [[NSArray alloc] initWithObjects: [UIColor clearColor], [UIColor purpleColor], [UIColor cyanColor], [UIColor blueColor], nil];
+    
+    blinkColors = [[NSArray alloc] initWithObjects: [UIColor clearColor], [UIColor grayColor], nil];
+    lastBlinkColor = [blinkColors objectAtIndex:0];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -108,7 +111,7 @@
  //   NSLog(@"play sound values: %@, %d", typeOfSound, senseValue);
     
     int third = floor(senseValue / 30);
-//    NSLog(@"third: %d", third);
+    NSLog(@"third: %d", third);
     if([typeOfSound isEqualToString:@"attention"]){
         //   NSLog(@"in attention");
         if(lastAttentionValue != eSenseValues.attention){
@@ -135,6 +138,17 @@
                 break;
         }
     } else if ([typeOfSound isEqualToString:@"meditation"]) {
+        if(lastMeditationValue != eSenseValues.meditation){
+            UIColor *thisColor = [meditationColors objectAtIndex:third];
+            [UIView animateWithDuration:1.0 animations:^{
+                meditationView.backgroundColor = lastMeditationColor;
+                meditationView.backgroundColor = thisColor;
+            }];
+            lastMeditationColor = thisColor;
+            
+        }
+
+        
         //NSLog(@"in meditation");
         switch (third) {
             case 1:
@@ -337,9 +351,27 @@
         [self playSound:@"meditation" theSenseOfValue:eSenseValues.meditation];
     }
     if(self.blinkSwitch.on == 1){
-        if(blinkStrength > 100 && blinkStrength != lastBlinkValue){
+        if(blinkStrength > 80 && blinkStrength != lastBlinkValue){
             [self playSound:@"blink" theSenseOfValue:blinkStrength];
+            if(lastBlinkColor != [blinkColors objectAtIndex:1]){
+                [UIView animateWithDuration:2.0 animations:^{
+                    blinkView.backgroundColor = [blinkColors objectAtIndex:0];
+                    blinkView.backgroundColor = [blinkColors objectAtIndex:1];
+                }];
+                lastBlinkColor = [blinkColors objectAtIndex:1];
+            }
+            
+        } else {
+            if(lastBlinkColor != [blinkColors objectAtIndex:0]){
+                [UIView animateWithDuration:2.0 animations:^{
+                    blinkView.backgroundColor = [blinkColors objectAtIndex:1];
+                    blinkView.backgroundColor = [blinkColors objectAtIndex:0];
+                }];
+                lastBlinkColor = [blinkColors objectAtIndex:0];
+            }
+          
         }
+        
     }
     lastBlinkValue = blinkStrength;
     lastAttentionValue = eSenseValues.attention;
