@@ -60,12 +60,12 @@
     
     if([[TGAccessoryManager sharedTGAccessoryManager] accessory] != nil) {
         [[TGAccessoryManager sharedTGAccessoryManager] startStream];
-        self.connectedImageView.image = [UIImage imageNamed:@"Signal_Connected"];
+        [self.connectedImageView setImage:[self updateSignalStatus]];
     }
     if(updateThread == nil) {
         updateThread = [[NSThread alloc] initWithTarget:self selector:@selector(updateView) object:nil];
         [updateThread start];
-        self.connectedImageView.image = [UIImage imageNamed:@"Signal_Connecting1"];
+        [self.connectedImageView setImage:[self updateSignalStatus]];
     }
     
     NSLog(@"TGAccessory version: %d", [[TGAccessoryManager sharedTGAccessoryManager] getVersion]);
@@ -110,10 +110,10 @@
 
 - (void)playSound:(NSString *) typeOfSound theSenseOfValue:(int)senseValue{
     NSString *sndpath= @"";
- //   NSLog(@"play sound values: %@, %d", typeOfSound, senseValue);
+    NSLog(@"play sound values: %@, %d", typeOfSound, senseValue);
     
     int third = floor(senseValue / 30);
-    NSLog(@"third: %d", third);
+   // NSLog(@"third: %d", third);
     if([typeOfSound isEqualToString:@"attention"]){
         //   NSLog(@"in attention");
         if(lastAttentionValue != eSenseValues.attention){
@@ -207,8 +207,8 @@
 //  accessory is disconnected.
 - (void)accessoryDidDisconnect {
     NSLog(@"accessory did connect");
-    self.connectedImageView.image = [UIImage imageNamed:@"Signal_Disconnected"];
-
+    [self.connectedImageView setImage:[self updateSignalStatus]];
+ 
     // toss up a UIAlertView when an accessory disconnects
     UIAlertView * a = [[UIAlertView alloc] initWithTitle:@"Accessory Disconnected"
      message:@"The ThinkGear accessory was disconnected from this device."
@@ -310,12 +310,11 @@
 - (void)updateView {
     while(1) {
      //   NSLog(@"in updateview");
-        NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
-        //    [[self tableView] performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
-        [self performSelectorOnMainThread:@selector(updateSounds) withObject:nil waitUntilDone:NO];
-        [NSThread sleepForTimeInterval:0.15];
-        [pool drain];
-        
+            NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
+            //    [[self tableView] performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
+            [self performSelectorOnMainThread:@selector(updateSounds) withObject:nil waitUntilDone:NO];
+            [NSThread sleepForTimeInterval:0.15];
+            [pool drain];
     }
 }
 
