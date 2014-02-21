@@ -43,6 +43,7 @@ typedef struct {
     IBOutlet UIView *meditationView;
     IBOutlet UIView *attentionView;
     IBOutlet UIView *blinkView;
+    IBOutlet UIImageView *connectedImageView;
     
     
     short rawValue;
@@ -103,6 +104,7 @@ typedef struct {
 @property (nonatomic, strong) IBOutlet UISwitch *meditationSwitch;
 @property (nonatomic, strong) IBOutlet UISwitch *attentionSwitch;
 @property (nonatomic, strong) IBOutlet UISwitch *blinkSwitch;
+@property (nonatomic, strong) IBOutlet UIImageView *connectedImageView;
 
 @property (nonatomic, strong) UIColor *lastAttentionColor;
 @property (nonatomic, strong) NSArray *attentionColors;

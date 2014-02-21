@@ -20,7 +20,7 @@
 @synthesize meditationSwitch, attentionSwitch, blinkSwitch;
 @synthesize loadingScreen, soundFileObject, lastBlinkValue, lastAttentionValue, lastMeditationValue;
 @synthesize blinkLabel, meditationLabel, attentionLabel;
-@synthesize meditationView, attentionView, blinkView, attentionColors, lastAttentionColor, meditationColors, lastMeditationColor, blinkColors, lastBlinkColor;
+@synthesize meditationView, attentionView, blinkView, attentionColors, lastAttentionColor, meditationColors, lastMeditationColor, blinkColors, lastBlinkColor, connectedImageView;
 
 
 
@@ -58,15 +58,17 @@
         NSLog(@"Logging enabled");
     }
     
-    if([[TGAccessoryManager sharedTGAccessoryManager] accessory] != nil)
+    if([[TGAccessoryManager sharedTGAccessoryManager] accessory] != nil) {
         [[TGAccessoryManager sharedTGAccessoryManager] startStream];
-    
+        self.connectedImageView.image = [UIImage imageNamed:@"Signal_Connected"];
+    }
     if(updateThread == nil) {
         updateThread = [[NSThread alloc] initWithTarget:self selector:@selector(updateView) object:nil];
         [updateThread start];
+        self.connectedImageView.image = [UIImage imageNamed:@"Signal_Connecting1"];
     }
     
-    //NSLog(@"TGAccessory version: %d", [[TGAccessoryManager sharedTGAccessoryManager] getVersion]);
+    NSLog(@"TGAccessory version: %d", [[TGAccessoryManager sharedTGAccessoryManager] getVersion]);
     
     [super viewWillAppear:animated];
 }
@@ -205,6 +207,7 @@
 //  accessory is disconnected.
 - (void)accessoryDidDisconnect {
     NSLog(@"accessory did connect");
+    self.connectedImageView.image = [UIImage imageNamed:@"Signal_Disconnected"];
 
     // toss up a UIAlertView when an accessory disconnects
     UIAlertView * a = [[UIAlertView alloc] initWithTitle:@"Accessory Disconnected"
@@ -341,6 +344,8 @@
     meditationLabel.text = [NSString stringWithFormat:@"%d",eSenseValues.meditation];
     attentionLabel.text = [NSString stringWithFormat:@"%d",eSenseValues.attention];
     blinkLabel.text = [NSString stringWithFormat:@"%d",blinkStrength];
+    
+    [self.connectedImageView setImage:[self updateSignalStatus]];
     
     if(self.attentionSwitch.on == 1){
      //   NSLog(@"in attentionswitch");
