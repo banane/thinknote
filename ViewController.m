@@ -20,7 +20,7 @@
 @synthesize meditationSwitch, attentionSwitch, blinkSwitch;
 @synthesize loadingScreen, soundFileObject, lastBlinkValue, lastAttentionValue, lastMeditationValue;
 @synthesize blinkLabel, meditationLabel, attentionLabel;
-@synthesize meditationView, attentionView, blinkView, attentionColors, lastAttentionColor, meditationColors, lastMeditationColor, blinkColors, lastBlinkColor, connectedImageView;
+@synthesize meditationView, attentionView, blinkView, attentionColors, lastAttentionColor, meditationColors, lastMeditationColor, blinkColors, lastBlinkColor, connectedImageView, recordButton, isRecording;
 
 
 
@@ -40,6 +40,7 @@
     lastBlinkValue = 0;
     lastAttentionValue = 0;
     lastMeditationValue = 0;
+    isRecording = NO;
     
     attentionColors = [[NSArray alloc] initWithObjects:[UIColor clearColor], [UIColor orangeColor], [UIColor yellowColor], [UIColor greenColor], nil];
     meditationColors = [[NSArray alloc] initWithObjects: [UIColor clearColor], [UIColor purpleColor], [UIColor cyanColor], [UIColor blueColor], nil];
@@ -73,20 +74,6 @@
     [super viewWillAppear:animated];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-}
-
-- (void)dealloc {
-    [output release];
-    [logFile closeFile];
-    [logFile release];
-    [updateThread cancel];
-    [updateThread release];
-    [loadingScreen release];
-    
-    [super dealloc];
-}
 
 
 - (UIImage *)updateSignalStatus {
@@ -110,7 +97,7 @@
 
 - (void)playSound:(NSString *) typeOfSound theSenseOfValue:(int)senseValue{
     NSString *sndpath= @"";
-    NSLog(@"play sound values: %@, %d", typeOfSound, senseValue);
+  //  NSLog(@"play sound values: %@, %d", typeOfSound, senseValue);
     
     int third = floor(senseValue / 30);
    // NSLog(@"third: %d", third);
@@ -383,7 +370,20 @@
 
 }
 
-
+/* ib actions */
+-(IBAction)recordSound:(id)sender{
+    
+    if(isRecording){
+        NSLog(@"stopped recording");
+        [self.recordButton setTitle:@"Record" forState:UIControlStateNormal];
+        isRecording = NO;
+    } else {
+        NSLog(@"recording..");
+        [self.recordButton setTitle:@"Stop" forState:UIControlStateNormal];
+        isRecording = YES;
+        
+    }
+}
 
 
 

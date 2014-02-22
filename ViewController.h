@@ -44,6 +44,7 @@ typedef struct {
     IBOutlet UIView *attentionView;
     IBOutlet UIView *blinkView;
     IBOutlet UIImageView *connectedImageView;
+    IBOutlet UIButton *recordButton;
     
     
     short rawValue;
@@ -80,6 +81,8 @@ typedef struct {
 
     UIColor *lastBlinkColor;
     NSArray *blinkColors;
+    
+    bool isRecording;
 
    
 }
@@ -87,6 +90,7 @@ typedef struct {
 // sound play methods
 - (void)playSound:(NSString *) typeOfSound theSenseOfValue:(int)senseValue;
 - (void)playSystemSound:(NSString *)sndpath;
+- (IBAction)recordSound:(id)sender;
 
 @property (nonatomic, retain) IBOutlet UIView * loadingScreen;
 @property (readonly)    SystemSoundID   soundFileObject;
@@ -105,6 +109,7 @@ typedef struct {
 @property (nonatomic, strong) IBOutlet UISwitch *attentionSwitch;
 @property (nonatomic, strong) IBOutlet UISwitch *blinkSwitch;
 @property (nonatomic, strong) IBOutlet UIImageView *connectedImageView;
+@property (nonatomic, strong) IBOutlet UIButton *recordButton;
 
 @property (nonatomic, strong) UIColor *lastAttentionColor;
 @property (nonatomic, strong) NSArray *attentionColors;
@@ -115,6 +120,7 @@ typedef struct {
 @property (nonatomic, strong) UIColor *lastBlinkColor;
 @property (nonatomic, strong) NSArray *blinkColors;
 
+@property bool isRecording;
 
 
 @end

@@ -17,6 +17,7 @@
                 <outlet property="meditationLabel" destination="dxl-af-Uwt" id="dOJ-nC-a5U"/>
                 <outlet property="meditationSwitch" destination="Kqy-yE-qVj" id="s4R-87-IPt"/>
                 <outlet property="meditationView" destination="8Rl-8h-DbH" id="t5o-Ud-dye"/>
+                <outlet property="recordButton" destination="DgH-tf-ZEM" id="P5c-aJ-DU3"/>
                 <outlet property="view" destination="1" id="3"/>
             </connections>
         </placeholder>
@@ -112,6 +113,16 @@
                     <rect key="frame" x="250" y="29" width="28" height="25"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="DgH-tf-ZEM">
+                    <rect key="frame" x="102" y="415" width="115" height="44"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="Record">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="recordSound:" destination="-1" eventType="touchUpInside" id="q4K-yt-qg4"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
