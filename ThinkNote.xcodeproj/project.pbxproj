@@ -55,6 +55,9 @@
 		ED1CBF5C18A6E5FA00DF600A /* blink_smalsound.wav in Resources */ = {isa = PBXBuildFile; fileRef = ED1CBF5B18A6E5FA00DF600A /* blink_smalsound.wav */; };
 		ED1CBF6018A6E85600DF600A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED1CBF5E18A6E85600DF600A /* ViewController.m */; };
 		ED1CBF6118A6E85600DF600A /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED1CBF5F18A6E85600DF600A /* ViewController.xib */; };
+		ED762B2F18B85209006BD2AA /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED762B2E18B85209006BD2AA /* AVFoundation.framework */; };
+		ED762B3318B85490006BD2AA /* PlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED762B3118B85490006BD2AA /* PlayViewController.m */; };
+		ED762B3418B85490006BD2AA /* PlayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED762B3218B85490006BD2AA /* PlayViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,7 +65,7 @@
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D3623240D0F684500981E51 /* ThinkGearTouchAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThinkGearTouchAppDelegate.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* ThinkGearTouchAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThinkGearTouchAppDelegate.m; sourceTree = "<group>"; };
-		1D6058910D05DD3D006BFB54 /* ThinkGearTouch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ThinkGearTouch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1D6058910D05DD3D006BFB54 /* ThinkNote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ThinkNote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		2605D85C161BA14A00AA0B3A /* TGAccessoryDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TGAccessoryDelegate.h; sourceTree = "<group>"; };
 		2605D85D161BA14A00AA0B3A /* TGAccessoryManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TGAccessoryManager.h; sourceTree = "<group>"; };
@@ -99,7 +102,7 @@
 		8B026E5B18A71424006AAA1F /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		8B026E5C18A71424006AAA1F /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		8B026E5D18A71424006AAA1F /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		8D1107310486CEB800E47090 /* ThinkGearTouch-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "ThinkGearTouch-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		8D1107310486CEB800E47090 /* ThinkNote-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "ThinkNote-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		AAE08AB010E2021E008BB459 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		ED1CBF3B18A6C7F000DF600A /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		ED1CBF4B18A6DD0400DF600A /* med_high_g.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = med_high_g.wav; sourceTree = "<group>"; };
@@ -113,6 +116,10 @@
 		ED1CBF5D18A6E85600DF600A /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ViewController.h; path = ../ViewController.h; sourceTree = "<group>"; };
 		ED1CBF5E18A6E85600DF600A /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ViewController.m; path = ../ViewController.m; sourceTree = "<group>"; };
 		ED1CBF5F18A6E85600DF600A /* ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ViewController.xib; path = ../ViewController.xib; sourceTree = "<group>"; };
+		ED762B2E18B85209006BD2AA /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		ED762B3018B85490006BD2AA /* PlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayViewController.h; sourceTree = "<group>"; };
+		ED762B3118B85490006BD2AA /* PlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayViewController.m; sourceTree = "<group>"; };
+		ED762B3218B85490006BD2AA /* PlayViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlayViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +127,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED762B2F18B85209006BD2AA /* AVFoundation.framework in Frameworks */,
 				ED1CBF3C18A6C7F000DF600A /* AudioToolbox.framework in Frameworks */,
 				07EB058916260AA900D376E2 /* QuartzCore.framework in Frameworks */,
 				268327361593C23200D004F6 /* Accelerate.framework in Frameworks */,
@@ -150,6 +158,9 @@
 				ED1CBF4D18A6DD0400DF600A /* med_med_e.wav */,
 				1D3623240D0F684500981E51 /* ThinkGearTouchAppDelegate.h */,
 				1D3623250D0F684500981E51 /* ThinkGearTouchAppDelegate.m */,
+				ED762B3018B85490006BD2AA /* PlayViewController.h */,
+				ED762B3118B85490006BD2AA /* PlayViewController.m */,
+				ED762B3218B85490006BD2AA /* PlayViewController.xib */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -157,7 +168,7 @@
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1D6058910D05DD3D006BFB54 /* ThinkGearTouch.app */,
+				1D6058910D05DD3D006BFB54 /* ThinkNote.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -215,7 +226,7 @@
 				AAE08AB010E2021E008BB459 /* Entitlements.plist */,
 				5874B55810C7454100857C66 /* no_accessory.png */,
 				28AD735F0D9D9599002E5188 /* MainWindow.xib */,
-				8D1107310486CEB800E47090 /* ThinkGearTouch-Info.plist */,
+				8D1107310486CEB800E47090 /* ThinkNote-Info.plist */,
 				5810616D118F82BB00730595 /* Settings.bundle */,
 			);
 			name = Resources;
@@ -224,6 +235,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				ED762B2E18B85209006BD2AA /* AVFoundation.framework */,
 				ED1CBF3B18A6C7F000DF600A /* AudioToolbox.framework */,
 				268327351593C23200D004F6 /* Accelerate.framework */,
 				26A718B713CBD0BC00962E54 /* ExternalAccessory.framework */,
@@ -247,9 +259,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		1D6058900D05DD3D006BFB54 /* ThinkGearTouch */ = {
+		1D6058900D05DD3D006BFB54 /* ThinkNote */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "ThinkGearTouch" */;
+			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "ThinkNote" */;
 			buildPhases = (
 				1D60588D0D05DD3D006BFB54 /* Resources */,
 				1D60588E0D05DD3D006BFB54 /* Sources */,
@@ -259,9 +271,9 @@
 			);
 			dependencies = (
 			);
-			name = ThinkGearTouch;
+			name = ThinkNote;
 			productName = ThinkGearTouch;
-			productReference = 1D6058910D05DD3D006BFB54 /* ThinkGearTouch.app */;
+			productReference = 1D6058910D05DD3D006BFB54 /* ThinkNote.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -272,7 +284,7 @@
 			attributes = {
 				LastUpgradeCheck = 0450;
 			};
-			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "ThinkGearTouch" */;
+			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "ThinkNote" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 1;
@@ -287,7 +299,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				1D6058900D05DD3D006BFB54 /* ThinkGearTouch */,
+				1D6058900D05DD3D006BFB54 /* ThinkNote */,
 			);
 		};
 /* End PBXProject section */
@@ -297,6 +309,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED762B3418B85490006BD2AA /* PlayViewController.xib in Resources */,
 				8B026E5718A7140C006AAA1F /* Icon.png in Resources */,
 				28AD73600D9D9599002E5188 /* MainWindow.xib in Resources */,
 				5874B55910C7454100857C66 /* no_accessory.png in Resources */,
@@ -344,6 +357,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED762B3318B85490006BD2AA /* PlayViewController.m in Sources */,
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				1D3623260D0F684500981E51 /* ThinkGearTouchAppDelegate.m in Sources */,
 				ED1CBF6018A6E85600DF600A /* ViewController.m in Sources */,
@@ -367,9 +381,9 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = ThinkGearTouch_Prefix.pch;
+				GCC_PREFIX_HEADER = ThinkNote_Prefix.pch;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				INFOPLIST_FILE = "ThinkGearTouch-Info.plist";
+				INFOPLIST_FILE = "ThinkNote-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -378,7 +392,7 @@
 					"\"$(SRCROOT)/../../../../Library/Developer/Xcode/DerivedData/TGAccessory-bogggjfcpdrasocejkqgfiqnfrgv/Build/Products/Release-iphoneos\"",
 				);
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = ThinkGearTouch;
+				PRODUCT_NAME = ThinkNote;
 				PROVISIONING_PROFILE = "6EBBDEB2-98C8-4B8D-81D0-1D8549D658CE";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
@@ -399,9 +413,9 @@
 					"\"$(SRCROOT)\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = ThinkGearTouch_Prefix.pch;
+				GCC_PREFIX_HEADER = ThinkNote_Prefix.pch;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				INFOPLIST_FILE = "ThinkGearTouch-Info.plist";
+				INFOPLIST_FILE = "ThinkNote-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -409,7 +423,7 @@
 					"\"$(SRCROOT)/Libraries\"",
 					"\"$(SRCROOT)/../../../../Library/Developer/Xcode/DerivedData/TGAccessory-bogggjfcpdrasocejkqgfiqnfrgv/Build/Products/Release-iphoneos\"",
 				);
-				PRODUCT_NAME = ThinkGearTouch;
+				PRODUCT_NAME = ThinkNote;
 				PROVISIONING_PROFILE = "6EBBDEB2-98C8-4B8D-81D0-1D8549D658CE";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
@@ -452,9 +466,9 @@
 					"\"$(SRCROOT)\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = ThinkGearTouch_Prefix.pch;
+				GCC_PREFIX_HEADER = ThinkNote_Prefix.pch;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				INFOPLIST_FILE = "ThinkGearTouch-Info.plist";
+				INFOPLIST_FILE = "ThinkNote-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -462,7 +476,7 @@
 					"\"$(SRCROOT)/Libraries\"",
 					"\"$(SRCROOT)/../../../../Library/Developer/Xcode/DerivedData/TGAccessory-bogggjfcpdrasocejkqgfiqnfrgv/Build/Products/Release-iphoneos\"",
 				);
-				PRODUCT_NAME = ThinkGearTouch;
+				PRODUCT_NAME = ThinkNote;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
@@ -519,7 +533,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "ThinkGearTouch" */ = {
+		1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "ThinkNote" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1D6058940D05DD3E006BFB54 /* Debug */,
@@ -529,7 +543,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "ThinkGearTouch" */ = {
+		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "ThinkNote" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C01FCF4F08A954540054247B /* Debug */,

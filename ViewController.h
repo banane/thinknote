@@ -11,7 +11,7 @@
 #import "TGAccessoryDelegate.h"
 #import <ExternalAccessory/ExternalAccessory.h>
 #include <AudioToolbox/AudioToolbox.h>
-
+#include <AVFoundation/AVFoundation.h>
 
 // the eSense values
 typedef struct {
@@ -32,7 +32,7 @@ typedef struct {
 } EEGValues;
 
 
-@interface ViewController : UIViewController <TGAccessoryDelegate> {
+@interface ViewController : UIViewController <TGAccessoryDelegate, AVAudioRecorderDelegate> {
     IBOutlet UISwitch *meditationSwitch;
     IBOutlet UISwitch *attentionSwitch;
     IBOutlet UISwitch *blinkSwitch;
@@ -46,6 +46,7 @@ typedef struct {
     IBOutlet UIImageView *connectedImageView;
     IBOutlet UIButton *recordButton;
     
+     AVAudioRecorder *recorder;
     
     short rawValue;
     int rawCount;

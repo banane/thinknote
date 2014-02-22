@@ -26,7 +26,7 @@
     //
     // to use a connection to the ThinkGear Connector for
     // Simulated Data, uncomment the next line
-    //accessoryType = TGAccessoryTypeSimulated;
+    // accessoryType = TGAccessoryTypeSimulated;
     //
     // NOTE: this wont do anything to get the simulated data stream
     // started. See the ThinkGear Connector Guide.

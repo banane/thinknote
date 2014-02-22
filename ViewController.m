@@ -8,6 +8,7 @@
 
 
 #import "ViewController.h"
+#import "PlayViewController.h"
 
 @interface ViewController ()
 - (void)setLoadingScreenView;
@@ -41,6 +42,29 @@
     lastAttentionValue = 0;
     lastMeditationValue = 0;
     isRecording = NO;
+    
+    /* audio setup */
+    NSArray *pathComponents = [NSArray arrayWithObjects:
+                               [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject],
+                               @"MyAudioMemo.m4a",
+                               nil];
+     NSURL *outputFileURL = [NSURL fileURLWithPathComponents:pathComponents];
+    AVAudioSession *session = [AVAudioSession sharedInstance];
+    [session setCategory:AVAudioSessionCategoryPlayAndRecord error:nil];
+    
+    NSMutableDictionary *recordSetting = [[NSMutableDictionary alloc] init];
+    
+    [recordSetting setValue:[NSNumber numberWithInt:kAudioFormatMPEG4AAC] forKey:AVFormatIDKey];
+    [recordSetting setValue:[NSNumber numberWithFloat:44100.0] forKey:AVSampleRateKey];
+    [recordSetting setValue:[NSNumber numberWithInt: 2] forKey:AVNumberOfChannelsKey];
+
+    // Initiate and prepare the recorder
+    recorder = [[AVAudioRecorder alloc] initWithURL:outputFileURL settings:recordSetting error:NULL];
+    recorder.delegate = self;
+    recorder.meteringEnabled = YES;
+    [recorder prepareToRecord];
+    
+    /* end of audio setup */
     
     attentionColors = [[NSArray alloc] initWithObjects:[UIColor clearColor], [UIColor orangeColor], [UIColor yellowColor], [UIColor greenColor], nil];
     meditationColors = [[NSArray alloc] initWithObjects: [UIColor clearColor], [UIColor purpleColor], [UIColor cyanColor], [UIColor blueColor], nil];
@@ -375,14 +399,34 @@
     
     if(isRecording){
         NSLog(@"stopped recording");
+         [recorder stop];
+        AVAudioSession *audioSession = [AVAudioSession sharedInstance];
+        [audioSession setActive:NO error:nil];
         [self.recordButton setTitle:@"Record" forState:UIControlStateNormal];
         isRecording = NO;
+        [self viewPlayVC];
     } else {
         NSLog(@"recording..");
+        AVAudioSession *session = [AVAudioSession sharedInstance];
+        [session setActive:YES error:nil];
+        
+        // Start recording
+        [recorder record];
         [self.recordButton setTitle:@"Stop" forState:UIControlStateNormal];
         isRecording = YES;
         
     }
+}
+
+- (void) audioRecorderDidFinishRecording:(AVAudioRecorder *)avrecorder successfully:(BOOL)flag{
+    [recordButton setTitle:@"Record" forState:UIControlStateNormal];
+    
+}
+
+- (void)viewPlayVC{
+    PlayViewController *pvc = [[PlayViewController alloc] initWithNibName:@"PlayViewController" bundle:nil];
+	[[self navigationController] pushViewController:pvc animated:YES];
+
 }
 
 
