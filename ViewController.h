@@ -85,6 +85,7 @@ typedef struct {
     NSArray *blinkColors;
     
     bool isRecording;
+    bool isPlayingMindSound;
 
    
 }
@@ -126,6 +127,7 @@ typedef struct {
 @property (nonatomic, strong) NSArray *blinkColors;
 
 @property bool isRecording;
+@property bool isPlayingMindSound;
 
 
 @end

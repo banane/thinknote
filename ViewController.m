@@ -45,6 +45,7 @@
     blinkSoundOn = YES;
     meditationSoundOn = YES;
     attentionSoundOn = YES;
+    isPlayingMindSound = YES;
     
     /* audio setup */
   
@@ -94,6 +95,7 @@
         [self.connectedImageView setImage:[self updateSignalStatus]];
     }
     if(updateThread == nil) {
+        isPlayingMindSound = YES;
         updateThread = [[NSThread alloc] initWithTarget:self selector:@selector(updateView) object:nil];
         [updateThread start];
         [self.connectedImageView setImage:[self updateSignalStatus]];
@@ -325,7 +327,7 @@
 }
 
 - (void)updateView {
-    while(1) {
+    while(isPlayingMindSound) {
      //   NSLog(@"in updateview");
             NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
             //    [[self tableView] performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
@@ -409,6 +411,7 @@
         
         NSLog(@"stopped recording");
          [recorder stop];
+        isPlayingMindSound = NO;
         AVAudioSession *audioSession = [AVAudioSession sharedInstance];
         [audioSession setActive:NO error:nil];
 //        [self.recordButton setTitle:@"Record" forState:UIControlStateNormal];
