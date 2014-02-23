@@ -19,6 +19,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
+        
         // Custom initialization
     }
     return self;
@@ -26,6 +27,8 @@
 
 - (void)viewDidLoad
 {
+    [[self navigationController] setNavigationBarHidden:NO animated:NO];
+
     [super viewDidLoad];
     
     // Set the audio file
@@ -39,6 +42,8 @@
     AVAudioSession *session = [AVAudioSession sharedInstance];
     [session setCategory:AVAudioSessionCategoryPlayAndRecord error:nil];
 }
+
+
 
 - (void)didReceiveMemoryWarning
 {

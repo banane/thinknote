@@ -18,7 +18,7 @@
 @implementation ViewController
 
 
-@synthesize meditationSwitch, attentionSwitch, blinkSwitch;
+@synthesize meditationSoundOn, attentionSoundOn, blinkSoundOn;
 @synthesize loadingScreen, soundFileObject, lastBlinkValue, lastAttentionValue, lastMeditationValue;
 @synthesize blinkLabel, meditationLabel, attentionLabel;
 @synthesize meditationView, attentionView, blinkView, attentionColors, lastAttentionColor, meditationColors, lastMeditationColor, blinkColors, lastBlinkColor, connectedImageView, recordButton, isRecording;
@@ -42,15 +42,19 @@
     lastAttentionValue = 0;
     lastMeditationValue = 0;
     isRecording = NO;
+    blinkSoundOn = YES;
+    meditationSoundOn = YES;
+    attentionSoundOn = YES;
     
     /* audio setup */
+  
     NSArray *pathComponents = [NSArray arrayWithObjects:
                                [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject],
                                @"MyAudioMemo.m4a",
                                nil];
      NSURL *outputFileURL = [NSURL fileURLWithPathComponents:pathComponents];
     AVAudioSession *session = [AVAudioSession sharedInstance];
-    [session setCategory:AVAudioSessionCategoryPlayAndRecord error:nil];
+    [session setCategory: AVAudioSessionCategoryAmbient error:nil];
     
     NSMutableDictionary *recordSetting = [[NSMutableDictionary alloc] init];
     
@@ -74,6 +78,8 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+    [[self navigationController] setNavigationBarHidden:YES animated:NO];
+
     [self setLoadingScreenView];
     
     NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
@@ -121,7 +127,7 @@
 
 - (void)playSound:(NSString *) typeOfSound theSenseOfValue:(int)senseValue{
     NSString *sndpath= @"";
-  //  NSLog(@"play sound values: %@, %d", typeOfSound, senseValue);
+    NSLog(@"play sound values: %@, %d", typeOfSound, senseValue);
     
     int third = floor(senseValue / 30);
    // NSLog(@"third: %d", third);
@@ -251,10 +257,10 @@
     if([data valueForKey:@"poorSignal"]) {
         poorSignalValue = [[data valueForKey:@"poorSignal"] intValue];
         temp = [temp stringByAppendingFormat:@"%f: Poor Signal: %d\n", [date timeIntervalSince1970], poorSignalValue];
-        //NSLog(@"buffered raw count: %d", buffRawCount);
+//        NSLog(@"buffered raw count: %d", buffRawCount);
         buffRawCount = 0;
     }
-    
+//    NSLog(@"data received");
 
     
     // check to see whether the eSense values are there. if so, we assume that
@@ -265,7 +271,7 @@
         eSenseValues.attention =    [[data valueForKey:@"eSenseAttention"] intValue];
         eSenseValues.meditation =   [[data valueForKey:@"eSenseMeditation"] intValue];
        
-         NSLog(@"med & att: %d, %d", eSenseValues.meditation, eSenseValues.attention);
+ //        NSLog(@"med & att: %d, %d", eSenseValues.meditation, eSenseValues.attention);
     }
     
     if(logEnabled) {
@@ -330,7 +336,7 @@
 }
 
 - (void)playSystemSound:(NSString *)sndpath{
-    //    NSLog(@"in play system sound");
+        NSLog(@"in play system sound");
     
     //    NSString *sndpath = [[NSBundle mainBundle] pathForResource:@"sound" ofType:@"wav"];
     if(sndpath != nil){
@@ -349,23 +355,24 @@
 
 
 - (void)updateSounds{
-   // NSLog(@"in sounds");
-   // NSLog(@"attention switch value: %d", attentionSwitch.on);
+ /*   NSLog(@"in sounds");
+    NSLog(@"attention switch value: %d", attentionSwitch.on);*/
+    
     meditationLabel.text = [NSString stringWithFormat:@"%d",eSenseValues.meditation];
     attentionLabel.text = [NSString stringWithFormat:@"%d",eSenseValues.attention];
     blinkLabel.text = [NSString stringWithFormat:@"%d",blinkStrength];
     
     [self.connectedImageView setImage:[self updateSignalStatus]];
     
-    if(self.attentionSwitch.on == 1){
+    if(self.attentionSoundOn){
      //   NSLog(@"in attentionswitch");
         [self playSound:@"attention" theSenseOfValue:eSenseValues.attention];
         
     }
-    if(self.meditationSwitch.on == 1){
+    if(self.meditationSoundOn){
         [self playSound:@"meditation" theSenseOfValue:eSenseValues.meditation];
     }
-    if(self.blinkSwitch.on == 1){
+    if(self.blinkSoundOn){
         if(blinkStrength > 80 && blinkStrength != lastBlinkValue){
             [self playSound:@"blink" theSenseOfValue:blinkStrength];
             if(lastBlinkColor != [blinkColors objectAtIndex:1]){
@@ -397,13 +404,19 @@
 /* ib actions */
 -(IBAction)recordSound:(id)sender{
     
+    
     if(isRecording){
+        
         NSLog(@"stopped recording");
          [recorder stop];
         AVAudioSession *audioSession = [AVAudioSession sharedInstance];
         [audioSession setActive:NO error:nil];
-        [self.recordButton setTitle:@"Record" forState:UIControlStateNormal];
+//        [self.recordButton setTitle:@"Record" forState:UIControlStateNormal];
+        [self.recordButton setImage:[UIImage imageNamed:@"play_button"] forState:UIControlStateNormal];
+        
         isRecording = NO;
+       // [NSThread detachNewThreadSelector:@selector(updateView) toTarget:self withObject:nil];
+
         [self viewPlayVC];
     } else {
         NSLog(@"recording..");
@@ -412,7 +425,8 @@
         
         // Start recording
         [recorder record];
-        [self.recordButton setTitle:@"Stop" forState:UIControlStateNormal];
+        [self.recordButton setImage:[UIImage imageNamed:@"stop_button"] forState:UIControlStateNormal];
+//        [self.recordButton setTitle:@"Stop" forState:UIControlStateNormal];
         isRecording = YES;
         
     }
@@ -424,13 +438,18 @@
 }
 
 - (void)viewPlayVC{
+    
     PlayViewController *pvc = [[PlayViewController alloc] initWithNibName:@"PlayViewController" bundle:nil];
 	[[self navigationController] pushViewController:pvc animated:YES];
+    
+
+}
+- (IBAction)stopRepeatingSound:(id)sender{
+    [[TGAccessoryManager sharedTGAccessoryManager] stopStream];
 
 }
 
-
-
+/* TODO: set meditation/attention/blink sounds off */
 
 
 

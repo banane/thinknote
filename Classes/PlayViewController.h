@@ -10,7 +10,7 @@
 #import <AVFoundation/AVFoundation.h>
 
 
-@interface PlayViewController : UINavigationController <AVAudioPlayerDelegate>{
+@interface PlayViewController : UIViewController <AVAudioPlayerDelegate>{
      AVAudioPlayer *player;
      NSURL *outputFileURL;
 }

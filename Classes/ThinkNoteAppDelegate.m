@@ -8,7 +8,7 @@
 
 #import "TGAccessoryManager.h"
 
-#import "ThinkGearTouchAppDelegate.h"
+#import "ThinkNoteAppDelegate.h"
 //#import "RootViewController.h"
 #import "ViewController.h"
 
@@ -43,8 +43,11 @@
     ViewController *vc = [[ViewController alloc] initWithNibName:@"ViewController" bundle:nil];
     [[TGAccessoryManager sharedTGAccessoryManager] setDelegate:vc];
     [[TGAccessoryManager sharedTGAccessoryManager] setRawEnabled:rawEnabled];
-    window.rootViewController = vc;
-    [window addSubview:[navigationController view]];
+    
+    navigationController = [[UINavigationController alloc] initWithRootViewController:vc];
+//    window.rootViewController = vc;
+//    [window addSubview:[navigationController view]];
+    window.rootViewController = self.navigationController;
     [window makeKeyAndVisible];
 }
 

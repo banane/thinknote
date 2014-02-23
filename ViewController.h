@@ -33,9 +33,10 @@ typedef struct {
 
 
 @interface ViewController : UIViewController <TGAccessoryDelegate, AVAudioRecorderDelegate> {
-    IBOutlet UISwitch *meditationSwitch;
-    IBOutlet UISwitch *attentionSwitch;
-    IBOutlet UISwitch *blinkSwitch;
+    bool attentionSoundOn;
+    bool meditationSoundOn;
+    bool blinkSoundOn;
+    
     IBOutlet UILabel *meditationLabel;
     IBOutlet UILabel *attentionLabel;
     IBOutlet UILabel *blinkLabel;
@@ -92,6 +93,9 @@ typedef struct {
 - (void)playSound:(NSString *) typeOfSound theSenseOfValue:(int)senseValue;
 - (void)playSystemSound:(NSString *)sndpath;
 - (IBAction)recordSound:(id)sender;
+- (IBAction)stopRepeatingSound:(id)sender;
+- (void)viewPlayVC;
+
 
 @property (nonatomic, retain) IBOutlet UIView * loadingScreen;
 @property (readonly)    SystemSoundID   soundFileObject;
@@ -106,9 +110,9 @@ typedef struct {
 @property (nonatomic, strong)IBOutlet UIView * attentionView;
 @property (nonatomic, strong)IBOutlet UIView * blinkView;
 
-@property (nonatomic, strong) IBOutlet UISwitch *meditationSwitch;
-@property (nonatomic, strong) IBOutlet UISwitch *attentionSwitch;
-@property (nonatomic, strong) IBOutlet UISwitch *blinkSwitch;
+@property bool meditationSoundOn;
+@property bool attentionSoundOn;
+@property bool blinkSoundOn;
 @property (nonatomic, strong) IBOutlet UIImageView *connectedImageView;
 @property (nonatomic, strong) IBOutlet UIButton *recordButton;
 

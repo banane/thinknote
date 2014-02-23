@@ -15,7 +15,7 @@
 		<string>Icon@2x.png</string>
 	</array>
 	<key>CFBundleIdentifier</key>
-	<string>com.neurosky.thinkgeartouch</string>
+	<string>com.pickaxe.thinknote</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -50,6 +50,10 @@
 	<array>
 		<string>com.neurosky.cardio</string>
 		<string>com.neurosky.thinkgear</string>
+	</array>
+	<key>UISupportedInterfaceOrientations</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
 	</array>
 </dict>
 </plist>
