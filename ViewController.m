@@ -18,7 +18,7 @@
 @implementation ViewController
 
 
-@synthesize meditationSoundOn, attentionSoundOn, blinkSoundOn;
+@synthesize meditationSoundOn, attentionSoundOn, blinkSoundOn, isPlayingMindSound, soundURL;
 @synthesize loadingScreen, soundFileObject, lastBlinkValue, lastAttentionValue, lastMeditationValue;
 @synthesize blinkLabel, meditationLabel, attentionLabel;
 @synthesize meditationView, attentionView, blinkView, attentionColors, lastAttentionColor, meditationColors, lastMeditationColor, blinkColors, lastBlinkColor, connectedImageView, recordButton, isRecording;
@@ -53,9 +53,13 @@
                                [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject],
                                @"MyAudioMemo.m4a",
                                nil];
-     NSURL *outputFileURL = [NSURL fileURLWithPathComponents:pathComponents];
+    soundURL = [NSURL fileURLWithPathComponents:pathComponents];
+    
+    NSError *sessionerror;
     AVAudioSession *session = [AVAudioSession sharedInstance];
-    [session setCategory: AVAudioSessionCategoryAmbient error:nil];
+    [session setCategory: AVAudioSessionCategoryAmbient error:&sessionerror];
+//    [session setCategory: AVAudioSessionCategoryRecord error:&sessionerror];
+   NSLog(@"session error: %@", [sessionerror description]);
     
     NSMutableDictionary *recordSetting = [[NSMutableDictionary alloc] init];
     
@@ -64,10 +68,14 @@
     [recordSetting setValue:[NSNumber numberWithInt: 2] forKey:AVNumberOfChannelsKey];
 
     // Initiate and prepare the recorder
-    recorder = [[AVAudioRecorder alloc] initWithURL:outputFileURL settings:recordSetting error:NULL];
+    NSError *error;
+    recorder = [[AVAudioRecorder alloc] initWithURL:soundURL settings:recordSetting error:&error];
     recorder.delegate = self;
     recorder.meteringEnabled = YES;
     [recorder prepareToRecord];
+    if(recorder == 0){
+        NSLog(@"error setting up recorder: %@", [error localizedDescription]);
+    }
     
     /* end of audio setup */
     
@@ -129,7 +137,7 @@
 
 - (void)playSound:(NSString *) typeOfSound theSenseOfValue:(int)senseValue{
     NSString *sndpath= @"";
-    NSLog(@"play sound values: %@, %d", typeOfSound, senseValue);
+//    NSLog(@"play sound values: %@, %d", typeOfSound, senseValue);
     
     int third = floor(senseValue / 30);
    // NSLog(@"third: %d", third);
@@ -338,7 +346,6 @@
 }
 
 - (void)playSystemSound:(NSString *)sndpath{
-        NSLog(@"in play system sound");
     
     //    NSString *sndpath = [[NSBundle mainBundle] pathForResource:@"sound" ofType:@"wav"];
     if(sndpath != nil){
@@ -423,7 +430,10 @@
         [self viewPlayVC];
     } else {
         NSLog(@"recording..");
+        NSError *sessionerror;
         AVAudioSession *session = [AVAudioSession sharedInstance];
+        [session setCategory:AVAudioSessionCategoryRecord error:&sessionerror];
+//        NSLog(@"session error in record button: %@", [sessionerror description]);
         [session setActive:YES error:nil];
         
         // Start recording
@@ -443,6 +453,8 @@
 - (void)viewPlayVC{
     
     PlayViewController *pvc = [[PlayViewController alloc] initWithNibName:@"PlayViewController" bundle:nil];
+    pvc.soundURL = soundURL;
+    
 	[[self navigationController] pushViewController:pvc animated:YES];
     
 

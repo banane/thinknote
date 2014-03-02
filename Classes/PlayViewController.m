@@ -13,7 +13,7 @@
 @end
 
 @implementation PlayViewController
-@synthesize outputFileURL;
+@synthesize soundURL;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -28,19 +28,21 @@
 - (void)viewDidLoad
 {
     [[self navigationController] setNavigationBarHidden:NO animated:NO];
+    self.title = @"Play ThinkNote";
 
     [super viewDidLoad];
     
     // Set the audio file
-    NSArray *pathComponents = [NSArray arrayWithObjects:
-                               [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject],
-                               @"MyAudioMemo.m4a",
-                               nil];
-    outputFileURL = [NSURL fileURLWithPathComponents:pathComponents];
+   
     
     // Setup audio session
     AVAudioSession *session = [AVAudioSession sharedInstance];
-    [session setCategory:AVAudioSessionCategoryPlayAndRecord error:nil];
+    [session setCategory:AVAudioSessionCategoryPlayback error:nil];
+    
+//    player = [[AVAudioPlayer alloc] initWithContentsOfURL:soundURL error:nil];
+//    [player setDelegate:self];
+    NSLog(@"play file: %@", soundURL);
+    
 }
 
 
@@ -52,12 +54,24 @@
 }
 
 - (IBAction)playTapped:(id)sender {
-        player = [[AVAudioPlayer alloc] initWithContentsOfURL:outputFileURL error:nil];
-        [player setDelegate:self];
+    NSError *error;
+    player = [[AVAudioPlayer alloc] initWithContentsOfURL:soundURL error:&error];
+    player.numberOfLoops = 1;
+    [player setDelegate:self];
+    
+    if (player == nil){
+        NSLog(@"error in audioPlayer: %@", [error description]);
+    }
+    else{
         [player play];
+        NSLog(@"Playing file");
+    }
+    
 }
 
 - (void) audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag{
+    NSLog(@"in audio did finish playing");
+    
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Done"
                                                     message: @"Finish playing the recording!"
                                                    delegate: nil

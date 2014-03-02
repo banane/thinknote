@@ -86,6 +86,8 @@ typedef struct {
     
     bool isRecording;
     bool isPlayingMindSound;
+    
+    NSURL *soundURL;
 
    
 }
@@ -128,6 +130,8 @@ typedef struct {
 
 @property bool isRecording;
 @property bool isPlayingMindSound;
+
+@property (nonatomic, strong) NSURL *soundURL;
 
 
 @end

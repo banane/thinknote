@@ -12,9 +12,11 @@
 
 @interface PlayViewController : UIViewController <AVAudioPlayerDelegate>{
      AVAudioPlayer *player;
-     NSURL *outputFileURL;
+    NSURL *soundURL;
+    
 }
 
-@property (nonatomic, strong) NSURL *outputFileURL;
+@property (nonatomic, strong) NSURL *soundURL;
+
 
 @end
