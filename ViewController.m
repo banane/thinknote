@@ -561,7 +561,7 @@
 }*/
 
 - (void) audioRecorderDidFinishRecording:(AVAudioRecorder *)avrecorder successfully:(BOOL)flag{
-    [recordButton setTitle:@"Record" forState:UIControlStateNormal];
+//    [recordButton setTitle:@"Record" forState:UIControlStateNormal];
     
 }
 
