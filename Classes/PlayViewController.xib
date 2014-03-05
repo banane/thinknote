@@ -22,7 +22,7 @@
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
-                        <action selector="playTapped:" destination="-1" eventType="touchUpInside" id="bMc-ri-C6C"/>
+                        <action selector="playRecordClicked:" destination="-1" eventType="touchUpInside" id="T9S-wn-5UC"/>
                     </connections>
                 </button>
                 <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" id="8li-uL-ke6">

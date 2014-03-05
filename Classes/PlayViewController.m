@@ -32,16 +32,7 @@
 
     [super viewDidLoad];
     
-    // Set the audio file
-   
-    
-    // Setup audio session
-    AVAudioSession *session = [AVAudioSession sharedInstance];
-    [session setCategory:AVAudioSessionCategoryPlayback error:nil];
-    
-//    player = [[AVAudioPlayer alloc] initWithContentsOfURL:soundURL error:nil];
-//    [player setDelegate:self];
-    NSLog(@"play file: %@", soundURL);
+
     
 }
 
@@ -53,21 +44,28 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)playTapped:(id)sender {
+- (IBAction)playRecordClicked:(id)sender {
+    NSLog(@"play Record");
+   /* if (audioPlayerRecord) {
+        if (audioPlayerRecord.isPlaying) [audioPlayerRecord stop];
+        else [audioPlayerRecord play];
+        
+        return;
+    }*/
+    
+    //Initialize playback audio session
+    AVAudioSession *audioSession = [AVAudioSession sharedInstance];
+    [audioSession setCategory:AVAudioSessionCategoryPlayback error:nil];
+    
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *recDir = [paths objectAtIndex:0];
+    NSURL *url = [NSURL fileURLWithPath:[NSString stringWithFormat:@"%@/recordMind.caf", recDir]];
+    
     NSError *error;
-    player = [[AVAudioPlayer alloc] initWithContentsOfURL:soundURL error:&error];
-    player.numberOfLoops = 1;
-    [player setDelegate:self];
-    
-    if (player == nil){
-        NSLog(@"error in audioPlayer: %@", [error description]);
-    }
-    else{
-        [player play];
-        NSLog(@"Playing file");
-    }
-    
+    player = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
+    [player play];
 }
+
 
 - (void) audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag{
     NSLog(@"in audio did finish playing");

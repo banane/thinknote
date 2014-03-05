@@ -21,7 +21,7 @@
 @synthesize meditationSoundOn, attentionSoundOn, blinkSoundOn, isPlayingMindSound, soundURL;
 @synthesize loadingScreen, soundFileObject, lastBlinkValue, lastAttentionValue, lastMeditationValue;
 @synthesize blinkLabel, meditationLabel, attentionLabel;
-@synthesize meditationView, attentionView, blinkView, attentionColors, lastAttentionColor, meditationColors, lastMeditationColor, blinkColors, lastBlinkColor, connectedImageView, recordButton, isRecording;
+@synthesize meditationView, attentionView, blinkView, attentionColors, lastAttentionColor, meditationColors, lastMeditationColor, blinkColors, lastBlinkColor, connectedImageView, recordButton, stopButton, isRecording;
 
 
 
@@ -46,38 +46,10 @@
     meditationSoundOn = YES;
     attentionSoundOn = YES;
     isPlayingMindSound = YES;
+    self.stopButton.hidden = YES;
+    self.recordButton.hidden = NO;
     
-    /* audio setup */
-  
-    NSArray *pathComponents = [NSArray arrayWithObjects:
-                               [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject],
-                               @"MyAudioMemo.m4a",
-                               nil];
-    soundURL = [NSURL fileURLWithPathComponents:pathComponents];
-    
-    NSError *sessionerror;
-    AVAudioSession *session = [AVAudioSession sharedInstance];
-    [session setCategory: AVAudioSessionCategoryAmbient error:&sessionerror];
-//    [session setCategory: AVAudioSessionCategoryRecord error:&sessionerror];
-   NSLog(@"session error: %@", [sessionerror description]);
-    
-    NSMutableDictionary *recordSetting = [[NSMutableDictionary alloc] init];
-    
-    [recordSetting setValue:[NSNumber numberWithInt:kAudioFormatMPEG4AAC] forKey:AVFormatIDKey];
-    [recordSetting setValue:[NSNumber numberWithFloat:44100.0] forKey:AVSampleRateKey];
-    [recordSetting setValue:[NSNumber numberWithInt: 2] forKey:AVNumberOfChannelsKey];
 
-    // Initiate and prepare the recorder
-    NSError *error;
-    recorder = [[AVAudioRecorder alloc] initWithURL:soundURL settings:recordSetting error:&error];
-    recorder.delegate = self;
-    recorder.meteringEnabled = YES;
-    [recorder prepareToRecord];
-    if(recorder == 0){
-        NSLog(@"error setting up recorder: %@", [error localizedDescription]);
-    }
-    
-    /* end of audio setup */
     
     attentionColors = [[NSArray alloc] initWithObjects:[UIColor clearColor], [UIColor orangeColor], [UIColor yellowColor], [UIColor greenColor], nil];
     meditationColors = [[NSArray alloc] initWithObjects: [UIColor clearColor], [UIColor purpleColor], [UIColor cyanColor], [UIColor blueColor], nil];
@@ -202,9 +174,151 @@
    //     NSLog(@" no type of sound that matches");
     }
     
-    [self playSystemSound:sndpath];
+    [self playMindSound:sndpath];
     
 }
+
+#pragma mark - audiomic recording code
+- (IBAction)startRecordClicked:(id)sender {
+    self.recordButton.hidden = YES;
+    self.stopButton.hidden = NO;
+    
+    NSLog(@"start record");
+    [audioRecorder release];
+    audioRecorder = nil;
+    
+    //Initialize audio session
+    AVAudioSession *audioSession = [AVAudioSession sharedInstance];
+    [audioSession setCategory:AVAudioSessionCategoryRecord error:nil];
+    
+    [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayAndRecord error:nil];
+    
+    //Override record to mix with other app audio, background audio not silenced on record
+    OSStatus propertySetError = 0;
+    UInt32 allowMixing = true;
+    propertySetError = AudioSessionSetProperty(kAudioSessionProperty_OverrideCategoryMixWithOthers, sizeof(allowMixing), &allowMixing);
+    
+    UInt32 audioRouteOverride = kAudioSessionOverrideAudioRoute_Speaker;
+    AudioSessionSetProperty (kAudioSessionProperty_OverrideAudioRoute,sizeof (audioRouteOverride),&audioRouteOverride);
+    
+    NSLog(@"Mixing: %lx", propertySetError); // This should be 0 or there was an issue somewhere
+    
+    [[AVAudioSession sharedInstance] setActive:YES error:nil];
+    
+    NSMutableDictionary *recordSetting = [[NSMutableDictionary alloc] initWithCapacity:0];
+    
+    if (recordEncoding == ENC_PCM) {
+        [recordSetting setValue:[NSNumber numberWithInt:kAudioFormatLinearPCM]  forKey:AVFormatIDKey];
+        [recordSetting setValue:[NSNumber numberWithFloat:44100.0]              forKey:AVSampleRateKey];
+        [recordSetting setValue:[NSNumber numberWithInt:2]                      forKey:AVNumberOfChannelsKey];
+        
+        [recordSetting setValue:[NSNumber numberWithInt:16]                     forKey:AVLinearPCMBitDepthKey];
+        [recordSetting setValue:[NSNumber numberWithBool:NO]                    forKey:AVLinearPCMIsBigEndianKey];
+        [recordSetting setValue:[NSNumber numberWithBool:NO]                    forKey:AVLinearPCMIsFloatKey];
+    } else {
+        
+        NSNumber *formatObject;
+        
+        switch (recordEncoding) {
+            case ENC_AAC:
+                formatObject = [NSNumber numberWithInt:kAudioFormatMPEG4AAC];
+                break;
+                
+            case ENC_ALAC:
+                formatObject = [NSNumber numberWithInt:kAudioFormatAppleLossless];
+                break;
+                
+            case ENC_IMA4:
+                formatObject = [NSNumber numberWithInt:kAudioFormatAppleIMA4];
+                break;
+                
+            case ENC_ILBC:
+                formatObject = [NSNumber numberWithInt:kAudioFormatiLBC];
+                break;
+                
+            case ENC_ULAW:
+                formatObject = [NSNumber numberWithInt:kAudioFormatULaw];
+                break;
+                
+            default:
+                formatObject = [NSNumber numberWithInt:kAudioFormatAppleIMA4];
+                break;
+        }
+        
+        [recordSetting setValue:formatObject                                forKey:AVFormatIDKey];
+        [recordSetting setValue:[NSNumber numberWithFloat:44100.0]          forKey:AVSampleRateKey];
+        [recordSetting setValue:[NSNumber numberWithInt:2]                  forKey:AVNumberOfChannelsKey];
+        [recordSetting setValue:[NSNumber numberWithInt:12800]              forKey:AVEncoderBitRateKey];
+        
+        [recordSetting setValue:[NSNumber numberWithInt:16]                 forKey:AVLinearPCMBitDepthKey];
+        [recordSetting setValue:[NSNumber numberWithInt:AVAudioQualityHigh] forKey:AVEncoderAudioQualityKey];
+        
+    }
+    
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *recDir = [paths objectAtIndex:0];
+    NSURL *url = [NSURL fileURLWithPath:[NSString stringWithFormat:@"%@/recordMind.caf", recDir]];
+    
+    NSError *error = nil;
+    audioRecorder = [[ AVAudioRecorder alloc] initWithURL:url settings:recordSetting error:&error];
+    
+    if (!audioRecorder) {
+        NSLog(@"audioRecorder: %@ %d %@", [error domain], [error code], [[error userInfo] description]);
+        return;
+    }
+    
+    //    audioRecorder.meteringEnabled = YES;
+    //
+    BOOL audioHWAvailable = audioSession.inputIsAvailable;
+    if (! audioHWAvailable) {
+        UIAlertView *cantRecordAlert =
+        [[UIAlertView alloc] initWithTitle: @"Warning"
+                                   message: @"Audio input hardware not available"
+                                  delegate: nil
+                         cancelButtonTitle:@"OK"
+                         otherButtonTitles:nil];
+        [cantRecordAlert show];
+        [cantRecordAlert release];
+        return;
+    }
+    
+    if ([audioRecorder prepareToRecord]) {
+        [audioRecorder record];
+        NSLog(@"recording");
+    } else {
+        //        int errorCode = CFSwapInt32HostToBig ([error code]);
+        //        NSLog(@"Error: %@ [%4.4s])" , [error localizedDescription], (char*)&errorCode);
+        NSLog(@"recorder: %@ %d %@", [error domain], [error code], [[error userInfo] description]);
+    }
+}
+
+- (IBAction)stopRecordClicked:(id)sender {
+    isPlayingMindSound = NO;
+    
+    NSLog(@"Stop recording");
+    [audioRecorder stop];
+    
+    if (audioPlayer) [audioPlayer stop];
+    [self viewPlayVC];
+    
+}
+
+- (void)playMindSound:(NSString *)sndpth{
+    NSError *error;
+    if([sndpth length] > 0){
+        
+        NSURL *mSoundURL = [NSURL fileURLWithPath:sndpth];
+        AVAudioPlayer *mindMusicPlayer = [[AVAudioPlayer alloc]
+                                          initWithContentsOfURL:mSoundURL
+                                          error:&error];
+        if(error)
+            NSLog(@"play mind music sound error: %@", [error localizedDescription]);
+        
+        
+        [mindMusicPlayer play];
+    }
+}
+
 
 #pragma mark -
 #pragma mark TGAccessoryDelegate protocol methods
@@ -345,7 +459,7 @@
     }
 }
 
-- (void)playSystemSound:(NSString *)sndpath{
+/*- (void)playSystemSound:(NSString *)sndpath{
     
     //    NSString *sndpath = [[NSBundle mainBundle] pathForResource:@"sound" ofType:@"wav"];
     if(sndpath != nil){
@@ -360,7 +474,7 @@
     } else {
         NSLog(@"snd path not found");
     }
-}
+}*/
 
 
 - (void)updateSounds{
@@ -411,7 +525,7 @@
 }
 
 /* ib actions */
--(IBAction)recordSound:(id)sender{
+/*-(IBAction)recordSound:(id)sender{
     
     
     if(isRecording){
@@ -443,7 +557,7 @@
         isRecording = YES;
         
     }
-}
+}*/
 
 - (void) audioRecorderDidFinishRecording:(AVAudioRecorder *)avrecorder successfully:(BOOL)flag{
     [recordButton setTitle:@"Record" forState:UIControlStateNormal];
@@ -451,6 +565,12 @@
 }
 
 - (void)viewPlayVC{
+    if (audioPlayerRecord) {
+        if (audioPlayerRecord.isPlaying) [audioPlayerRecord stop];
+      //  else [audioPlayerRecord play];
+        
+      //  return;
+    }
     
     PlayViewController *pvc = [[PlayViewController alloc] initWithNibName:@"PlayViewController" bundle:nil];
     pvc.soundURL = soundURL;

@@ -10,7 +10,6 @@
 #import "TGAccessoryManager.h"
 #import "TGAccessoryDelegate.h"
 #import <ExternalAccessory/ExternalAccessory.h>
-#include <AudioToolbox/AudioToolbox.h>
 #include <AVFoundation/AVFoundation.h>
 
 // the eSense values
@@ -32,7 +31,7 @@ typedef struct {
 } EEGValues;
 
 
-@interface ViewController : UIViewController <TGAccessoryDelegate, AVAudioRecorderDelegate> {
+@interface ViewController : UIViewController <TGAccessoryDelegate, AVAudioRecorderDelegate, AVAudioPlayerDelegate> {
     bool attentionSoundOn;
     bool meditationSoundOn;
     bool blinkSoundOn;
@@ -46,8 +45,8 @@ typedef struct {
     IBOutlet UIView *blinkView;
     IBOutlet UIImageView *connectedImageView;
     IBOutlet UIButton *recordButton;
+    IBOutlet UIButton *stopButton;
     
-     AVAudioRecorder *recorder;
     
     short rawValue;
     int rawCount;
@@ -73,7 +72,6 @@ typedef struct {
     UIView * loadingScreen;
     
     NSThread * updateThread;
-    SystemSoundID   soundFileObject;
     
     UIColor *lastAttentionColor;
     NSArray *attentionColors;
@@ -88,16 +86,33 @@ typedef struct {
     bool isPlayingMindSound;
     
     NSURL *soundURL;
+    
+    AVAudioPlayer *audioPlayer;
+    AVAudioPlayer *audioPlayerRecord;
+    AVAudioRecorder *audioRecorder;
+    
+    int recordEncoding;
+    
+    enum
+    {
+        ENC_AAC = 1,
+        ENC_ALAC = 2,
+        ENC_IMA4 = 3,
+        ENC_ILBC = 4,
+        ENC_ULAW = 5,
+        ENC_PCM = 6,
+    } encodingTypes;
 
    
 }
 
 // sound play methods
 - (void)playSound:(NSString *) typeOfSound theSenseOfValue:(int)senseValue;
-- (void)playSystemSound:(NSString *)sndpath;
-- (IBAction)recordSound:(id)sender;
-- (IBAction)stopRepeatingSound:(id)sender;
+- (void)playMindSound:(NSString *)sndpath;
 - (void)viewPlayVC;
+- (IBAction)startRecordClicked:(id)sender;
+- (IBAction)stopRecordClicked:(id)sender;
+//- (IBAction)playRecordClicked:(id)sender;
 
 
 @property (nonatomic, retain) IBOutlet UIView * loadingScreen;
@@ -118,6 +133,7 @@ typedef struct {
 @property bool blinkSoundOn;
 @property (nonatomic, strong) IBOutlet UIImageView *connectedImageView;
 @property (nonatomic, strong) IBOutlet UIButton *recordButton;
+@property (nonatomic, strong) IBOutlet UIButton *stopButton;
 
 @property (nonatomic, strong) UIColor *lastAttentionColor;
 @property (nonatomic, strong) NSArray *attentionColors;
