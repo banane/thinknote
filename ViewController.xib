@@ -8,11 +8,17 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ViewController">
             <connections>
                 <outlet property="attentionLabel" destination="uNX-AV-stw" id="Eay-fe-1r4"/>
+                <outlet property="attentionMuteButton" destination="dko-eD-cKe" id="uw0-W0-O3y"/>
+                <outlet property="attentionSoundButton" destination="qpS-BC-505" id="Gpu-NJ-MKg"/>
                 <outlet property="attentionView" destination="Ixg-LN-GGo" id="f08-N7-f1Z"/>
                 <outlet property="blinkLabel" destination="iFM-dZ-nMF" id="zlz-Tf-vfa"/>
+                <outlet property="blinkMuteButton" destination="hJE-zC-lwJ" id="F9a-cE-vo6"/>
+                <outlet property="blinkSoundButton" destination="BCt-ng-Ra5" id="JPi-pG-O9x"/>
                 <outlet property="blinkView" destination="Ir6-8v-AOU" id="dBs-kp-gC4"/>
                 <outlet property="connectedImageView" destination="Mgd-SF-mxb" id="X0H-kr-jGK"/>
                 <outlet property="meditationLabel" destination="dxl-af-Uwt" id="dOJ-nC-a5U"/>
+                <outlet property="meditationMuteButton" destination="beO-La-9ZV" id="nqE-9w-WNs"/>
+                <outlet property="meditationSoundButton" destination="Qdt-VM-zXf" id="GaE-yY-f0F"/>
                 <outlet property="meditationView" destination="8Rl-8h-DbH" id="t5o-Ud-dye"/>
                 <outlet property="recordButton" destination="DgH-tf-ZEM" id="P5c-aJ-DU3"/>
                 <outlet property="stopButton" destination="5L8-gr-stg" id="4SO-u1-pH2"/>
@@ -63,51 +69,83 @@
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <view contentMode="scaleToFill" id="8Rl-8h-DbH">
-                    <rect key="frame" x="26" y="245" width="80" height="80"/>
+                <view contentMode="scaleToFill" id="Ir6-8v-AOU" userLabel="blink button">
+                    <rect key="frame" x="215" y="245" width="80" height="80"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="beO-La-9ZV" userLabel="meditation_button">
-                            <rect key="frame" x="23" y="25" width="35" height="28"/>
+                        <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="hJE-zC-lwJ" userLabel="blink mute btn">
+                            <rect key="frame" x="-4" y="0.0" width="86" height="80"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" image="mute_icon.png">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="turnSoundOff:" destination="-1" eventType="touchUpInside" id="WWM-pK-7bP"/>
+                            </connections>
+                        </button>
+                        <button hidden="YES" opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="BCt-ng-Ra5" userLabel="blink sound btn">
+                            <rect key="frame" x="-3" y="0.0" width="86" height="80"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <state key="normal" image="sound_icon.png">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="turnSoundOn:" destination="-1" eventType="touchUpInside" id="qT0-YC-imc"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+                <view contentMode="scaleToFill" id="8Rl-8h-DbH" userLabel="meditation color view">
+                    <rect key="frame" x="26" y="245" width="80" height="80"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="beO-La-9ZV" userLabel="med mute btn">
+                            <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" image="mute_icon.png">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="turnSoundOff:" destination="-1" eventType="touchUpInside" id="EVD-0b-qCj"/>
+                            </connections>
+                        </button>
+                        <button hidden="YES" opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Qdt-VM-zXf" userLabel="med sound btn">
+                            <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" image="sound_icon.png">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="turnSoundOn:" destination="-1" eventType="touchUpInside" id="Lq7-cw-2zM"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" red="0.65225675806740568" green="0.26413409655100051" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 </view>
-                <view contentMode="scaleToFill" id="sDZ-nI-vHv">
-                    <rect key="frame" x="214" y="245" width="80" height="80"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                    <subviews>
-                        <view contentMode="scaleToFill" id="Ir6-8v-AOU">
-                            <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="hJE-zC-lwJ" userLabel="blink_button">
-                                    <rect key="frame" x="20" y="21" width="41" height="37"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <state key="normal" image="sound_icon.png">
-                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                    </state>
-                                </button>
-                            </subviews>
-                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                        </view>
-                    </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                </view>
-                <view contentMode="scaleToFill" id="Ixg-LN-GGo">
+                <view contentMode="scaleToFill" id="Ixg-LN-GGo" userLabel="attention color view">
                     <rect key="frame" x="120" y="245" width="80" height="80"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="dko-eD-cKe" userLabel="attention_button">
-                            <rect key="frame" x="20" y="21" width="41" height="37"/>
+                        <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="dko-eD-cKe" userLabel="att mute btn">
+                            <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" image="mute_icon.png">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="turnSoundOff:" destination="-1" eventType="touchUpInside" id="FfA-Nn-kuX"/>
+                            </connections>
+                        </button>
+                        <button hidden="YES" opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="qpS-BC-505" userLabel="att sound btn">
+                            <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <state key="normal" image="sound_icon.png">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="turnSoundOn:" destination="-1" eventType="touchUpInside" id="4NC-6l-QKp"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" red="0.94901967050000002" green="0.57647061349999995" blue="0.34901961679999999" alpha="1" colorSpace="deviceRGB"/>
@@ -127,6 +165,13 @@
                     <rect key="frame" x="272" y="14" width="28" height="25"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wave Quality" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jFP-75-Kky">
+                    <rect key="frame" x="183" y="18" width="89" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="12"/>
+                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="DgH-tf-ZEM" userLabel="record button">
                     <rect key="frame" x="123" y="416" width="80" height="80"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -137,16 +182,9 @@
                         <action selector="startRecordClicked:" destination="-1" eventType="touchUpInside" id="xHg-Gd-75o"/>
                     </connections>
                 </button>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wave Quality" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jFP-75-Kky">
-                    <rect key="frame" x="183" y="18" width="89" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="12"/>
-                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="5L8-gr-stg" userLabel="stop button">
-                    <rect key="frame" x="123" y="416" width="75" height="75"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <rect key="frame" x="123" y="418" width="75" height="75"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <state key="normal" image="stop_button.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -163,6 +201,7 @@
     <resources>
         <image name="Signal_Disconnected.png" width="60" height="60"/>
         <image name="icon1.png" width="81" height="87"/>
+        <image name="mute_icon.png" width="32" height="28"/>
         <image name="red_button.png" width="75" height="75"/>
         <image name="sound_icon.png" width="35" height="28"/>
         <image name="stop_button.png" width="75" height="75"/>

@@ -46,7 +46,8 @@ typedef struct {
     IBOutlet UIImageView *connectedImageView;
     IBOutlet UIButton *recordButton;
     IBOutlet UIButton *stopButton;
-    
+    IBOutlet UIButton *meditationMuteButton;
+    IBOutlet UIButton *meditationSoundButton;
     
     short rawValue;
     int rawCount;
@@ -112,6 +113,8 @@ typedef struct {
 - (void)viewPlayVC;
 - (IBAction)startRecordClicked:(id)sender;
 - (IBAction)stopRecordClicked:(id)sender;
+- (IBAction)turnSoundOn:(id)sender;
+- (IBAction)turnSoundOff:(id)sender;
 //- (IBAction)playRecordClicked:(id)sender;
 
 
@@ -134,6 +137,15 @@ typedef struct {
 @property (nonatomic, strong) IBOutlet UIImageView *connectedImageView;
 @property (nonatomic, strong) IBOutlet UIButton *recordButton;
 @property (nonatomic, strong) IBOutlet UIButton *stopButton;
+
+/* mute buttons */
+@property (nonatomic, strong) IBOutlet UIButton *meditationMuteButton;
+@property (nonatomic, strong) IBOutlet UIButton *meditationSoundButton;
+@property (nonatomic, strong) IBOutlet UIButton *attentionMuteButton;
+@property (nonatomic, strong) IBOutlet UIButton *attentionSoundButton;
+@property (nonatomic, strong) IBOutlet UIButton *blinkMuteButton;
+@property (nonatomic, strong) IBOutlet UIButton *blinkSoundButton;
+
 
 @property (nonatomic, strong) UIColor *lastAttentionColor;
 @property (nonatomic, strong) NSArray *attentionColors;

@@ -22,6 +22,7 @@
 @synthesize loadingScreen, soundFileObject, lastBlinkValue, lastAttentionValue, lastMeditationValue;
 @synthesize blinkLabel, meditationLabel, attentionLabel;
 @synthesize meditationView, attentionView, blinkView, attentionColors, lastAttentionColor, meditationColors, lastMeditationColor, blinkColors, lastBlinkColor, connectedImageView, recordButton, stopButton, isRecording;
+@synthesize meditationMuteButton, meditationSoundButton, blinkMuteButton, blinkSoundButton, attentionMuteButton, attentionSoundButton;
 
 
 
@@ -577,8 +578,52 @@
     
 	[[self navigationController] pushViewController:pvc animated:YES];
     
+}
+-(IBAction)turnSoundOff:(id)sender{
+    switch([sender tag]){
+        case 1:
+            blinkSoundOn = NO;
+            blinkSoundButton.hidden = NO;
+            blinkMuteButton.hidden = YES;
+            break;
+        case 2:
+            attentionSoundOn = NO;
+            attentionSoundButton.hidden = NO;
+            attentionMuteButton.hidden = YES;
+            break;
+        case 3:
+            meditationSoundOn = NO;
+            meditationMuteButton.hidden = YES;
+            meditationSoundButton.hidden = NO;
+            break;
+        default:
+            break;
+    }
+    
+}
+-(IBAction)turnSoundOn:(id)sender{
+    switch([sender tag]){
+        case 1:
+            blinkSoundOn = YES;
+            blinkMuteButton.hidden = NO;
+            blinkSoundButton.hidden = YES;
+            break;
+        case 2:
+            attentionSoundOn = YES;
+            attentionMuteButton.hidden = NO;
+            attentionSoundButton.hidden = YES;
+            break;
+        case 3:
+            meditationSoundOn = YES;
+            meditationMuteButton.hidden = NO;
+            meditationSoundButton.hidden = YES;
+            break;
+        default:
+            break;
+    }
 
 }
+
 - (IBAction)stopRepeatingSound:(id)sender{
     [[TGAccessoryManager sharedTGAccessoryManager] stopStream];
 
