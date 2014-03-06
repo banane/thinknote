@@ -9,6 +9,7 @@
 #import "TGAccessoryManager.h"
 #import <FacebookSDK/FacebookSDK.h>
 
+#import "PlayViewController.h"
 
 #import "ThinkNoteAppDelegate.h"
 //#import "RootViewController.h"
@@ -108,11 +109,16 @@
                                 sourceApplication:sourceApplication
                                   fallbackHandler:^(FBAppCall *call) {
                                       NSLog(@"Unhandled deep link: %@", url);
+                                      [self viewPlay];
                                       // Here goes the code to handle the links
                                       // Use the links to show a relevant view of your app to the user
                                   }];
     
     return urlWasHandled;
+}
+- (void)viewPlay{
+    PlayViewController *pvc = [[PlayViewController alloc] initWithNibName:@"PlayViewController" bundle:nil];
+    [self.navigationController pushViewController:pvc animated:NO];
 }
 
 - (void)dealloc {

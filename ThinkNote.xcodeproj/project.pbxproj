@@ -89,6 +89,7 @@
 		ED762B3318B85490006BD2AA /* PlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED762B3118B85490006BD2AA /* PlayViewController.m */; };
 		ED762B3418B85490006BD2AA /* PlayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED762B3218B85490006BD2AA /* PlayViewController.xib */; };
 		EDE8120E18C83C6100089D04 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDE8120D18C83C6100089D04 /* FacebookSDK.framework */; };
+		EDE8121018C8484500089D04 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDE8120F18C8484500089D04 /* MessageUI.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -182,6 +183,7 @@
 		ED762B3118B85490006BD2AA /* PlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayViewController.m; sourceTree = "<group>"; };
 		ED762B3218B85490006BD2AA /* PlayViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlayViewController.xib; sourceTree = "<group>"; };
 		EDE8120D18C83C6100089D04 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../../Documents/FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
+		EDE8120F18C8484500089D04 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,6 +191,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EDE8121018C8484500089D04 /* MessageUI.framework in Frameworks */,
 				ED762B2F18B85209006BD2AA /* AVFoundation.framework in Frameworks */,
 				EDE8120E18C83C6100089D04 /* FacebookSDK.framework in Frameworks */,
 				ED1CBF3C18A6C7F000DF600A /* AudioToolbox.framework in Frameworks */,
@@ -328,6 +331,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EDE8120F18C8484500089D04 /* MessageUI.framework */,
 				EDE8120D18C83C6100089D04 /* FacebookSDK.framework */,
 				ED762B2E18B85209006BD2AA /* AVFoundation.framework */,
 				ED1CBF3B18A6C7F000DF600A /* AudioToolbox.framework */,

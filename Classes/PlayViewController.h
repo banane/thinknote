@@ -9,8 +9,10 @@
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
 #import <FacebookSDK/FacebookSDK.h>
+#import <MessageUI/MessageUI.h>
+#import <MessageUI/MFMailComposeViewController.h>
 
-@interface PlayViewController : UIViewController <AVAudioPlayerDelegate>{
+@interface PlayViewController : UIViewController <AVAudioPlayerDelegate, MFMailComposeViewControllerDelegate>{
      AVAudioPlayer *player;
     NSURL *soundURL;
     FBShareDialogParams *fsdparams;
@@ -25,5 +27,5 @@
 -(IBAction)share:(id)sender;
 -(void)presentDialogShare;
 -(void)presentFeedShare;
-
+-(IBAction)launchMail:(id)sender;
 @end

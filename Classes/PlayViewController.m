@@ -159,4 +159,23 @@
                                               }];
 }
 
+-(IBAction)launchMail:(id)sender{
+    NSData *cafDATA = [NSData dataWithContentsOfURL:soundURL];
+    
+    MFMailComposeViewController *mailViewController = [[MFMailComposeViewController alloc] init];
+    mailViewController.mailComposeDelegate = self;
+    [mailViewController setSubject:@"I just made a song with my mind using the Thinknote iOS app."];
+    [mailViewController setMessageBody:@"Here is the song!" isHTML:NO];
+    [mailViewController addAttachmentData:cafDATA
+                     mimeType:@"audio/caf"
+                     fileName:@"thinknote_song.caf"];
+    
+    [self presentModalViewController:mailViewController animated:YES];
+    [mailViewController release];
+}
+
+- (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error{
+    [self dismissModalViewControllerAnimated:YES];
+}
+
 @end
