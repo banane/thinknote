@@ -92,6 +92,8 @@ typedef struct {
     AVAudioPlayer *audioPlayerRecord;
     AVAudioRecorder *audioRecorder;
     
+    NSURL *recordedURL;
+    
     int recordEncoding;
     
     enum
@@ -137,6 +139,8 @@ typedef struct {
 @property (nonatomic, strong) IBOutlet UIImageView *connectedImageView;
 @property (nonatomic, strong) IBOutlet UIButton *recordButton;
 @property (nonatomic, strong) IBOutlet UIButton *stopButton;
+
+@property (nonatomic, strong) NSURL *recordedURL;
 
 /* mute buttons */
 @property (nonatomic, strong) IBOutlet UIButton *meditationMuteButton;

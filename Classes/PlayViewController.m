@@ -29,6 +29,9 @@
 {
     [[self navigationController] setNavigationBarHidden:NO animated:NO];
     self.title = @"Play ThinkNote";
+ 
+    
+    
     // Custom initialization
     params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
               @"Thinknote Song", @"name",
@@ -72,12 +75,9 @@
     AVAudioSession *audioSession = [AVAudioSession sharedInstance];
     [audioSession setCategory:AVAudioSessionCategoryPlayback error:nil];
     
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *recDir = [paths objectAtIndex:0];
-    NSURL *url = [NSURL fileURLWithPath:[NSString stringWithFormat:@"%@/recordMind.caf", recDir]];
-    
+  
     NSError *error;
-    player = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
+    player = [[AVAudioPlayer alloc] initWithContentsOfURL:soundURL error:&error];
     [player play];
 }
 
@@ -160,7 +160,9 @@
 }
 
 -(IBAction)launchMail:(id)sender{
+   
     NSData *cafDATA = [NSData dataWithContentsOfURL:soundURL];
+    NSLog(@"\n mydata %d",[cafDATA length]);
     
     MFMailComposeViewController *mailViewController = [[MFMailComposeViewController alloc] init];
     mailViewController.mailComposeDelegate = self;

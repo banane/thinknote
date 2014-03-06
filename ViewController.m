@@ -23,6 +23,7 @@
 @synthesize blinkLabel, meditationLabel, attentionLabel;
 @synthesize meditationView, attentionView, blinkView, attentionColors, lastAttentionColor, meditationColors, lastMeditationColor, blinkColors, lastBlinkColor, connectedImageView, recordButton, stopButton, isRecording;
 @synthesize meditationMuteButton, meditationSoundButton, blinkMuteButton, blinkSoundButton, attentionMuteButton, attentionSoundButton;
+@synthesize recordedURL;
 
 
 
@@ -266,10 +267,10 @@
     
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *recDir = [paths objectAtIndex:0];
-    NSURL *url = [NSURL fileURLWithPath:[NSString stringWithFormat:@"%@/recordMind.caf", recDir]];
+    recordedURL = [NSURL fileURLWithPath:[NSString stringWithFormat:@"%@/recordMind.caf", recDir]];
     
     NSError *error = nil;
-    audioRecorder = [[ AVAudioRecorder alloc] initWithURL:url settings:recordSetting error:&error];
+    audioRecorder = [[ AVAudioRecorder alloc] initWithURL:recordedURL settings:recordSetting error:&error];
     
     if (!audioRecorder) {
         NSLog(@"audioRecorder: %@ %d %@", [error domain], [error code], [[error userInfo] description]);
@@ -582,7 +583,7 @@
     }
     
     PlayViewController *pvc = [[PlayViewController alloc] initWithNibName:@"PlayViewController" bundle:nil];
-    pvc.soundURL = soundURL;
+    pvc.soundURL = recordedURL;
     
 	[[self navigationController] pushViewController:pvc animated:YES];
     
