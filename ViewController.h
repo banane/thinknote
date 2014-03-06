@@ -118,6 +118,7 @@ typedef struct {
 - (IBAction)turnSoundOn:(id)sender;
 - (IBAction)turnSoundOff:(id)sender;
 //- (IBAction)playRecordClicked:(id)sender;
+-(void)flurryLog:(NSString *)message;
 
 
 @property (nonatomic, retain) IBOutlet UIView * loadingScreen;

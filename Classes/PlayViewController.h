@@ -28,4 +28,5 @@
 -(void)presentDialogShare;
 -(void)presentFeedShare;
 -(IBAction)launchMail:(id)sender;
+-(void)flurryLog:(NSString *)message;
 @end

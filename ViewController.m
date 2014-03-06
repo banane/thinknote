@@ -8,6 +8,7 @@
 
 
 #import "ViewController.h"
+#import "ThinkNoteAppDelegate.h"
 #import "PlayViewController.h"
 
 @interface ViewController ()
@@ -185,8 +186,15 @@
     
 }
 
+-(void)flurryLog:(NSString *)message {
+    ThinkGearTouchAppDelegate *appdelegate = (ThinkGearTouchAppDelegate *)[[UIApplication sharedApplication] delegate];
+    [appdelegate flurryLog:message];
+
+}
+
 #pragma mark - audiomic recording code
 - (IBAction)startRecordClicked:(id)sender {
+    [self flurryLog:@"startedrecording"];
     NSLog(@"startRecordClicked");
     self.recordButton.hidden = YES;
     self.stopButton.hidden = NO;
@@ -303,6 +311,7 @@
 }
 
 - (IBAction)stopRecordClicked:(id)sender {
+    [self flurryLog:@"stoprecording"];
     NSLog(@"stopRecordClicked");
     isPlayingMindSound = NO;
     
@@ -589,18 +598,24 @@
     
 }
 -(IBAction)turnSoundOff:(id)sender{
+
     switch([sender tag]){
         case 1:
+            [self flurryLog:@"soundoff blink"];
             blinkSoundOn = NO;
             blinkSoundButton.hidden = NO;
             blinkMuteButton.hidden = YES;
             break;
         case 2:
+            [self flurryLog:@"soundoff attention"];
+
             attentionSoundOn = NO;
             attentionSoundButton.hidden = NO;
             attentionMuteButton.hidden = YES;
             break;
         case 3:
+            [self flurryLog:@"soundoff meditation"];
+
             meditationSoundOn = NO;
             meditationMuteButton.hidden = YES;
             meditationSoundButton.hidden = NO;
@@ -613,16 +628,22 @@
 -(IBAction)turnSoundOn:(id)sender{
     switch([sender tag]){
         case 1:
+            [self flurryLog:@"sound on blink"];
+
             blinkSoundOn = YES;
             blinkMuteButton.hidden = NO;
             blinkSoundButton.hidden = YES;
             break;
         case 2:
+            [self flurryLog:@"soundon attention"];
+
             attentionSoundOn = YES;
             attentionMuteButton.hidden = NO;
             attentionSoundButton.hidden = YES;
             break;
         case 3:
+            [self flurryLog:@"soundon meditation"];
+
             meditationSoundOn = YES;
             meditationMuteButton.hidden = NO;
             meditationSoundButton.hidden = YES;

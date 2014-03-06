@@ -15,5 +15,6 @@
 @property (nonatomic, retain) IBOutlet UINavigationController * navigationController;
 
 -(void)viewPlay;
+-(void)flurryLog:(NSString *)message;
 
 @end

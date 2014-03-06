@@ -6,6 +6,7 @@
 //
 //
 #import "PlayViewController.h"
+#import "ThinkNoteAppDelegate.h"
 
 @interface PlayViewController ()
 
@@ -23,6 +24,11 @@
  
     }
     return self;
+}
+-(void)flurryLog:(NSString *)message {
+    ThinkGearTouchAppDelegate *appdelegate = (ThinkGearTouchAppDelegate *)[[UIApplication sharedApplication] delegate];
+    [appdelegate flurryLog:message];
+    
 }
 
 - (void)viewDidLoad
@@ -63,6 +69,7 @@
 }
 
 - (IBAction)playRecordClicked:(id)sender {
+    [self flurryLog:@"playRecordClicked"];
     NSLog(@"play Record");
    /* if (audioPlayerRecord) {
         if (audioPlayerRecord.isPlaying) [audioPlayerRecord stop];
@@ -96,6 +103,8 @@
 #pragma mark IBActions
 
 -(IBAction)share:(id)sender{
+    [self flurryLog:@"share"];
+
     // Check if the Facebook app is installed and we can present the share dialog
     
     // If the Facebook app is installed and we can present the share dialog
@@ -121,8 +130,12 @@
                                           // An error occurred, we need to handle the error
                                           // See: https://developers.facebook.com/docs/ios/errors
                                           NSLog([NSString stringWithFormat:@"Error publishing story: %@", error.description]);
+                                          NSString *message = [NSString stringWithFormat:@"fb share dialog error: @%", error.description];
+                                          [self flurryLog:message];
                                       } else {
                                           // Success
+                                          [self flurryLog:@"fb share dialog success"];
+
                                           NSLog(@"result %@", results);
                                       }
                                   }];
@@ -137,6 +150,8 @@
                                                       // An error occurred, we need to handle the error
                                                       // See: https://developers.facebook.com/docs/ios/errors
                                                       NSLog([NSString stringWithFormat:@"Error publishing story: %@", error.description]);
+                                                      NSString *message = [NSString stringWithFormat:@"fb share feed error: @%", error.description];
+
                                                   } else {
                                                       if (result == FBWebDialogResultDialogNotCompleted) {
                                                           // User cancelled.
@@ -148,9 +163,13 @@
                                                           if (![urlParams valueForKey:@"post_id"]) {
                                                               // User cancelled.
                                                               NSLog(@"User cancelled.");
+                                                              [self flurryLog:@"fb share feed User cancelled"];
+
                                                               
                                                           } else {
                                                               // User clicked the Share button
+                                                              [self flurryLog:@"fb share feed success"];
+
                                                               NSString *result = [NSString stringWithFormat: @"Posted story, id: %@", [urlParams valueForKey:@"post_id"]];
                                                               NSLog(@"result %@", result);
                                                           }
@@ -177,6 +196,12 @@
 }
 
 - (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error{
+    if([error length] == 0){
+        [self flurryLog:@"mail finished - success"];
+    } else {
+        [self flurryLog:@"mail finish - error"];
+
+    }
     [self dismissModalViewControllerAnimated:YES];
 }
 
