@@ -64,6 +64,11 @@
 
     [self setLoadingScreenView];
     
+    self.stopButton.enabled = NO;
+    self.stopButton.hidden = YES;
+    self.recordButton.hidden = NO;
+    self.recordButton.enabled = YES;
+    
     NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
     logEnabled = [defaults boolForKey:@"logging_enabled"];
     if(logEnabled) {
@@ -181,8 +186,11 @@
 
 #pragma mark - audiomic recording code
 - (IBAction)startRecordClicked:(id)sender {
+    NSLog(@"startRecordClicked");
     self.recordButton.hidden = YES;
     self.stopButton.hidden = NO;
+    self.stopButton.enabled = YES;
+    self.recordButton.enabled = NO;
     
     NSLog(@"start record");
     [audioRecorder release];
@@ -294,9 +302,9 @@
 }
 
 - (IBAction)stopRecordClicked:(id)sender {
+    NSLog(@"stopRecordClicked");
     isPlayingMindSound = NO;
     
-    NSLog(@"Stop recording");
     [audioRecorder stop];
     
     if (audioPlayer) [audioPlayer stop];

@@ -5,7 +5,6 @@
 //  Created by Anna Billstrom on 2/21/14.
 //
 //
-
 #import "PlayViewController.h"
 
 @interface PlayViewController ()
@@ -13,14 +12,15 @@
 @end
 
 @implementation PlayViewController
-@synthesize soundURL;
+@synthesize soundURL,params,fsdparams;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         
-        // Custom initialization
+        
+ 
     }
     return self;
 }
@@ -29,7 +29,22 @@
 {
     [[self navigationController] setNavigationBarHidden:NO animated:NO];
     self.title = @"Play ThinkNote";
+    // Custom initialization
+    params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+              @"Thinknote Song", @"name",
+              @"Make Music With Your Mind", @"caption",
+              @"I made this song while wearing the Neurosky headset. It records my thoughts with music.", @"description",
+              @"http://www.pickaxemobile.com/thinknote", @"link",
+              @"http://i.imgur.com/g3Qc1HN.png", @"picture",
+              nil];
+    fsdparams = [[FBShareDialogParams alloc] init];
+    fsdparams.link = [NSURL URLWithString:[params objectForKey:@"link"]];
+    fsdparams.name = [params objectForKey:@"name"];
+    fsdparams.caption = [params objectForKey:@"caption"];
+    fsdparams.picture = [NSURL URLWithString:[params objectForKey:@"picture"]];
+    fsdparams.description = [params objectForKey:@"description"];
 
+    
     [super viewDidLoad];
     
 
@@ -76,6 +91,72 @@
                                           cancelButtonTitle:@"OK"
                                           otherButtonTitles:nil];
     [alert show];
+}
+
+#pragma mark IBActions
+
+-(IBAction)share:(id)sender{
+    // Check if the Facebook app is installed and we can present the share dialog
+    
+    // If the Facebook app is installed and we can present the share dialog
+    if ([FBDialogs canPresentShareDialogWithParams:fsdparams]) {
+        [self presentDialogShare];
+    } else {
+        [self presentFeedShare];
+    }
+}
+
+-(void)presentDialogShare{
+    // Present share dialog
+
+
+    [FBDialogs presentShareDialogWithLink:fsdparams.link
+                                     name:fsdparams.name
+                                  caption:fsdparams.caption
+                              description:fsdparams.description
+                                  picture:fsdparams.picture
+                              clientState:nil
+                                  handler:^(FBAppCall *call, NSDictionary *results, NSError *error) {
+                                      if(error) {
+                                          // An error occurred, we need to handle the error
+                                          // See: https://developers.facebook.com/docs/ios/errors
+                                          NSLog([NSString stringWithFormat:@"Error publishing story: %@", error.description]);
+                                      } else {
+                                          // Success
+                                          NSLog(@"result %@", results);
+                                      }
+                                  }];
+}
+
+-(void)presentFeedShare{
+    // Show the feed dialog
+    [FBWebDialogs presentFeedDialogModallyWithSession:nil
+                                           parameters:params
+                                              handler:^(FBWebDialogResult result, NSURL *resultURL, NSError *error) {
+                                                  if (error) {
+                                                      // An error occurred, we need to handle the error
+                                                      // See: https://developers.facebook.com/docs/ios/errors
+                                                      NSLog([NSString stringWithFormat:@"Error publishing story: %@", error.description]);
+                                                  } else {
+                                                      if (result == FBWebDialogResultDialogNotCompleted) {
+                                                          // User cancelled.
+                                                          NSLog(@"User cancelled.");
+                                                      } else {
+                                                          // Handle the publish feed callback
+                                                          NSDictionary *urlParams = [self parseURLParams:[resultURL query]];
+                                                          
+                                                          if (![urlParams valueForKey:@"post_id"]) {
+                                                              // User cancelled.
+                                                              NSLog(@"User cancelled.");
+                                                              
+                                                          } else {
+                                                              // User clicked the Share button
+                                                              NSString *result = [NSString stringWithFormat: @"Posted story, id: %@", [urlParams valueForKey:@"post_id"]];
+                                                              NSLog(@"result %@", result);
+                                                          }
+                                                      }
+                                                  }
+                                              }];
 }
 
 @end
