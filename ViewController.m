@@ -54,8 +54,10 @@
     
     
     UIColor *attentionColor3 = [UIColor colorWithRed:255.0f
-                                   green: 242.0f blue: 0.0f
-                                   alpha:1.0f];
+                                               green: 242.0f
+                                                blue: 0.0f
+                                               alpha:1.0f];
+    
     UIColor *attentionColor2 = [UIColor colorWithRed:141.0f
                                               green:198.0f
                                                blue:63.0f
@@ -64,7 +66,7 @@
     UIColor *attentionColor1 = [UIColor colorWithRed: 0.0f
                                                green: 148.0f
                                                 blue: 68.0f
-                                               alpha:1.0f];
+                                               alpha: 1.0f];
     
     UIColor *meditationColor3 = [UIColor colorWithRed: 218.0f
                                                green: 28.0f
@@ -76,15 +78,18 @@
                                                 blue: 145.0f
                                                alpha:1.0f];
 
-    UIColor *meditationColor1 = [UIColor colorWithRed: 38.0f
+    UIColor *meditationColor1 = [UIColor colorWithRed:38.0f
                                                green: 34.0f
                                                 blue: 98.0f
                                                alpha: 1.0f];
     
+    UIColor *blinkColor1 = [UIColor colorWithRed:0.0f green:167.0f blue:157.0f alpha:1.0f];
+    UIColor *blinkColor2 = [UIColor colorWithRed:28.0f green:117.0f blue:188.0f alpha:1.0f];
+    
     attentionColors = [[NSArray alloc] initWithObjects:attentionColor1, attentionColor1, attentionColor2, attentionColor3, nil];
     meditationColors = [[NSArray alloc] initWithObjects: meditationColor1, meditationColor1, meditationColor2, meditationColor3, nil];
     
-    blinkColors = [[NSArray alloc] initWithObjects: [UIColor clearColor], [UIColor grayColor], nil];
+    blinkColors = [[NSArray alloc] initWithObjects: blinkColor1, [UIColor redColor], [UIColor blackColor], nil];
     lastBlinkColor = [blinkColors objectAtIndex:0];
 }
 
@@ -570,40 +575,7 @@
 
 }
 
-/* ib actions */
-/*-(IBAction)recordSound:(id)sender{
-    
-    
-    if(isRecording){
-        
-        NSLog(@"stopped recording");
-         [recorder stop];
-        isPlayingMindSound = NO;
-        AVAudioSession *audioSession = [AVAudioSession sharedInstance];
-        [audioSession setActive:NO error:nil];
-//        [self.recordButton setTitle:@"Record" forState:UIControlStateNormal];
-        [self.recordButton setImage:[UIImage imageNamed:@"play_button"] forState:UIControlStateNormal];
-        
-        isRecording = NO;
-       // [NSThread detachNewThreadSelector:@selector(updateView) toTarget:self withObject:nil];
 
-        [self viewPlayVC];
-    } else {
-        NSLog(@"recording..");
-        NSError *sessionerror;
-        AVAudioSession *session = [AVAudioSession sharedInstance];
-        [session setCategory:AVAudioSessionCategoryRecord error:&sessionerror];
-//        NSLog(@"session error in record button: %@", [sessionerror description]);
-        [session setActive:YES error:nil];
-        
-        // Start recording
-        [recorder record];
-        [self.recordButton setImage:[UIImage imageNamed:@"stop_button"] forState:UIControlStateNormal];
-//        [self.recordButton setTitle:@"Stop" forState:UIControlStateNormal];
-        isRecording = YES;
-        
-    }
-}*/
 
 - (void) audioRecorderDidFinishRecording:(AVAudioRecorder *)avrecorder successfully:(BOOL)flag{
 //    [recordButton setTitle:@"Record" forState:UIControlStateNormal];
@@ -685,8 +657,6 @@
     [[TGAccessoryManager sharedTGAccessoryManager] stopStream];
 
 }
-
-/* TODO: set meditation/attention/blink sounds off */
 
 
 
