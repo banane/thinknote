@@ -52,10 +52,37 @@
     self.stopButton.hidden = YES;
     self.recordButton.hidden = NO;
     
-
     
-    attentionColors = [[NSArray alloc] initWithObjects:[UIColor clearColor], [UIColor orangeColor], [UIColor yellowColor], [UIColor greenColor], nil];
-    meditationColors = [[NSArray alloc] initWithObjects: [UIColor clearColor], [UIColor purpleColor], [UIColor cyanColor], [UIColor blueColor], nil];
+    UIColor *attentionColor3 = [UIColor colorWithRed:255.0f
+                                   green: 242.0f blue: 0.0f
+                                   alpha:1.0f];
+    UIColor *attentionColor2 = [UIColor colorWithRed:141.0f
+                                              green:198.0f
+                                               blue:63.0f
+                                              alpha:1.0f];
+    
+    UIColor *attentionColor1 = [UIColor colorWithRed: 0.0f
+                                               green: 148.0f
+                                                blue: 68.0f
+                                               alpha:1.0f];
+    
+    UIColor *meditationColor3 = [UIColor colorWithRed: 218.0f
+                                               green: 28.0f
+                                                blue: 92.0f
+                                               alpha:1.0f];
+    
+    UIColor *meditationColor2 = [UIColor colorWithRed: 102.0f
+                                               green: 45.0f
+                                                blue: 145.0f
+                                               alpha:1.0f];
+
+    UIColor *meditationColor1 = [UIColor colorWithRed: 38.0f
+                                               green: 34.0f
+                                                blue: 98.0f
+                                               alpha: 1.0f];
+    
+    attentionColors = [[NSArray alloc] initWithObjects:attentionColor1, attentionColor1, attentionColor2, attentionColor3, nil];
+    meditationColors = [[NSArray alloc] initWithObjects: meditationColor1, meditationColor1, meditationColor2, meditationColor3, nil];
     
     blinkColors = [[NSArray alloc] initWithObjects: [UIColor clearColor], [UIColor grayColor], nil];
     lastBlinkColor = [blinkColors objectAtIndex:0];
