@@ -8,12 +8,13 @@
 
 #import "TGAccessoryManager.h"
 #import <FacebookSDK/FacebookSDK.h>
-
+#import "TestFlight.h"
 #import "PlayViewController.h"
 
 #import "ThinkNoteAppDelegate.h"
 //#import "RootViewController.h"
 #import "ViewController.h"
+#import "Flurry.h"
 
 @implementation ThinkGearTouchAppDelegate
 
@@ -25,6 +26,11 @@
  
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
     NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
+     [TestFlight takeOff:@"efaad550-b037-40bb-9e98-d4702170af04"];
+    //WZG65KF5WYBPD9M4XN2Q
+    [Flurry setCrashReportingEnabled:YES];
+    //note: iOS only allows one crash reporting tool per app; if using another, set to: NO
+    [Flurry startSession:@"WZG65KF5WYBPD9M4XN2Q"];
     TGAccessoryType accessoryType = (TGAccessoryType)[defaults integerForKey:@"accessory_type_preference"];
     //
     // to use a connection to the ThinkGear Connector for
@@ -119,6 +125,10 @@
 - (void)viewPlay{
     PlayViewController *pvc = [[PlayViewController alloc] initWithNibName:@"PlayViewController" bundle:nil];
     [self.navigationController pushViewController:pvc animated:NO];
+}
+
+- (void)flurryLog:(NSString *)message{
+    [Flurry logEvent:message];
 }
 
 - (void)dealloc {

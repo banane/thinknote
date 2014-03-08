@@ -90,6 +90,13 @@
 		ED762B3318B85490006BD2AA /* PlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED762B3118B85490006BD2AA /* PlayViewController.m */; };
 		ED762B3418B85490006BD2AA /* PlayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED762B3218B85490006BD2AA /* PlayViewController.xib */; };
 		EDE8121018C8484500089D04 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDE8120F18C8484500089D04 /* MessageUI.framework */; };
+		EDE8121818C9287400089D04 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EDE8121218C9287400089D04 /* libTestFlight.a */; };
+		EDE8121918C9287400089D04 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = EDE8121318C9287400089D04 /* README.md */; };
+		EDE8121A18C9287400089D04 /* release_notes.md in Resources */ = {isa = PBXBuildFile; fileRef = EDE8121418C9287400089D04 /* release_notes.md */; };
+		EDE8121C18C9289D00089D04 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EDE8121B18C9289D00089D04 /* libz.dylib */; };
+		EDE8122418C92A9900089D04 /* libFlurry_4.3.2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EDE8122318C92A9900089D04 /* libFlurry_4.3.2.a */; };
+		EDE8122618C92B4700089D04 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDE8122518C92B4700089D04 /* Security.framework */; };
+		EDE8122818C92B5100089D04 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDE8122718C92B5100089D04 /* SystemConfiguration.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -184,6 +191,17 @@
 		ED762B3118B85490006BD2AA /* PlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayViewController.m; sourceTree = "<group>"; };
 		ED762B3218B85490006BD2AA /* PlayViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlayViewController.xib; sourceTree = "<group>"; };
 		EDE8120F18C8484500089D04 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		EDE8121218C9287400089D04 /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFlight.a; sourceTree = "<group>"; };
+		EDE8121318C9287400089D04 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		EDE8121418C9287400089D04 /* release_notes.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = release_notes.md; sourceTree = "<group>"; };
+		EDE8121518C9287400089D04 /* TestFlight+AsyncLogging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TestFlight+AsyncLogging.h"; sourceTree = "<group>"; };
+		EDE8121618C9287400089D04 /* TestFlight+ManualSessions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TestFlight+ManualSessions.h"; sourceTree = "<group>"; };
+		EDE8121718C9287400089D04 /* TestFlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFlight.h; sourceTree = "<group>"; };
+		EDE8121B18C9289D00089D04 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		EDE8122218C92A9900089D04 /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
+		EDE8122318C92A9900089D04 /* libFlurry_4.3.2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_4.3.2.a; sourceTree = "<group>"; };
+		EDE8122518C92B4700089D04 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		EDE8122718C92B5100089D04 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,8 +209,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EDE8122818C92B5100089D04 /* SystemConfiguration.framework in Frameworks */,
+				EDE8122618C92B4700089D04 /* Security.framework in Frameworks */,
+				EDE8121C18C9289D00089D04 /* libz.dylib in Frameworks */,
 				EDE8121018C8484500089D04 /* MessageUI.framework in Frameworks */,
-				ED762B2F18B85209006BD2AA /* AVFoundation.framework in Frameworks */,
+				ED762B2F18B85209006BD2AA /* AVFoundation.framework in Frameworks */, 
+				EDE8120E18C83C6100089D04 /* FacebookSDK.framework in Frameworks */,
+				EDE8121818C9287400089D04 /* libTestFlight.a in Frameworks */, 
 				ED1CBF3C18A6C7F000DF600A /* AudioToolbox.framework in Frameworks */,
 				07EB058916260AA900D376E2 /* QuartzCore.framework in Frameworks */,
 				268327361593C23200D004F6 /* Accelerate.framework in Frameworks */,
@@ -202,6 +225,7 @@
 				8B47CE2218CAADCF007C9B33 /* FacebookSDK.framework in Frameworks */,
 				2892E4100DC94CBA00A64D0F /* CoreGraphics.framework in Frameworks */,
 				268627401627B11E0005FEB1 /* libTGAccessory.a in Frameworks */,
+				EDE8122418C92A9900089D04 /* libFlurry_4.3.2.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -242,6 +266,8 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				EDE8122118C92A9900089D04 /* Flurry */,
+				EDE8121118C9287400089D04 /* TestFlightSDK2.0.2 */,
 				07EB058816260AA900D376E2 /* QuartzCore.framework */,
 				5874B69A10C8769200857C66 /* Libraries */,
 				080E96DDFE201D6D7F000001 /* Classes */,
@@ -331,7 +357,12 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				8B47CE2118CAADCF007C9B33 /* FacebookSDK.framework */,
+
+				8B47CE2118CAADCF007C9B33 /* FacebookSDK.framework */, 
+				EDE8122718C92B5100089D04 /* SystemConfiguration.framework */,
+				EDE8122518C92B4700089D04 /* Security.framework */,
+				EDE8121B18C9289D00089D04 /* libz.dylib */,
+
 				EDE8120F18C8484500089D04 /* MessageUI.framework */,
 				ED762B2E18B85209006BD2AA /* AVFoundation.framework */,
 				ED1CBF3B18A6C7F000DF600A /* AudioToolbox.framework */,
@@ -352,6 +383,28 @@
 				2605D85D161BA14A00AA0B3A /* TGAccessoryManager.h */,
 			);
 			name = Libraries;
+			sourceTree = "<group>";
+		};
+		EDE8121118C9287400089D04 /* TestFlightSDK2.0.2 */ = {
+			isa = PBXGroup;
+			children = (
+				EDE8121218C9287400089D04 /* libTestFlight.a */,
+				EDE8121318C9287400089D04 /* README.md */,
+				EDE8121418C9287400089D04 /* release_notes.md */,
+				EDE8121518C9287400089D04 /* TestFlight+AsyncLogging.h */,
+				EDE8121618C9287400089D04 /* TestFlight+ManualSessions.h */,
+				EDE8121718C9287400089D04 /* TestFlight.h */,
+			);
+			path = TestFlightSDK2.0.2;
+			sourceTree = "<group>";
+		};
+		EDE8122118C92A9900089D04 /* Flurry */ = {
+			isa = PBXGroup;
+			children = (
+				EDE8122218C92A9900089D04 /* Flurry.h */,
+				EDE8122318C92A9900089D04 /* libFlurry_4.3.2.a */,
+			);
+			path = Flurry;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -416,6 +469,7 @@
 				ED762B3418B85490006BD2AA /* PlayViewController.xib in Resources */,
 				8B2669F718C1365200EDE7D6 /* mute_icon.png in Resources */,
 				8B2669D318C134E200EDE7D6 /* sound_icon.png in Resources */,
+				EDE8121A18C9287400089D04 /* release_notes.md in Resources */,
 				8B026E5718A7140C006AAA1F /* Icon.png in Resources */,
 				8B2669C818C1343100EDE7D6 /* play_button@2x.png in Resources */,
 				8B2669CF18C134CA00EDE7D6 /* stop_button.png in Resources */,
@@ -466,6 +520,7 @@
 				8B2669FE18C1366800EDE7D6 /* save@2x.png in Resources */,
 				8B026E5918A7140C006AAA1F /* iTunesArtwork in Resources */,
 				8B2669EE18C1365200EDE7D6 /* icon4@2x.png in Resources */,
+				EDE8121918C9287400089D04 /* README.md in Resources */,
 				8B026E6018A71424006AAA1F /* Default@2x.png in Resources */,
 				26582ED31469C58F001EF3B4 /* Signal_Disconnected.png in Resources */,
 				ED1CBF5818A6DD1200DF600A /* blink_bigsound.wav in Resources */,
@@ -504,7 +559,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+
+
+
+				CODE_SIGN_IDENTITY = "iPhone Developer: Kyle Mock (HKD74B6JQS)";
+
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -522,13 +581,17 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)\"",
-					"\"$(SRCROOT)/Libraries\"",
-					"\"$(SRCROOT)/../../../../Library/Developer/Xcode/DerivedData/TGAccessory-bogggjfcpdrasocejkqgfiqnfrgv/Build/Products/Release-iphoneos\"",
+					"$(SRCROOT)",
+					"\\\"$(SRCROOT)/Libraries\\\"",
+					"\\\"$(SRCROOT)/../../../../Library/Developer/Xcode/DerivedData/TGAccessory-bogggjfcpdrasocejkqgfiqnfrgv/Build/Products/Release-iphoneos\\\"",
+					/Users/banane/dev/iOS/ThinkGearTouch/TestFlightSDK2.0.2,
+					/Users/banane/dev/iOS/ThinkGearTouch/Flurry,
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = ThinkNote;
-				PROVISIONING_PROFILE = "";
+
+				PROVISIONING_PROFILE = "A7E48AE4-24AD-4762-9BAE-B05320A644FB";
+
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -540,8 +603,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+
+
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -556,9 +622,11 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)\"",
-					"\"$(SRCROOT)/Libraries\"",
-					"\"$(SRCROOT)/../../../../Library/Developer/Xcode/DerivedData/TGAccessory-bogggjfcpdrasocejkqgfiqnfrgv/Build/Products/Release-iphoneos\"",
+					"$(SRCROOT)",
+					"\\\"$(SRCROOT)/Libraries\\\"",
+					"\\\"$(SRCROOT)/../../../../Library/Developer/Xcode/DerivedData/TGAccessory-bogggjfcpdrasocejkqgfiqnfrgv/Build/Products/Release-iphoneos\\\"",
+					/Users/banane/dev/iOS/ThinkGearTouch/TestFlightSDK2.0.2,
+					/Users/banane/dev/iOS/ThinkGearTouch/Flurry,
 				);
 				PRODUCT_NAME = ThinkNote;
 				PROVISIONING_PROFILE = "";
@@ -595,7 +663,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+
+
+				CODE_SIGN_IDENTITY = "iPhone Developer: Kyle Mock (HKD74B6JQS)";
+
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -611,9 +682,11 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)\"",
-					"\"$(SRCROOT)/Libraries\"",
-					"\"$(SRCROOT)/../../../../Library/Developer/Xcode/DerivedData/TGAccessory-bogggjfcpdrasocejkqgfiqnfrgv/Build/Products/Release-iphoneos\"",
+					"$(SRCROOT)",
+					"\\\"$(SRCROOT)/Libraries\\\"",
+					"\\\"$(SRCROOT)/../../../../Library/Developer/Xcode/DerivedData/TGAccessory-bogggjfcpdrasocejkqgfiqnfrgv/Build/Products/Release-iphoneos\\\"",
+					/Users/banane/dev/iOS/ThinkGearTouch/TestFlightSDK2.0.2,
+					/Users/banane/dev/iOS/ThinkGearTouch/Flurry,
 				);
 				PRODUCT_NAME = ThinkNote;
 				PROVISIONING_PROFILE = "";
