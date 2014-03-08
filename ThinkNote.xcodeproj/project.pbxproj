@@ -73,6 +73,7 @@
 		8B2669FE18C1366800EDE7D6 /* save@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B2669FA18C1366800EDE7D6 /* save@2x.png */; };
 		8B2669FF18C1366800EDE7D6 /* share.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B2669FB18C1366800EDE7D6 /* share.png */; };
 		8B266A0018C1366800EDE7D6 /* share@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B2669FC18C1366800EDE7D6 /* share@2x.png */; };
+		8B47CE2218CAADCF007C9B33 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B47CE2118CAADCF007C9B33 /* FacebookSDK.framework */; };
 		AAE08AB110E2021E008BB459 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = AAE08AB010E2021E008BB459 /* Entitlements.plist */; };
 		ED1CBF3C18A6C7F000DF600A /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED1CBF3B18A6C7F000DF600A /* AudioToolbox.framework */; };
 		ED1CBF4E18A6DD0400DF600A /* med_high_g.wav in Resources */ = {isa = PBXBuildFile; fileRef = ED1CBF4B18A6DD0400DF600A /* med_high_g.wav */; };
@@ -88,7 +89,6 @@
 		ED762B2F18B85209006BD2AA /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED762B2E18B85209006BD2AA /* AVFoundation.framework */; };
 		ED762B3318B85490006BD2AA /* PlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED762B3118B85490006BD2AA /* PlayViewController.m */; };
 		ED762B3418B85490006BD2AA /* PlayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED762B3218B85490006BD2AA /* PlayViewController.xib */; };
-		EDE8120E18C83C6100089D04 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDE8120D18C83C6100089D04 /* FacebookSDK.framework */; };
 		EDE8121018C8484500089D04 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDE8120F18C8484500089D04 /* MessageUI.framework */; };
 /* End PBXBuildFile section */
 
@@ -164,6 +164,7 @@
 		8B2669FA18C1366800EDE7D6 /* save@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "save@2x.png"; sourceTree = "<group>"; };
 		8B2669FB18C1366800EDE7D6 /* share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = share.png; sourceTree = "<group>"; };
 		8B2669FC18C1366800EDE7D6 /* share@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "share@2x.png"; sourceTree = "<group>"; };
+		8B47CE2118CAADCF007C9B33 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* ThinkNote-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "ThinkNote-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		AAE08AB010E2021E008BB459 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		ED1CBF3B18A6C7F000DF600A /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -182,7 +183,6 @@
 		ED762B3018B85490006BD2AA /* PlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayViewController.h; sourceTree = "<group>"; };
 		ED762B3118B85490006BD2AA /* PlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayViewController.m; sourceTree = "<group>"; };
 		ED762B3218B85490006BD2AA /* PlayViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlayViewController.xib; sourceTree = "<group>"; };
-		EDE8120D18C83C6100089D04 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../../Documents/FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
 		EDE8120F18C8484500089D04 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -193,13 +193,13 @@
 			files = (
 				EDE8121018C8484500089D04 /* MessageUI.framework in Frameworks */,
 				ED762B2F18B85209006BD2AA /* AVFoundation.framework in Frameworks */,
-				EDE8120E18C83C6100089D04 /* FacebookSDK.framework in Frameworks */,
 				ED1CBF3C18A6C7F000DF600A /* AudioToolbox.framework in Frameworks */,
 				07EB058916260AA900D376E2 /* QuartzCore.framework in Frameworks */,
 				268327361593C23200D004F6 /* Accelerate.framework in Frameworks */,
 				26A718B813CBD0BC00962E54 /* ExternalAccessory.framework in Frameworks */,
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
+				8B47CE2218CAADCF007C9B33 /* FacebookSDK.framework in Frameworks */,
 				2892E4100DC94CBA00A64D0F /* CoreGraphics.framework in Frameworks */,
 				268627401627B11E0005FEB1 /* libTGAccessory.a in Frameworks */,
 			);
@@ -331,8 +331,8 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8B47CE2118CAADCF007C9B33 /* FacebookSDK.framework */,
 				EDE8120F18C8484500089D04 /* MessageUI.framework */,
-				EDE8120D18C83C6100089D04 /* FacebookSDK.framework */,
 				ED762B2E18B85209006BD2AA /* AVFoundation.framework */,
 				ED1CBF3B18A6C7F000DF600A /* AudioToolbox.framework */,
 				268327351593C23200D004F6 /* Accelerate.framework */,
@@ -381,6 +381,11 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0450;
+				TargetAttributes = {
+					1D6058900D05DD3D006BFB54 = {
+						DevelopmentTeam = TNS9AKP468;
+					};
+				};
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "ThinkNote" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -499,14 +504,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Horace Ko (89Q96W3QEB)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",
 					/Users/banane/dev/iOS/ThinkGearTouch,
-					/Users/banane/Documents/FacebookSDK,
+					/Users/KM/Documents/FacebookSDK,
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -523,7 +528,7 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = ThinkNote;
-				PROVISIONING_PROFILE = "6EBBDEB2-98C8-4B8D-81D0-1D8549D658CE";
+				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -535,14 +540,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Horace Ko (89Q96W3QEB)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",
 					/Users/banane/dev/iOS/ThinkGearTouch,
-					/Users/banane/Documents/FacebookSDK,
+					/Users/KM/Documents/FacebookSDK,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = ThinkNote_Prefix.pch;
@@ -556,7 +561,7 @@
 					"\"$(SRCROOT)/../../../../Library/Developer/Xcode/DerivedData/TGAccessory-bogggjfcpdrasocejkqgfiqnfrgv/Build/Products/Release-iphoneos\"",
 				);
 				PRODUCT_NAME = ThinkNote;
-				PROVISIONING_PROFILE = "6EBBDEB2-98C8-4B8D-81D0-1D8549D658CE";
+				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -590,14 +595,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",
 					/Users/banane/dev/iOS/ThinkGearTouch,
-					/Users/banane/Documents/FacebookSDK,
+					/Users/KM/Documents/FacebookSDK,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = ThinkNote_Prefix.pch;
