@@ -53,45 +53,27 @@
     self.recordButton.hidden = NO;
     
     
-    UIColor *attentionColor3 = [UIColor colorWithRed:255.0f
-                                               green: 242.0f
-                                                blue: 0.0f
-                                               alpha:1.0f];
-    
-    UIColor *attentionColor2 = [UIColor colorWithRed:141.0f
-                                              green:198.0f
-                                               blue:63.0f
-                                              alpha:1.0f];
-    
-    UIColor *attentionColor1 = [UIColor colorWithRed: 0.0f
-                                               green: 148.0f
-                                                blue: 68.0f
-                                               alpha: 1.0f];
-    
-    UIColor *meditationColor3 = [UIColor colorWithRed: 218.0f
-                                               green: 28.0f
-                                                blue: 92.0f
-                                               alpha:1.0f];
-    
-    UIColor *meditationColor2 = [UIColor colorWithRed: 102.0f
-                                               green: 45.0f
-                                                blue: 145.0f
-                                               alpha:1.0f];
+   
+    UIColor *attentionColor3 =  [self renderColor:255   green:242   blue:0];
+    UIColor *attentionColor2 =  [self renderColor:141   green:198   blue:63];
+    UIColor *attentionColor1 =  [self renderColor:0     green:148   blue:68];
+    UIColor *meditationColor3 = [self renderColor:218   green:28    blue:92];
+    UIColor *meditationColor2 = [self renderColor:102   green:45    blue:145];
+    UIColor *meditationColor1 = [self renderColor:38    green:34    blue:98];
+    UIColor *blinkColor1 =      [self renderColor:0     green:167   blue:157];
+    UIColor *blinkColor2 =      [self renderColor:28    green:117   blue:188];
 
-    UIColor *meditationColor1 = [UIColor colorWithRed:38.0f
-                                               green: 34.0f
-                                                blue: 98.0f
-                                               alpha: 1.0f];
-    
-    UIColor *blinkColor1 = [UIColor colorWithRed:0.0f green:167.0f blue:157.0f alpha:1.0f];
-    UIColor *blinkColor2 = [UIColor colorWithRed:28.0f green:117.0f blue:188.0f alpha:1.0f];
     
     attentionColors = [[NSArray alloc] initWithObjects:attentionColor1, attentionColor1, attentionColor2, attentionColor3, nil];
     meditationColors = [[NSArray alloc] initWithObjects: meditationColor1, meditationColor1, meditationColor2, meditationColor3, nil];
     
-    blinkColors = [[NSArray alloc] initWithObjects: blinkColor1, [UIColor redColor], [UIColor blackColor], nil];
-    lastBlinkColor = [blinkColors objectAtIndex:0];
+    blinkColors = [[NSArray alloc] initWithObjects: blinkColor1, blinkColor2, nil];
 }
+
+-(UIColor *)renderColor:(int)red green:(int)green blue:(int)blue{
+    return [UIColor colorWithRed:((float)red/255.0f) green:((float)green/255.0f) blue:((float)blue/255.0f) alpha:1.0f];
+}
+
 
 - (void)viewWillAppear:(BOOL)animated {
     [[self navigationController] setNavigationBarHidden:YES animated:NO];
@@ -208,14 +190,14 @@
                 
         }
     } else if ([typeOfSound isEqualToString:@"blink"]) {
-     //   NSLog(@"in blink play sound");
+        // blink sound is below
         sndpath = [[NSBundle mainBundle] pathForResource:@"blink_smalsound" ofType:@"wav"];
     } else {
-   //     NSLog(@" no type of sound that matches");
+        // nothing
     }
-    
-    [self playMindSound:sndpath];
-    
+    if([sndpath length] > 0){
+        [self playMindSound:sndpath];
+    }
 }
 
 -(void)flurryLog:(NSString *)message {
@@ -510,27 +492,10 @@
     }
 }
 
-/*- (void)playSystemSound:(NSString *)sndpath{
-    
-    //    NSString *sndpath = [[NSBundle mainBundle] pathForResource:@"sound" ofType:@"wav"];
-    if(sndpath != nil){
-        CFURLRef baseURL = (__bridge CFURLRef)[NSURL fileURLWithPath:sndpath];
-        
-        // Identify it as not a UI Sound
-        AudioServicesCreateSystemSoundID(baseURL, &soundFileObject);
-        AudioServicesPropertyID flag = 0;  // 0 means always play
-        AudioServicesSetProperty(kAudioServicesPropertyIsUISound, sizeof(SystemSoundID), &soundFileObject, sizeof(AudioServicesPropertyID), &flag);
-        AudioServicesPlaySystemSound(soundFileObject);
-        
-    } else {
-        NSLog(@"snd path not found");
-    }
-}*/
+
 
 
 - (void)updateSounds{
- /*   NSLog(@"in sounds");
-    NSLog(@"attention switch value: %d", attentionSwitch.on);*/
     
     meditationLabel.text = [NSString stringWithFormat:@"%d",eSenseValues.meditation];
     attentionLabel.text = [NSString stringWithFormat:@"%d",eSenseValues.attention];
@@ -539,7 +504,6 @@
     [self.connectedImageView setImage:[self updateSignalStatus]];
     
     if(self.attentionSoundOn){
-     //   NSLog(@"in attentionswitch");
         [self playSound:@"attention" theSenseOfValue:eSenseValues.attention];
         
     }
@@ -547,32 +511,22 @@
         [self playSound:@"meditation" theSenseOfValue:eSenseValues.meditation];
     }
     if(self.blinkSoundOn){
-        if(blinkStrength > 80 && blinkStrength != lastBlinkValue){
+          if(blinkStrength > 80 && lastBlinkValue < 80){        // only note change in value
             [self playSound:@"blink" theSenseOfValue:blinkStrength];
-            if(lastBlinkColor != [blinkColors objectAtIndex:1]){
-                [UIView animateWithDuration:2.0 animations:^{
-                    blinkView.backgroundColor = [blinkColors objectAtIndex:0];
-                    blinkView.backgroundColor = [blinkColors objectAtIndex:1];
-                }];
-                lastBlinkColor = [blinkColors objectAtIndex:1];
-            }
+
+            [UIView animateWithDuration:2.0 animations:^{
+                blinkView.backgroundColor = [blinkColors objectAtIndex:0];
+                blinkView.backgroundColor = [blinkColors objectAtIndex:1];
+                blinkView.backgroundColor = [blinkColors objectAtIndex:0];
+            }];
             
-        } else {
-            if(lastBlinkColor != [blinkColors objectAtIndex:0]){
-                [UIView animateWithDuration:2.0 animations:^{
-                    blinkView.backgroundColor = [blinkColors objectAtIndex:1];
-                    blinkView.backgroundColor = [blinkColors objectAtIndex:0];
-                }];
-                lastBlinkColor = [blinkColors objectAtIndex:0];
-            }
-          
         }
         
     }
-    lastBlinkValue = blinkStrength;
+
     lastAttentionValue = eSenseValues.attention;
     lastMeditationValue = eSenseValues.meditation;
-
+    lastBlinkValue = blinkStrength;
 }
 
 
