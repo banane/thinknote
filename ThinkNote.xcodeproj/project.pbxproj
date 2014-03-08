@@ -213,9 +213,8 @@
 				EDE8122618C92B4700089D04 /* Security.framework in Frameworks */,
 				EDE8121C18C9289D00089D04 /* libz.dylib in Frameworks */,
 				EDE8121018C8484500089D04 /* MessageUI.framework in Frameworks */,
-				ED762B2F18B85209006BD2AA /* AVFoundation.framework in Frameworks */, 
-				EDE8120E18C83C6100089D04 /* FacebookSDK.framework in Frameworks */,
-				EDE8121818C9287400089D04 /* libTestFlight.a in Frameworks */, 
+				ED762B2F18B85209006BD2AA /* AVFoundation.framework in Frameworks */,
+				EDE8121818C9287400089D04 /* libTestFlight.a in Frameworks */,
 				ED1CBF3C18A6C7F000DF600A /* AudioToolbox.framework in Frameworks */,
 				07EB058916260AA900D376E2 /* QuartzCore.framework in Frameworks */,
 				268327361593C23200D004F6 /* Accelerate.framework in Frameworks */,
@@ -357,12 +356,10 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-
-				8B47CE2118CAADCF007C9B33 /* FacebookSDK.framework */, 
+				8B47CE2118CAADCF007C9B33 /* FacebookSDK.framework */,
 				EDE8122718C92B5100089D04 /* SystemConfiguration.framework */,
 				EDE8122518C92B4700089D04 /* Security.framework */,
 				EDE8121B18C9289D00089D04 /* libz.dylib */,
-
 				EDE8120F18C8484500089D04 /* MessageUI.framework */,
 				ED762B2E18B85209006BD2AA /* AVFoundation.framework */,
 				ED1CBF3B18A6C7F000DF600A /* AudioToolbox.framework */,
@@ -559,18 +556,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-
-
-
 				CODE_SIGN_IDENTITY = "iPhone Developer: Kyle Mock (HKD74B6JQS)";
-
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",
-					/Users/banane/dev/iOS/ThinkGearTouch,
 					/Users/KM/Documents/FacebookSDK,
+					/Users/KM/Documents/TestFlightSDK2.0.2,
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -583,15 +576,13 @@
 					"$(inherited)",
 					"$(SRCROOT)",
 					"\\\"$(SRCROOT)/Libraries\\\"",
+					/Users/KM/documents/dev/thinknote/Flurry,
 					"\\\"$(SRCROOT)/../../../../Library/Developer/Xcode/DerivedData/TGAccessory-bogggjfcpdrasocejkqgfiqnfrgv/Build/Products/Release-iphoneos\\\"",
-					/Users/banane/dev/iOS/ThinkGearTouch/TestFlightSDK2.0.2,
-					/Users/banane/dev/iOS/ThinkGearTouch/Flurry,
+					/Users/KM/documents/dev/thinknote/TestFlightSDK2.0.2,
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = ThinkNote;
-
 				PROVISIONING_PROFILE = "A7E48AE4-24AD-4762-9BAE-B05320A644FB";
-
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -603,17 +594,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-
-
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",
-					/Users/banane/dev/iOS/ThinkGearTouch,
 					/Users/KM/Documents/FacebookSDK,
+					/Users/KM/Documents/TestFlightSDK2.0.2,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = ThinkNote_Prefix.pch;
@@ -624,9 +612,9 @@
 					"$(inherited)",
 					"$(SRCROOT)",
 					"\\\"$(SRCROOT)/Libraries\\\"",
+					/Users/KM/documents/dev/thinknote/Flurry,
 					"\\\"$(SRCROOT)/../../../../Library/Developer/Xcode/DerivedData/TGAccessory-bogggjfcpdrasocejkqgfiqnfrgv/Build/Products/Release-iphoneos\\\"",
-					/Users/banane/dev/iOS/ThinkGearTouch/TestFlightSDK2.0.2,
-					/Users/banane/dev/iOS/ThinkGearTouch/Flurry,
+					/Users/KM/documents/dev/thinknote/TestFlightSDK2.0.2,
 				);
 				PRODUCT_NAME = ThinkNote;
 				PROVISIONING_PROFILE = "";
@@ -663,17 +651,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-
-
 				CODE_SIGN_IDENTITY = "iPhone Developer: Kyle Mock (HKD74B6JQS)";
-
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",
-					/Users/banane/dev/iOS/ThinkGearTouch,
 					/Users/KM/Documents/FacebookSDK,
+					/Users/KM/Documents/TestFlightSDK2.0.2,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = ThinkNote_Prefix.pch;
@@ -684,9 +669,9 @@
 					"$(inherited)",
 					"$(SRCROOT)",
 					"\\\"$(SRCROOT)/Libraries\\\"",
+					/Users/KM/documents/dev/thinknote/Flurry,
 					"\\\"$(SRCROOT)/../../../../Library/Developer/Xcode/DerivedData/TGAccessory-bogggjfcpdrasocejkqgfiqnfrgv/Build/Products/Release-iphoneos\\\"",
-					/Users/banane/dev/iOS/ThinkGearTouch/TestFlightSDK2.0.2,
-					/Users/banane/dev/iOS/ThinkGearTouch/Flurry,
+					/Users/KM/documents/dev/thinknote/TestFlightSDK2.0.2,
 				);
 				PRODUCT_NAME = ThinkNote;
 				PROVISIONING_PROFILE = "";
