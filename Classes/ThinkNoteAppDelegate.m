@@ -8,7 +8,7 @@
 
 #import "TGAccessoryManager.h"
 #import <FacebookSDK/FacebookSDK.h>
-#import "TestFlight.h"
+//#import "TestFlight.h"
 #import "PlayViewController.h"
 
 #import "ThinkNoteAppDelegate.h"
@@ -26,7 +26,7 @@
  
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
     NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
-     [TestFlight takeOff:@"efaad550-b037-40bb-9e98-d4702170af04"];
+//     [TestFlight takeOff:@"efaad550-b037-40bb-9e98-d4702170af04"];
     //WZG65KF5WYBPD9M4XN2Q
     [Flurry setCrashReportingEnabled:YES];
     //note: iOS only allows one crash reporting tool per app; if using another, set to: NO
