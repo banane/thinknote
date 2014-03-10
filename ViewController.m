@@ -52,7 +52,7 @@
     self.stopButton.hidden = YES;
     self.recordButton.hidden = NO;
     
-    
+ //  [self viewPlayVC]; // DEBUGGING ONLY
    
     UIColor *attentionColor3 =  [self renderColor:255   green:242   blue:0];
     UIColor *attentionColor2 =  [self renderColor:141   green:198   blue:63];
@@ -291,6 +291,7 @@
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *recDir = [paths objectAtIndex:0];
     recordedURL = [NSURL fileURLWithPath:[NSString stringWithFormat:@"%@/recordMind.wav", recDir]];
+    NSLog(@"Recorded URL: %@", recordedURL);
     
     NSError *error = nil;
     audioRecorder = [[ AVAudioRecorder alloc] initWithURL:recordedURL settings:recordSetting error:&error];

@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PlayViewController">
             <connections>
+                <outlet property="progressView" destination="8li-uL-ke6" id="whb-oK-eSr"/>
                 <outlet property="view" destination="1" id="3"/>
             </connections>
         </placeholder>
@@ -25,9 +26,11 @@
                         <action selector="playRecordClicked:" destination="-1" eventType="touchUpInside" id="T9S-wn-5UC"/>
                     </connections>
                 </button>
-                <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" id="8li-uL-ke6">
+                <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" id="8li-uL-ke6">
                     <rect key="frame" x="35" y="273" width="250" height="2"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES"/>
+                    <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="tintColor" red="0.0" green="0.2394107681" blue="0.2666666667" alpha="1" colorSpace="deviceRGB"/>
                 </progressView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="share.png" id="wa8-r9-5vB">
                     <rect key="frame" x="247" y="493" width="38" height="34"/>

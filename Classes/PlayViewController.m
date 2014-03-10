@@ -20,7 +20,7 @@
 @end
 
 @implementation PlayViewController
-@synthesize soundURL,params,fsdparams, songFileName, uploadedFilePath;
+@synthesize soundURL,params,fsdparams, songFileName, uploadedFilePath, timer;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -38,10 +38,18 @@
     
 }
 
+
+
 - (void)viewDidLoad
 {
     [[self navigationController] setNavigationBarHidden:NO animated:NO];
     self.title = @"Play ThinkNote";
+    progressView.progress = 0.0f;
+    
+    // DEBUGGING
+    
+//    soundURL = [NSURL URLWithString:@"file:///var/mobile/Applications/C9325A6C-061E-4565-9049-57C03927D519/Documents/recordMind.wav"];
+    /// END DEBUGGING
  
     int randomNumber = arc4random() % 74;
     self.songFileName = [NSString stringWithFormat:@"thinknote_%d.wav", randomNumber];
@@ -54,7 +62,7 @@
               @"Make Music With Your Mind", @"caption",
               @"I made this song while wearing the Neurosky headset. It records my thoughts with music.", @"description",
               @"http://www.pickaxemobile.com/thinknote", @"link",
-              @"http://www.yourpickaxe.com/wp-content/uploads/2014/03/fbshareimage.png", @"picture",
+              @"http://www.yourpickaxe.com/thinknote/fbshareimage-2/", @"picture",
               self.uploadedFilePath, @"source",
               nil];
     fsdparams = [[FBShareDialogParams alloc] init];
@@ -71,7 +79,12 @@
     
 }
 
-
+-(void)updateUI
+{
+    float f =  (float)player.currentTime / (float)player.duration;
+    self.progressView.progress = f;
+    
+}
 
 - (void)didReceiveMemoryWarning
 {
@@ -82,13 +95,8 @@
 - (IBAction)playRecordClicked:(id)sender {
     [self flurryLog:@"playRecordClicked"];
     NSLog(@"play Record");
-   /* if (audioPlayerRecord) {
-        if (audioPlayerRecord.isPlaying) [audioPlayerRecord stop];
-        else [audioPlayerRecord play];
-        
-        return;
-    }*/
-    
+    progressView.progress = 0.0f;
+
     //Initialize playback audio session
     AVAudioSession *audioSession = [AVAudioSession sharedInstance];
     [audioSession setCategory:AVAudioSessionCategoryPlayback error:nil];
@@ -96,19 +104,26 @@
   
     NSError *error;
     player = [[AVAudioPlayer alloc] initWithContentsOfURL:soundURL error:&error];
+    player.delegate = self;
+    
+    [NSTimer scheduledTimerWithTimeInterval:0.2
+                                     target:self
+                                   selector:@selector(updateUI)
+                                   userInfo:nil
+                                    repeats:YES];
+    
     [player play];
+
 }
 
 
 - (void) audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag{
     NSLog(@"in audio did finish playing");
     
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Done"
-                                                    message: @"Finish playing the recording!"
-                                                   delegate: nil
-                                          cancelButtonTitle:@"OK"
-                                          otherButtonTitles:nil];
-    [alert show];
+
+    [self.timer invalidate];
+    self.timer = nil;
+    
 }
 
 #pragma mark IBActions

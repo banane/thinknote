@@ -20,6 +20,8 @@
     NSMutableDictionary *params;
     NSString *songFileName;
     NSString *uploadedFilePath;
+    IBOutlet UIProgressView *progressView;
+    NSTimer *timer;
     
 }
 
@@ -28,6 +30,8 @@
 @property (nonatomic, strong) FBShareDialogParams *fsdparams;
 @property (nonatomic, strong) NSString *songFileName;
 @property (nonatomic, strong) NSString *uploadedFilePath;
+@property (nonatomic, strong) IBOutlet UIProgressView *progressView;
+@property (nonatomic, strong) NSTimer *timer;
 
 -(IBAction)share:(id)sender;
 -(void)presentDialogShare;
@@ -35,4 +39,5 @@
 -(IBAction)launchMail:(id)sender;
 -(void)flurryLog:(NSString *)message;
 -(BOOL)uploadSong;
+-(void)updateUI:(NSTimer *)timer;
 @end
