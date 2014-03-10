@@ -11,22 +11,28 @@
 #import <FacebookSDK/FacebookSDK.h>
 #import <MessageUI/MessageUI.h>
 #import <MessageUI/MFMailComposeViewController.h>
+#import <AWSS3/AWSS3.h>
 
-@interface PlayViewController : UIViewController <AVAudioPlayerDelegate, MFMailComposeViewControllerDelegate>{
+@interface PlayViewController : UIViewController <AVAudioPlayerDelegate, MFMailComposeViewControllerDelegate, AmazonServiceRequestDelegate>{
      AVAudioPlayer *player;
     NSURL *soundURL;
     FBShareDialogParams *fsdparams;
     NSMutableDictionary *params;
+    NSString *songFileName;
+    NSString *uploadedFilePath;
     
 }
 
 @property (nonatomic, strong) NSURL *soundURL;
 @property (nonatomic, strong) NSMutableDictionary *params;
 @property (nonatomic, strong) FBShareDialogParams *fsdparams;
+@property (nonatomic, strong) NSString *songFileName;
+@property (nonatomic, strong) NSString *uploadedFilePath;
 
 -(IBAction)share:(id)sender;
 -(void)presentDialogShare;
 -(void)presentFeedShare;
 -(IBAction)launchMail:(id)sender;
 -(void)flurryLog:(NSString *)message;
+-(BOOL)uploadSong;
 @end

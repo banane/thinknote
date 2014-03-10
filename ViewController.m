@@ -239,6 +239,8 @@
     
     NSMutableDictionary *recordSetting = [[NSMutableDictionary alloc] initWithCapacity:0];
     
+    NSLog(@"recordEncoding: %d", recordEncoding);
+    
     if (recordEncoding == ENC_PCM) {
         [recordSetting setValue:[NSNumber numberWithInt:kAudioFormatLinearPCM]  forKey:AVFormatIDKey];
         [recordSetting setValue:[NSNumber numberWithFloat:44100.0]              forKey:AVSampleRateKey];
@@ -277,19 +279,18 @@
                 break;
         }
         
-        [recordSetting setValue:formatObject                                forKey:AVFormatIDKey];
-        [recordSetting setValue:[NSNumber numberWithFloat:44100.0]          forKey:AVSampleRateKey];
-        [recordSetting setValue:[NSNumber numberWithInt:2]                  forKey:AVNumberOfChannelsKey];
-        [recordSetting setValue:[NSNumber numberWithInt:12800]              forKey:AVEncoderBitRateKey];
+        [recordSetting setValue :[NSNumber numberWithInt:kAudioFormatLinearPCM] forKey:AVFormatIDKey];
+        [recordSetting setValue:[NSNumber numberWithFloat:8000.0] forKey:AVSampleRateKey];
+        [recordSetting setValue:[NSNumber numberWithInt: 2] forKey:AVNumberOfChannelsKey];
         
-        [recordSetting setValue:[NSNumber numberWithInt:16]                 forKey:AVLinearPCMBitDepthKey];
-        [recordSetting setValue:[NSNumber numberWithInt:AVAudioQualityHigh] forKey:AVEncoderAudioQualityKey];
-        
+        [recordSetting setValue :[NSNumber numberWithInt:16] forKey:AVLinearPCMBitDepthKey];
+        [recordSetting setValue :[NSNumber numberWithBool:NO] forKey:AVLinearPCMIsBigEndianKey];
+        [recordSetting setValue :[NSNumber numberWithBool:NO] forKey:AVLinearPCMIsFloatKey];
     }
     
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *recDir = [paths objectAtIndex:0];
-    recordedURL = [NSURL fileURLWithPath:[NSString stringWithFormat:@"%@/recordMind.caf", recDir]];
+    recordedURL = [NSURL fileURLWithPath:[NSString stringWithFormat:@"%@/recordMind.wav", recDir]];
     
     NSError *error = nil;
     audioRecorder = [[ AVAudioRecorder alloc] initWithURL:recordedURL settings:recordSetting error:&error];
@@ -545,6 +546,7 @@
     }
     
     PlayViewController *pvc = [[PlayViewController alloc] initWithNibName:@"PlayViewController" bundle:nil];
+    
     pvc.soundURL = recordedURL;
     
 	[[self navigationController] pushViewController:pvc animated:YES];
