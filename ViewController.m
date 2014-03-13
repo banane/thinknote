@@ -24,7 +24,7 @@
 @synthesize blinkLabel, meditationLabel, attentionLabel;
 @synthesize meditationView, attentionView, blinkView, attentionColors, lastAttentionColor, meditationColors, lastMeditationColor, blinkColors, lastBlinkColor, connectedImageView, recordButton, stopButton, isRecording;
 @synthesize meditationMuteButton, meditationSoundButton, blinkMuteButton, blinkSoundButton, attentionMuteButton, attentionSoundButton;
-@synthesize recordedURL;
+@synthesize recordedURL, iconView;
 
 
 
@@ -51,6 +51,32 @@
     isPlayingMindSound = YES;
     self.stopButton.hidden = YES;
     self.recordButton.hidden = NO;
+    
+    [UIView animateWithDuration:2.0 animations:^{
+        iconView.image = [UIImage imageNamed:@"icon1"];
+        iconView.image = [UIImage imageNamed:@"icon2"];
+        iconView.image = [UIImage imageNamed:@"icon3"];        
+        iconView.image = [UIImage imageNamed:@"icon4"];
+        iconView.image = [UIImage imageNamed:@"icon5"];
+        iconView.image = [UIImage imageNamed:@"icon6"];
+        iconView.image = [UIImage imageNamed:@"icon7"];
+        iconView.image = [UIImage imageNamed:@"icon8"];
+    }];
+    
+    iconView.animationImages = [NSArray arrayWithObjects:
+                                         [UIImage imageNamed:@"icon1"],
+                                         [UIImage imageNamed:@"icon2"],
+                                         [UIImage imageNamed:@"icon3"],
+                                         [UIImage imageNamed:@"icon4"],
+                                [UIImage imageNamed:@"icon5"],
+                                [UIImage imageNamed:@"icon6"],
+                                [UIImage imageNamed:@"icon7"],
+                                [UIImage imageNamed:@"icon8"],
+
+                                nil];
+    iconView.animationDuration = 2.0f;
+    iconView.animationRepeatCount = 0;
+    [iconView startAnimating];
     
  //  [self viewPlayVC]; // DEBUGGING ONLY
    

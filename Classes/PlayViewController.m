@@ -62,7 +62,7 @@
               @"Make Music With Your Mind", @"caption",
               @"I made this song while wearing the Neurosky headset. It records my thoughts with music.", @"description",
               @"http://www.pickaxemobile.com/thinknote", @"link",
-              @"http://www.yourpickaxe.com/thinknote/fbshareimage-2/", @"picture",
+              @"http://www.yourpickaxe.com/wp-content/uploads/2014/03/fbshareimage1.png", @"picture",
               self.uploadedFilePath, @"source",
               nil];
     fsdparams = [[FBShareDialogParams alloc] init];

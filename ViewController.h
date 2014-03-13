@@ -48,6 +48,7 @@ typedef struct {
     IBOutlet UIButton *stopButton;
     IBOutlet UIButton *meditationMuteButton;
     IBOutlet UIButton *meditationSoundButton;
+    IBOutlet UIImageView *iconView;
     
     short rawValue;
     int rawCount;
@@ -134,6 +135,7 @@ typedef struct {
 @property (nonatomic, strong)IBOutlet UIView * meditationView;
 @property (nonatomic, strong)IBOutlet UIView * attentionView;
 @property (nonatomic, strong)IBOutlet UIView * blinkView;
+@property (nonatomic, strong) IBOutlet UIImageView *iconView;
 
 @property bool meditationSoundOn;
 @property bool attentionSoundOn;

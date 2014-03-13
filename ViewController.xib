@@ -16,6 +16,7 @@
                 <outlet property="blinkSoundButton" destination="BCt-ng-Ra5" id="JPi-pG-O9x"/>
                 <outlet property="blinkView" destination="Ir6-8v-AOU" id="dBs-kp-gC4"/>
                 <outlet property="connectedImageView" destination="Mgd-SF-mxb" id="X0H-kr-jGK"/>
+                <outlet property="iconView" destination="Lup-Us-vXQ" id="ejR-ZX-Pe2"/>
                 <outlet property="meditationLabel" destination="dxl-af-Uwt" id="dOJ-nC-a5U"/>
                 <outlet property="meditationMuteButton" destination="beO-La-9ZV" id="nqE-9w-WNs"/>
                 <outlet property="meditationSoundButton" destination="Qdt-VM-zXf" id="GaE-yY-f0F"/>
