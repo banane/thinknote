@@ -7,12 +7,10 @@
 //
 #import "PlayViewController.h"
 #import "ThinkNoteAppDelegate.h"
+#import "Constants.h"
 
 #import <AWSRuntime/AWSRuntime.h>
 
-#define ACCESS_KEY_ID          @"AKIAJSGCJUUN4LGVN3RQ"
-#define SECRET_KEY             @"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"
-#define BUCKET                 @"thinknote"
 
 
 @interface PlayViewController ()
@@ -159,7 +157,7 @@
                                           // An error occurred, we need to handle the error
                                           // See: https://developers.facebook.com/docs/ios/errors
                                           NSLog(@"Error publishing story: %@", error.description);
-                                          NSString *message = [NSString stringWithFormat:@"fb share dialog error: @%", error.description];
+                                          NSString *message = [NSString stringWithFormat:@"fb share dialog error: %@", error.description];
                                           [self flurryLog:message];
                                       } else {
                                           // Success
