@@ -40,7 +40,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
     lastBlinkValue = 0;
     lastAttentionValue = 0;
     lastMeditationValue = 0;
@@ -105,7 +105,6 @@
     [[self navigationController] setNavigationBarHidden:YES animated:NO];
 
     [self setLoadingScreenView];
-    
     self.stopButton.enabled = NO;
     self.stopButton.hidden = YES;
     self.recordButton.hidden = NO;
@@ -236,6 +235,7 @@
 - (IBAction)startRecordClicked:(id)sender {
     [self flurryLog:@"startedrecording"];
     NSLog(@"startRecordClicked");
+    
     self.recordButton.hidden = YES;
     self.stopButton.hidden = NO;
     self.stopButton.enabled = YES;
@@ -350,6 +350,7 @@
         //        NSLog(@"Error: %@ [%4.4s])" , [error localizedDescription], (char*)&errorCode);
         NSLog(@"recorder: %@ %d %@", [error domain], [error code], [[error userInfo] description]);
     }
+
 }
 
 - (IBAction)stopRecordClicked:(id)sender {
@@ -435,7 +436,7 @@
     
     if([data valueForKey:@"blinkStrength"]){
         blinkStrength = [[data valueForKey:@"blinkStrength"] intValue];
-        NSLog(@"blink strength: %d", blinkStrength);
+//        NSLog(@"blink strength: %d", blinkStrength);
     }
 
     
@@ -634,6 +635,10 @@
             break;
     }
 
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [[TGAccessoryManager sharedTGAccessoryManager] stopStream];    
 }
 
 - (IBAction)stopRepeatingSound:(id)sender{

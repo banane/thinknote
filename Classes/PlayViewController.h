@@ -39,5 +39,5 @@
 -(IBAction)launchMail:(id)sender;
 -(void)flurryLog:(NSString *)message;
 -(BOOL)uploadSong;
--(void)updateUI:(NSTimer *)timer;
+-(void)updateUI;
 @end

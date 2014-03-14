@@ -20,7 +20,7 @@
 @end
 
 @implementation PlayViewController
-@synthesize soundURL,params,fsdparams, songFileName, uploadedFilePath, timer;
+@synthesize soundURL,params,fsdparams, songFileName, uploadedFilePath, timer, progressView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -46,10 +46,6 @@
     self.title = @"Play ThinkNote";
     progressView.progress = 0.0f;
     
-    // DEBUGGING
-    
-//    soundURL = [NSURL URLWithString:@"file:///var/mobile/Applications/C9325A6C-061E-4565-9049-57C03927D519/Documents/recordMind.wav"];
-    /// END DEBUGGING
  
     int randomNumber = arc4random() % 74;
     self.songFileName = [NSString stringWithFormat:@"thinknote_%d.wav", randomNumber];
@@ -75,8 +71,8 @@
     
     [super viewDidLoad];
     
-
-    
+}
+-(void)viewWillAppear:(BOOL)animated{
 }
 
 -(void)updateUI
@@ -129,8 +125,10 @@
 #pragma mark IBActions
 
 -(IBAction)share:(id)sender{
-    [self flurryLog:@"share"];
-
+    NSLog(@"share id hit");
+    
+  //  [self flurryLog:@"share"];
+    
     // Check if the Facebook app is installed and we can present the share dialog
     if([uploadedFilePath length] == 0){
         [self uploadSong];
@@ -170,6 +168,7 @@
                                           NSLog(@"result %@", results);
                                       }
                                   }];
+ //   self.loadingView.hidden = YES;
 }
 
 -(void)presentFeedShare{
@@ -178,10 +177,9 @@
                                            parameters:params
                                               handler:^(FBWebDialogResult result, NSURL *resultURL, NSError *error) {
                                                   if (error) {
-                                                      // An error occurred, we need to handle the error
-                                                      // See: https://developers.facebook.com/docs/ios/errors
-                                                      NSLog([NSString stringWithFormat:@"Error publishing story: %@", error.description]);
-                                                      NSString *message = [NSString stringWithFormat:@"fb share feed error: @%", error.description];
+                                                      NSLog(@"Error publishing story: %@", [error localizedDescription]);
+                                                      NSString *message = [NSString stringWithFormat:@"fb share feed error: %@", [error localizedDescription]];
+                                                      [self flurryLog:message];
 
                                                   } else {
                                                       if (result == FBWebDialogResultDialogNotCompleted) {
@@ -207,6 +205,8 @@
                                                       }
                                                   }
                                               }];
+   // self.loadingView.hidden = YES;
+
 }
 
 -(IBAction)launchMail:(id)sender{
