@@ -87,8 +87,9 @@
 		ED762B3318B85490006BD2AA /* PlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED762B3118B85490006BD2AA /* PlayViewController.m */; };
 		ED762B3418B85490006BD2AA /* PlayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED762B3218B85490006BD2AA /* PlayViewController.xib */; };
 		ED98B5B018CAEF950066988D /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED98B5AF18CAEF950066988D /* FacebookSDK.framework */; };
-		ED98B5B318CE1C3D0066988D /* AWSS3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED98B5B218CE1C3D0066988D /* AWSS3.framework */; };
-		ED98B5B518CE27310066988D /* AWSRuntime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED98B5B418CE27310066988D /* AWSRuntime.framework */; };
+		EDB9219B18DD1070004012A0 /* AWSRuntime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDB9219918DD1070004012A0 /* AWSRuntime.framework */; };
+		EDB9219C18DD1070004012A0 /* AWSS3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDB9219A18DD1070004012A0 /* AWSS3.framework */; };
+		EDB9219E18DD157D004012A0 /* Icon-120.png in Resources */ = {isa = PBXBuildFile; fileRef = EDB9219D18DD157D004012A0 /* Icon-120.png */; };
 		EDE8121018C8484500089D04 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDE8120F18C8484500089D04 /* MessageUI.framework */; };
 		EDE8121C18C9289D00089D04 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EDE8121B18C9289D00089D04 /* libz.dylib */; };
 		EDE8122418C92A9900089D04 /* libFlurry_4.3.2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EDE8122318C92A9900089D04 /* libFlurry_4.3.2.a */; };
@@ -187,6 +188,9 @@
 		ED98B5AF18CAEF950066988D /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../../Documents/FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
 		ED98B5B218CE1C3D0066988D /* AWSS3.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSS3.framework; path = "../../../Downloads/aws-ios-sdk-1.7.1/AWSS3.framework"; sourceTree = "<group>"; };
 		ED98B5B418CE27310066988D /* AWSRuntime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSRuntime.framework; path = "../../../Downloads/aws-ios-sdk-1.7.1/AWSRuntime.framework"; sourceTree = "<group>"; };
+		EDB9219918DD1070004012A0 /* AWSRuntime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSRuntime.framework; path = "../../aws-ios-sdk-1.6.1/AWSRuntime.framework"; sourceTree = "<group>"; };
+		EDB9219A18DD1070004012A0 /* AWSS3.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSS3.framework; path = "../../aws-ios-sdk-1.6.1/AWSS3.framework"; sourceTree = "<group>"; };
+		EDB9219D18DD157D004012A0 /* Icon-120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-120.png"; sourceTree = "<group>"; };
 		EDD151F418D294A00049FB5E /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		EDE8120F18C8484500089D04 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		EDE8121B18C9289D00089D04 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
@@ -201,6 +205,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EDB9219B18DD1070004012A0 /* AWSRuntime.framework in Frameworks */,
+				EDB9219C18DD1070004012A0 /* AWSS3.framework in Frameworks */,
 				EDE8122818C92B5100089D04 /* SystemConfiguration.framework in Frameworks */,
 				EDE8122618C92B4700089D04 /* Security.framework in Frameworks */,
 				EDE8121C18C9289D00089D04 /* libz.dylib in Frameworks */,
@@ -213,11 +219,9 @@
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				2892E4100DC94CBA00A64D0F /* CoreGraphics.framework in Frameworks */,
-				ED98B5B318CE1C3D0066988D /* AWSS3.framework in Frameworks */,
 				ED98B5B018CAEF950066988D /* FacebookSDK.framework in Frameworks */,
 				268627401627B11E0005FEB1 /* libTGAccessory.a in Frameworks */,
 				EDE8122418C92A9900089D04 /* libFlurry_4.3.2.a in Frameworks */,
-				ED98B5B518CE27310066988D /* AWSRuntime.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -323,6 +327,7 @@
 				8B026E3E18A7140C006AAA1F /* Icon-72@2x.png */,
 				8B026E3F18A7140C006AAA1F /* Icon-76.png */,
 				8B026E4018A7140C006AAA1F /* Icon-76@2x.png */,
+				EDB9219D18DD157D004012A0 /* Icon-120.png */,
 				8B026E4118A7140C006AAA1F /* Icon-Small-50.png */,
 				8B026E4218A7140C006AAA1F /* Icon-Small-50@2x.png */,
 				8B026E4318A7140C006AAA1F /* Icon-Small.png */,
@@ -347,6 +352,8 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EDB9219918DD1070004012A0 /* AWSRuntime.framework */,
+				EDB9219A18DD1070004012A0 /* AWSS3.framework */,
 				ED98B5B418CE27310066988D /* AWSRuntime.framework */,
 				ED98B5B218CE1C3D0066988D /* AWSS3.framework */,
 				ED98B5AF18CAEF950066988D /* FacebookSDK.framework */,
@@ -507,6 +514,7 @@
 				8B2669FD18C1366800EDE7D6 /* save.png in Resources */,
 				ED1CBF5518A6DD0C00DF600A /* att_string_low_c.wav in Resources */,
 				8B2669ED18C1365200EDE7D6 /* icon4.png in Resources */,
+				EDB9219E18DD157D004012A0 /* Icon-120.png in Resources */,
 				ED1CBF6118A6E85600DF600A /* ViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -542,6 +550,7 @@
 					/Users/banane/dev/ios/ThinkGearTouch/TestFlightSDK2.0.2,
 					/Users/banane/Documents/FacebookSDK,
 					"/Users/banane/Downloads/aws-ios-sdk-1.7.1",
+					"/Users/banane/dev/aws-ios-sdk-1.6.1",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -563,7 +572,7 @@
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Debug;
@@ -582,6 +591,7 @@
 					/Users/banane/dev/ios/ThinkGearTouch/TestFlightSDK2.0.2,
 					/Users/banane/Documents/FacebookSDK,
 					"/Users/banane/Downloads/aws-ios-sdk-1.7.1",
+					"/Users/banane/dev/aws-ios-sdk-1.6.1",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = ThinkNote_Prefix.pch;
@@ -600,7 +610,7 @@
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -641,6 +651,7 @@
 					/Users/banane/dev/ios/ThinkGearTouch/TestFlightSDK2.0.2,
 					/Users/banane/Documents/FacebookSDK,
 					"/Users/banane/Downloads/aws-ios-sdk-1.7.1",
+					"/Users/banane/dev/aws-ios-sdk-1.6.1",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = ThinkNote_Prefix.pch;
@@ -659,7 +670,7 @@
 				PROVISIONING_PROFILE = "FC2753FF-EE00-4F6C-BBA6-162167D24007";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = "Ad-hoc Deploy";
 		};
